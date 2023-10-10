@@ -460,41 +460,6 @@ Name.TextSize = 12.000
 Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
 Name.TextXAlignment = Enum.TextXAlignment.Left
 
-Lvl.Name = "Lvl"
-Lvl.Parent = PlayerInfoFrame
-Lvl.Active = true
-Lvl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Lvl.BackgroundTransparency = 1.000
-Lvl.Position = UDim2.new(0, 85, 0.113057934, 0)
-Lvl.Size = UDim2.new(0, 200, 0, 27)
-Lvl.TextTransparency = 0.8
-Lvl.Font = Enum.Font.GothamBold
-Lvl.TextColor3 = Color3.fromRGB(255, 255, 255)
-Lvl.TextSize = 10.000
-Lvl.TextXAlignment = Enum.TextXAlignment.Left
-
-Fruit.Name = "Fruit"
-Fruit.Parent = PlayerInfoFrame
-Fruit.Active = true
-Fruit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Fruit.BackgroundTransparency = 1.000
-Fruit.Position = UDim2.new(0, 85, 0.199820146, 0)
-Fruit.Size = UDim2.new(0, 200, 0, 27)
-Fruit.Font = Enum.Font.GothamBold
-Fruit.TextTransparency = 0.8
-Fruit.TextColor3 = Color3.fromRGB(255, 255, 255)
-Fruit.TextSize = 10.000
-Fruit.TextXAlignment = Enum.TextXAlignment.Left
-
-local id = game.PlaceId
-
-if id == 2753915549 or id == 4442272183 or id == 7449423635 then
-Fruit.Text = "Devil Fruit : "..game:GetService("Players").LocalPlayer.Data.DevilFruit.Value.. " / ".. "Race : " ..game:GetService("Players").LocalPlayer.Data.Race.Value
-else
-  Fruit.Text = "Don't Find Your Database"
-Lvl.Text = "Don't Find Your Database"
-end
-
 local HealthBar = Instance.new("Frame")
 local HealthBarUICorner = Instance.new("UICorner")
 local HealthText = Instance.new("TextLabel")
@@ -586,73 +551,6 @@ LineStamina.Parent = StaminaLine
 LineStamina.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
-
-local Beli = Instance.new("TextLabel")
-local Fragment = Instance.new("TextLabel")
-
-Beli.Name = "Beli"
-Beli.Parent = PlayerInfoFrame
-Beli.Active = true
-Beli.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Beli.BackgroundTransparency = 1.000
-Beli.Position = UDim2.new(0.018749997, 0, 0.62897433, 0)
-Beli.Size = UDim2.new(0, 200, 0, 27)
-Beli.Font = Enum.Font.GothamBold
-Beli.TextColor3 = Color3.fromRGB(85, 255, 127)
-Beli.TextSize = 14.000
-Beli.TextXAlignment = Enum.TextXAlignment.Left
-
-Fragment.Name = "Fragment"
-Fragment.Parent = PlayerInfoFrame
-Fragment.Active = true
-Fragment.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Fragment.BackgroundTransparency = 1.000
-Fragment.Position = UDim2.new(0.018749997, 0, 0.695191059, 0)
-Fragment.Size = UDim2.new(0, 200, 0, 25)
-Fragment.Font = Enum.Font.GothamBold
-Fragment.TextColor3 = Color3.fromRGB(170, 85, 255)
-Fragment.TextSize = 14.000
-Fragment.TextXAlignment = Enum.TextXAlignment.Left
-
-local Bounty = Instance.new("TextLabel")
-
-Bounty.Name = "Bounty"
-Bounty.Parent = PlayerInfoFrame
-Bounty.Active = true
-Bounty.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Bounty.BackgroundTransparency = 1.000
-Bounty.Position = UDim2.new(0.018749997, 0, 0.752607787, 0)
-Bounty.Size = UDim2.new(0, 200, 0, 27)
-Bounty.Font = Enum.Font.GothamBold
-Bounty.TextColor3 = Color3.fromRGB(255, 170, 0)
-Bounty.TextSize = 14.000
-Bounty.TextXAlignment = Enum.TextXAlignment.Left
-
-spawn(function()
-  while wait(0.001) do
-  pcall(function()
-    Lvl.Text = "Level : "..game:GetService("Players").LocalPlayer.Data.Level.Value
-    Beli.Text = "Beli : "..game:GetService("Players").LocalPlayer.Data.Beli.Value
-    Fragment.Text = "Fragments : "..game:GetService("Players").LocalPlayer.Data.Fragments.Value
-    Bounty.Text = "Bounty : "..game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value
-    StaminaText.Text = "Stamina : "..game.Players.LocalPlayer.Character.Energy.Value.."/"..game.Players.LocalPlayer.Character.Energy.MaxValue
-    TweenService:Create(
-      LineStamina,
-      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-        Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
-    ):Play()
-
-    HealthText.Text = "Health : "..game.Players.LocalPlayer.Character.Humanoid.Health.."/"..game.Players.LocalPlayer.Character.Humanoid.MaxHealth
-    TweenService:Create(
-      LineHealth,
-      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-        Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
-    ):Play()
-    end)
-  end
-  end)
 
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
@@ -746,7 +644,7 @@ Text2.Position = UDim2.new(0.5, 0, 0.5, 0)
 Text2.Size = UDim2.new(0, 40, 0, 12)
 Text2.ZIndex = 16
 Text2.Font = Enum.Font.GothamBold
-Text2.Text = "Join Zen Hub Discord!"
+Text2.Text = "Join Discord!"
 Text2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text2.TextSize = 14.000
 
@@ -954,6 +852,7 @@ Texbslb4.MouseButton1Click:Connect(function()
     }
   ):Play()
   UI:Destroy()
+  ThunderScreen:Destroy()
   end)
 dragify(ClickFrame, Main)
 local tabs = {}
