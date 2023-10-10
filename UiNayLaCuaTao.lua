@@ -34,7 +34,7 @@ end
 end
 end
 end
-_G.Color = Color3.fromRGB(14, 230, 212)
+_G.Color = Color3.fromRGB(11, 230, 7)
 function CircleClick(Button, X, Y)
 coroutine.resume(
   coroutine.create(
@@ -164,10 +164,10 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderImageUI.BorderSizePixel = 0
         ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
         ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-        ThunderImageUI.Image = "http://www.roblox.com/asset/?id=14288624550"
+        ThunderImageUI.Image = "http://www.roblox.com/asset/?id=14945965226"
 
 _G.Logo = 14945965226
-_G.Logo1 = 14957514584
+_G.Logo1 = 14945965226
 local UI = Instance.new("ScreenGui")
 UI.Name = randomString
 UI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
@@ -251,7 +251,7 @@ Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
 Title.Font = Enum.Font.GothamBold
-Title.Text = "STAR XYZ HUB".."<font color='rgb(178, 102, 255)'>  |  VERSION PORN </font>".."- "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+Title.Text = "Star XYZ Hub ".."<font color='rgb(11, 230, 7)'>  |  VERSION PORN </font>".."- "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
@@ -318,7 +318,7 @@ Menu_Setting.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 Menu_Setting.BackgroundTransparency = 1
 Menu_Setting.Position = UDim2.new(0, 450, 0, 7)
 Menu_Setting.Size = UDim2.new(0, 25, 0, 25)
-Menu_Setting.Image = "http://www.roblox.com/asset/?id=14479606771"
+Menu_Setting.Image = "http://www.roblox.com/asset/?id=14945965226"
 
 Menu_Setting.ImageColor3 = Color3.fromRGB(255, 255, 255)
 Menu_Setting.ZIndex = 10
@@ -330,7 +330,7 @@ Settings.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 Settings.BackgroundTransparency = 1
 Settings.Position = UDim2.new(0, 480, 0, 7)
 Settings.Size = UDim2.new(0, 25, 0, 25)
-Settings.Image = "http://www.roblox.com/asset/?id=14479568523"
+Settings.Image = "http://www.roblox.com/asset/?id=14945965226"
 Settings.ImageColor3 = Color3.fromRGB(255, 255, 255)
 Settings.ZIndex = 10
 
@@ -746,7 +746,7 @@ Text2.Position = UDim2.new(0.5, 0, 0.5, 0)
 Text2.Size = UDim2.new(0, 40, 0, 12)
 Text2.ZIndex = 16
 Text2.Font = Enum.Font.GothamBold
-Text2.Text = "Join Discord!"
+Text2.Text = "Join Zen Hub Discord!"
 Text2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text2.TextSize = 14.000
 
@@ -793,7 +793,7 @@ Textbtn2.MouseButton1Click:Connect(function()
       TextSize = 12
     }
   ):Play()
-  setclipboard("https://discord.gg/8wXcWRaW8r")
+  setclipboard("https://discord.com/invite/8wXcWRaW8r")
   end)
 
 local Butn3 = Instance.new("Frame")
@@ -1535,7 +1535,7 @@ MainToggle_3.ClipsDescendants = true
 MainToggle_3.Position = UDim2.new(0.5, 0, 0.5, 0)
 MainToggle_3.Size = UDim2.new(0, 0, 0, 0)
 MainToggle_3.ZIndex = 16
-MainToggle_3.Image = "http://www.roblox.com/asset/?id=6031068421"
+MainToggle_3.Image = "http://www.roblox.com/asset/?id=14945965226"
 MainToggle_3.ImageColor3 = _G.Color
 MainToggle_3.Visible = false
 UICorner_3.CornerRadius = UDim.new(0, 3)
@@ -1771,7 +1771,7 @@ DropImage.BackgroundTransparency = 1.000
 DropImage.Position = UDim2.new(0, 200, 0, 6)
 DropImage.Rotation = 180.000
 DropImage.Size = UDim2.new(0, 20, 0, 20)
-DropImage.Image = "rbxassetid://7072706663"
+DropImage.Image = "rbxassetid://14945965226"
 
 DropButton.Name = "DropButton"
 DropButton.Parent = Dropdown
@@ -2022,7 +2022,7 @@ ImageButton.BackgroundTransparency = 1.000
 ImageButton.Position = UDim2.new(1, -25, 0.5, 0)
 ImageButton.Size = UDim2.new(0, 12, 0, 12)
 ImageButton.ZIndex = 16
-ImageButton.Image = "http://www.roblox.com/asset/?id=6282522798"
+ImageButton.Image = "http://www.roblox.com/asset/?id=14945965226"
 local DropTable = {}
 Scroll_Items.Name = "Scroll_Items"
 Scroll_Items.Parent = MainDropDown
