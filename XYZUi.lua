@@ -11,19 +11,33 @@ local titlefunc = {}
 local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
-local chars = "aiosimi"
-local length = 1
+local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+local length = 20
 local randomString = ""
 math.randomseed(os.time())
 charTable = {}
 for c in chars:gmatch "." do
-    table.insert(charTable, c)
+table.insert(charTable, c)
 end
 for i = 1, length do
-    randomString = randomString .. charTable[math.random(1, #charTable)]
+randomString = randomString .. charTable[math.random(1, #charTable)]
+end
+for i, v in pairs(game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules"):GetChildren()) do
+if v.ClassName == "ScreenGui" then
+for i1, v1 in pairs(v:GetChildren()) do
+if v1.Name == "Main" then
+do
+local ui = v
+if ui then
+ui:Destroy()
+end
+end
+end
+end
+end
 end
 
-_G.Color = Color3.fromRGB(61, 224, 11)
+_G.Color = Color3.fromRGB(226, 232, 58)
 function CircleClick(Button, X, Y)
 coroutine.resume(
   coroutine.create(
@@ -34,7 +48,7 @@ coroutine.resume(
     Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Circle.BackgroundTransparency = 1.000
     Circle.ZIndex = 10
-    Circle.Image = "rbxassetid://14945965226"
+    Circle.Image = "rbxassetid://15033600945"
     Circle.ImageColor3 = Color3.fromRGB(255, 255, 255)
     Circle.ImageTransparency = 0.7
     Circle.Visible = false
@@ -153,10 +167,10 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderImageUI.BorderSizePixel = 0
         ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
         ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-        ThunderImageUI.Image = "rbxassetid://14945965226"
+        ThunderImageUI.Image = "rbxassetid://15033600945"
 
-_G.Logo = 14945965226
-_G.Logo1 = 14945965226
+_G.Logo = 15033600945
+_G.Logo1 = 15033600945
 local UI = Instance.new("ScreenGui")
 UI.Name = randomString
 UI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
@@ -240,7 +254,7 @@ Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
 Title.Font = Enum.Font.GothamBold
-Title.Text = "STAR XYZ HUB  |  ".."<font color='rgb(61, 224, 11)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
+Title.Text = "ANBATUKAM HUB  |  ".."<font color='rgb(226, 232, 58)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
@@ -1649,7 +1663,7 @@ DropImage.BackgroundTransparency = 1.000
 DropImage.Position = UDim2.new(0, 200, 0, 6)
 DropImage.Rotation = 180.000
 DropImage.Size = UDim2.new(0, 20, 0, 20)
-DropImage.Image = "rbxassetid://14945965226"
+DropImage.Image = "rbxassetid://7072706663"
 
 DropButton.Name = "DropButton"
 DropButton.Parent = Dropdown
