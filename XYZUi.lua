@@ -11,17 +11,6 @@ local titlefunc = {}
 local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
-local chars = "yeuemngoclinh"
-local length = 20
-local randomString = ""
-math.randomseed(os.time())
-charTable = {}
-for c in chars:gmatch "." do
-    table.insert(charTable, c)
-end
-for i = 1, length do
-    randomString = randomString .. charTable[math.random(1, #charTable)]
-end
 
 _G.Color = Color3.fromRGB(61, 224, 11)
 function CircleClick(Button, X, Y)
