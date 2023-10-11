@@ -16,7 +16,7 @@ local OrionLib = {
       Default = {
          Main = Color3.fromRGB(25, 25, 25),
          Second = Color3.fromRGB(32, 32, 32),
-         Stroke = Color3.fromRGB(0, 255, 247),
+         Stroke = Color3.fromRGB(226, 232, 58),
          Divider = Color3.fromRGB(60, 60, 60),
          Text = Color3.fromRGB(240, 240, 240),
          TextDark = Color3.fromRGB(150, 150, 150)
@@ -314,9 +314,9 @@ end)
 CreateElement("ScrollFrame", function(Color, Width)
 local ScrollFrame = Create("ScrollingFrame", {
 BackgroundTransparency = 1,
-MidImage = "rbxassetid://14878105537",
-BottomImage = "rbxassetid://14878105537",
-TopImage = "rbxassetid://14878105537",
+MidImage = "rbxassetid://15033600945",
+BottomImage = "rbxassetid://15033600945",
+TopImage = "rbxassetid://15033600945",
 ScrollBarImageColor3 = Color,
 BorderSizePixel = 0,
 ScrollBarThickness = Width,
@@ -376,9 +376,9 @@ Parent = Orion
 
 function OrionLib:MakeNotification(NotificationConfig)
 spawn(function()
-NotificationConfig.Name = NotificationConfig.Name or "Star XYZ Hub"
+NotificationConfig.Name = NotificationConfig.Name or "By Tvb"
 NotificationConfig.Content = NotificationConfig.Content or "Owner By TranVanBao"
-NotificationConfig.Image = NotificationConfig.Image or "rbxassetid://14878105537"
+NotificationConfig.Image = NotificationConfig.Image or "rbxassetid://15033600945"
 NotificationConfig.Time = NotificationConfig.Time or 15
 
 local NotificationParent = SetProps(MakeElement("TFrame"), {
@@ -438,12 +438,12 @@ end
 function OrionLib:Init()
 if OrionLib.SaveCfg then
 pcall(function()
-if isfile(OrionLib.Folder .. "StarXYZHub" .. game.GameId .. ".json") then
-LoadCfg(readfile(OrionLib.Folder .. "StarXYZHub" .. game.GameId .. ".json"))
+if isfile(OrionLib.Folder .. "Anbatukam" .. game.GameId .. ".json") then
+LoadCfg(readfile(OrionLib.Folder .. "Anbatukam" .. game.GameId .. ".json"))
 OrionLib:MakeNotification({
-Name = "Star XYZ Hub",
+Name = "Anbatukam",
 Content = "Loadings Config" .. game.GameId .. ".",
-Image = "rbxassetid://14878105537",
+Image = "rbxassetid://15033600945",
 Time = 5
 })
 end
@@ -468,8 +468,8 @@ end
 WindowConfig.IntroText = WindowConfig.IntroText or "Orion Library"
 WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
 WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
-WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://14878105537"
-WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://14878105537"
+WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://15033600945"
+WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://15033600945"
 OrionLib.Folder = WindowConfig.ConfigFolder
 OrionLib.SaveCfg = WindowConfig.SaveConfig
 
@@ -638,9 +638,9 @@ AddConnection(CloseBtn.MouseButton1Up, function()
 MainWindow.Visible = false
 UIHidden = true
 OrionLib:MakeNotification({
-Name = "Star XYZ Hub",
-Content = "You Close Gui = You Gay!",
-Image = "rbxassetid://14878105537",
+Name = "Anbatukam",
+Content = "Is Comming Out!",
+Image = "rbxassetid://15033600945",
 Time = 5
 })
 WindowConfig.CloseCallback()
@@ -1463,7 +1463,7 @@ Image = "http://www.roblox.com/asset/?id=4805639000"
 local Color = Create("ImageLabel", {
 Size = UDim2.new(1, -25, 1, 0),
 Visible = false,
-Image = "rbxassetid://14878105537"
+Image = "rbxassetid://15033600945"
 }, {
 Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
 ColorSelection
