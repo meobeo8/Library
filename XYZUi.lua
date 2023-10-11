@@ -48,7 +48,7 @@ coroutine.resume(
     Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Circle.BackgroundTransparency = 1.000
     Circle.ZIndex = 10
-    Circle.Image = "rbxassetid://15033832807"
+    Circle.Image = "rbxassetid://15034250264"
     Circle.ImageColor3 = Color3.fromRGB(255, 255, 255)
     Circle.ImageTransparency = 0.7
     Circle.Visible = false
@@ -167,10 +167,10 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderImageUI.BorderSizePixel = 0
         ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
         ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-        ThunderImageUI.Image = "rbxassetid://15033832807"
+        ThunderImageUI.Image = "rbxassetid://15034250264"
 
-_G.Logo = 15033832807
-_G.Logo1 = 15033832807
+_G.Logo = 15034250264
+_G.Logo1 = 15034250264
 local UI = Instance.new("ScreenGui")
 UI.Name = randomString
 UI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
