@@ -400,8 +400,6 @@ local PlayerInfoFrameUICorner = Instance.new("UICorner")
 local ImageLabel = Instance.new("ImageLabel")
 local UICorner = Instance.new("UICorner")
 local Name = Instance.new("TextLabel")
-local Lvl = Instance.new("TextLabel")
-local Fruit = Instance.new("TextLabel")
 
 local Line = Instance.new("Frame")
 local UIGradient = Instance.new("UIGradient")
@@ -457,7 +455,7 @@ Name.Size = UDim2.new(0, 150, 0, 27)
 Name.Font = Enum.Font.GothamBold
 Name.TextColor3 = Color3.fromRGB(255, 255, 255)
 Name.TextSize = 12.000
-Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
+Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer..")"
 Name.TextXAlignment = Enum.TextXAlignment.Left
 
 local HealthBar = Instance.new("Frame")
@@ -615,7 +613,7 @@ StaminaText.BackgroundTransparency = 1.000
 StaminaText.Position = UDim2.new(0.0260000005, 0, 0.00000001, 0)
 StaminaText.Size = UDim2.new(0, 200, 0, 22)
 StaminaText.Font = Enum.Font.GothamBold
-StaminaText.Text = "Just For Fun"
+StaminaText.Text = "Settings"
 StaminaText.TextColor3 = _G.Color
 StaminaText.TextSize = 12.000
 StaminaText.TextWrapped = true
@@ -794,7 +792,7 @@ Textlval3.Position = UDim2.new(0.5, 0, 0.5, 0)
 Textlval3.Size = UDim2.new(0, 40, 0, 12)
 Textlval3.ZIndex = 16
 Textlval3.Font = Enum.Font.GothamBold
-Textlval3.Text = "DESTROY GUI"
+Textlval3.Text = "DESTROY"
 Textlval3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Textlval3.TextSize = 14.000
 
@@ -844,6 +842,7 @@ Texbslb4.MouseButton1Click:Connect(function()
   UI:Destroy()
   ThunderScreen:Destroy()
   end)
+  
 dragify(ClickFrame, Main)
 local tabs = {}
 local S = false
