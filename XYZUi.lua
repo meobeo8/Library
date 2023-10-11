@@ -1,9 +1,3 @@
-do
-local ui = game:GetService("CoreGui"):FindFirstChild("UILibrary")
-if ui then
-ui:Destroy()
-end
-end
 
 local library = {}
 local titlefunc = {}
