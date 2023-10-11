@@ -4,7 +4,7 @@ function Notification(text)
 game.StarterGui:SetCore("SendNotification", {
   Title = "Copied!", -- the title (ofc)
   Text = uk, -- what the text says (ofc)
-  Icon = "rbxassetid://14103696428", -- the image if u want.
+  Icon = "rbxassetid://", -- the image if u want.
   Duration = 3 -- how long the notification should in secounds
 })
 end
@@ -134,7 +134,7 @@ Text2.Position = UDim2.new(0.5, 0, 0.5, 0)
 Text2.Size = UDim2.new(0, 40, 0, 12)
 Text2.ZIndex = 16
 Text2.Font = Enum.Font.GothamBold
-Text2.Text = "Join Zen Hub Discord!"
+Text2.Text = "Join Discord!"
 Text2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text2.TextSize = 14.000
 
