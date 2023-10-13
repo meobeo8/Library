@@ -6,29 +6,6 @@ do
     end
 end
 
-for _, UI in ipairs(game.CoreGui:GetChildren()) do
-   if UI.Name then
-      UI:Destroy()
-   end
-end
-
-local UICount = 0
-
-local function DestroyUI()
-    local coreGUI = game:GetService("CoreGui")
-    for _, UI in ipairs(coreGui:GetChildren()) do
-        if UI:IsA("ScreenGui") then
-            UI:Destroy()
-            UICount = UICount + 1
-            if UICount >= 2 then
-                break
-            end
-        end
-    end
-end
-
-DestroyUI()
-
 local library = {}
 local titlefunc = {}
 local UIConfig = {
