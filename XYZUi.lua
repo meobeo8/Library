@@ -6,6 +6,12 @@ do
     end
 end
 
+for _, Interface in ipairs(game.CoreGui:GetChildren()) do
+   if Interface.Name == UI.Name and Interface ~= UI then
+      Interface:Destroy()
+   end
+end
+
 local library = {}
 local titlefunc = {}
 local UIConfig = {
@@ -36,23 +42,6 @@ end
 end
 end
 end
-
-local executeCount = 0
-local uiInstance = nil
-
-local function DestroyUI()
-    if uiInstance then
-        uiInstance:Destroy()
-        uiInstance = nil
-    end
-end
-
-local function HandleExecute()
-    executeCount = executeCount + 1
-    DestroyUI()
-end
-
-HandleExecute()
 
 _G.Color = Color3.fromRGB(226, 232, 58)
 function CircleClick(Button, X, Y)
