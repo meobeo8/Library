@@ -6,8 +6,8 @@ do
     end
 end
 
-if game.CoreGui:FindFirstChild("UI") then
-		game.CoreGui:FindFirstChild("UI"):Destroy()
+if game.CoreGui:FindFirstChild("UILibrary") then
+		game.CoreGui:FindFirstChild("UILibrary"):Destroy()
 	end
 
 local library = {}
