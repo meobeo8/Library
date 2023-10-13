@@ -460,7 +460,7 @@ Name.Size = UDim2.new(0, 150, 0, 27)
 Name.Font = Enum.Font.GothamBold
 Name.TextColor3 = Color3.fromRGB(255, 255, 255)
 Name.TextSize = 12.000
-Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
+Name.Text = game.Players.LocalPlayer.Name
 Name.TextXAlignment = Enum.TextXAlignment.Left
 
 Lvl.Name = "Lvl"

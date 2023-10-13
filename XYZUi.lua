@@ -460,7 +460,7 @@ Name.Size = UDim2.new(0, 150, 0, 27)
 Name.Font = Enum.Font.Creepster
 Name.TextColor3 = Color3.fromRGB(255, 255, 255)
 Name.TextSize = 12.000
-Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
+Name.Text = game.Players.LocalPlayer.Name
 Name.TextXAlignment = Enum.TextXAlignment.Left
 
 local HealthBar = Instance.new("Frame")
