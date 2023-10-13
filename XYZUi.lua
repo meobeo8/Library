@@ -6,6 +6,10 @@ do
     end
 end
 
+if game.CoreGui:FindFirstChild("UI") then
+		game.CoreGui:FindFirstChild("UI"):Destroy()
+	end
+
 local library = {}
 local titlefunc = {}
 local UIConfig = {
