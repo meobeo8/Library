@@ -1,3 +1,4 @@
+
 do
     local ui = game:GetService("CoreGui"):FindFirstChild("UILibrary")
     if ui then
@@ -10,16 +11,30 @@ local titlefunc = {}
 local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
-local chars = "yeuemngoclinh"
+local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 local length = 20
 local randomString = ""
 math.randomseed(os.time())
 charTable = {}
 for c in chars:gmatch "." do
-    table.insert(charTable, c)
+table.insert(charTable, c)
 end
 for i = 1, length do
-    randomString = randomString .. charTable[math.random(1, #charTable)]
+randomString = randomString .. charTable[math.random(1, #charTable)]
+end
+for i, v in pairs(game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules"):GetChildren()) do
+if v.ClassName == "ScreenGui" then
+for i1, v1 in pairs(v:GetChildren()) do
+if v1.Name == "Main" then
+do
+local ui = v
+if ui then
+ui:Destroy()
+end
+end
+end
+end
+end
 end
 
 _G.Color = Color3.fromRGB(226, 232, 58)
@@ -59,7 +74,6 @@ coroutine.resume(
   )
 )
 end
-
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -133,7 +147,7 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderToggleUI.BorderSizePixel = 0
         ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
         ThunderToggleUI.Size = UDim2.new(0, 50, 0, 50)
-        ThunderToggleUI.Font = Enum.Font.SourceSans
+        ThunderToggleUI.Font = Enum.Font.Creepster
         ThunderToggleUI.Text = ""
         ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
         ThunderToggleUI.TextSize = 14.000
@@ -239,8 +253,8 @@ Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
-Title.Font = Enum.Font.GothamBold
-Title.Text = "ANBATUKAM HUB  |  ".."<font color='rgb(61, 224, 11)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
+Title.Font = Enum.Font.Creepster
+Title.Text = "ANBATUKAM HUB  |  ".."<font color='rgb(226, 232, 58)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
@@ -705,8 +719,8 @@ StaminaText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 StaminaText.BackgroundTransparency = 1.000
 StaminaText.Position = UDim2.new(0.0260000005, 0, 0.00000001, 0)
 StaminaText.Size = UDim2.new(0, 200, 0, 22)
-StaminaText.Font = Enum.Font.GothamBold
-StaminaText.Text = "Settings"
+StaminaText.Font = Enum.Font.Creepster
+StaminaText.Text = "Just For Fun"
 StaminaText.TextColor3 = _G.Color
 StaminaText.TextSize = 12.000
 StaminaText.TextWrapped = true
@@ -734,7 +748,7 @@ Text2.BackgroundTransparency = 1.000
 Text2.Position = UDim2.new(0.5, 0, 0.5, 0)
 Text2.Size = UDim2.new(0, 40, 0, 12)
 Text2.ZIndex = 16
-Text2.Font = Enum.Font.GothamBold
+Text2.Font = Enum.Font.Creepster
 Text2.Text = "FLY"
 Text2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text2.TextSize = 14.000
@@ -747,7 +761,7 @@ Textbtn2.ClipsDescendants = true
 Textbtn2.Size = UDim2.new(1, 0, 1, 0)
 Textbtn2.ZIndex = 16
 Textbtn2.AutoButtonColor = false
-Textbtn2.Font = Enum.Font.Gotham
+Textbtn2.Font = Enum.Font.Creepster
 Textbtn2.Text = ""
 Textbtn2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Textbtn2.TextSize = 14.000
@@ -807,7 +821,7 @@ Textlavel3.BackgroundTransparency = 1.000
 Textlavel3.Position = UDim2.new(0.5, 0, 0.5, 0)
 Textlavel3.Size = UDim2.new(0, 40, 0, 12)
 Textlavel3.ZIndex = 16
-Textlavel3.Font = Enum.Font.GothamBold
+Textlavel3.Font = Enum.Font.Creepster
 Textlavel3.Text = "ESP"
 Textlavel3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Textlavel3.TextSize = 14.000
@@ -820,7 +834,7 @@ Texbob3.ClipsDescendants = true
 Texbob3.Size = UDim2.new(1, 0, 1, 0)
 Texbob3.ZIndex = 16
 Texbob3.AutoButtonColor = false
-Texbob3.Font = Enum.Font.Gotham
+Texbob3.Font = Enum.Font.Creepster
 Texbob3.Text = ""
 Texbob3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Texbob3.TextSize = 14.000
@@ -884,7 +898,7 @@ Textlval3.BackgroundTransparency = 1.000
 Textlval3.Position = UDim2.new(0.5, 0, 0.5, 0)
 Textlval3.Size = UDim2.new(0, 40, 0, 12)
 Textlval3.ZIndex = 16
-Textlval3.Font = Enum.Font.GothamBold
+Textlval3.Font = Enum.Font.Creepster
 Textlval3.Text = "DESTROY GUI"
 Textlval3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Textlval3.TextSize = 14.000
@@ -897,7 +911,7 @@ Texbslb4.ClipsDescendants = true
 Texbslb4.Size = UDim2.new(1, 0, 1, 0)
 Texbslb4.ZIndex = 16
 Texbslb4.AutoButtonColor = false
-Texbslb4.Font = Enum.Font.Gotham
+Texbslb4.Font = Enum.Font.Creepster
 Texbslb4.Text = ""
 Texbslb4.TextColor3 = Color3.fromRGB(255, 255, 255)
 Texbslb4.TextSize = 14.000
@@ -935,8 +949,6 @@ Texbslb4.MouseButton1Click:Connect(function()
   UI:Destroy()
   ThunderScreen:Destroy()
   end)
-
-
 dragify(ClickFrame, Main)
 local tabs = {}
 local S = false
@@ -998,7 +1010,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.BackgroundTransparency = 1.000
 TextLabel.Position = UDim2.new(0.252105269, 0, 0.100000001, 0)
 TextLabel.Size = UDim2.new(0, 10, 0, 27)
-TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Font = Enum.Font.Creepster
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 12.300
 TextLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -1216,7 +1228,7 @@ Label.Parent = SectionContainer
 Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Label.BackgroundTransparency = 1.000
 Label.Size = UDim2.new(0, 200, 0, 20)
-Label.Font = Enum.Font.GothamSemibold
+Label.Font = Enum.Font.CreepsterSemibold
 Label.TextColor3 = Color3.fromRGB(225, 225, 225)
 Label.TextSize = 9.000
 Label.Text = text
@@ -1266,7 +1278,7 @@ Text.BackgroundTransparency = 1.000
 Text.Position = UDim2.new(0.5, 0, 0.5, 0)
 Text.Size = UDim2.new(0, 53, 0, 150)
 Text.ZIndex = 16
-Text.Font = Enum.Font.GothamBold
+Text.Font = Enum.Font.Creepster
 Text.Text = text
 Text.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text.TextSize = 12.000
@@ -1293,7 +1305,7 @@ Text.BackgroundTransparency = 1.000
 Text.Position = UDim2.new(0.5, 0, 0.5, 0)
 Text.Size = UDim2.new(0, 53, 0, 12)
 Text.ZIndex = 16
-Text.Font = Enum.Font.GothamBold
+Text.Font = Enum.Font.Creepster
 Text.Text = text
 Text.TextColor3 = Color3.fromRGB(color)
 Text.TextSize = 12.000
@@ -1330,7 +1342,7 @@ TextLabel_4.BackgroundTransparency = 1.000
 TextLabel_4.Position = UDim2.new(0.5, 0, 0.5, 0)
 TextLabel_4.Size = UDim2.new(0, 40, 0, 12)
 TextLabel_4.ZIndex = 16
-TextLabel_4.Font = Enum.Font.GothamBold
+TextLabel_4.Font = Enum.Font.Creepster
 TextLabel_4.Text = tostring(Title)
 TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_4.TextSize = 12.000
@@ -1342,7 +1354,7 @@ TextButton_4.ClipsDescendants = true
 TextButton_4.Size = UDim2.new(1, 0, 1, 0)
 TextButton_4.ZIndex = 16
 TextButton_4.AutoButtonColor = false
-TextButton_4.Font = Enum.Font.Gotham
+TextButton_4.Font = Enum.Font.Creepster
 TextButton_4.Text = ""
 TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton_4.TextSize = 14.000
@@ -1406,7 +1418,7 @@ TextLabel_3.BackgroundTransparency = 1.000
 TextLabel_3.Position = UDim2.new(0.5, 0, 0.5, 0)
 TextLabel_3.Size = UDim2.new(0, 40, 0, 12)
 TextLabel_3.ZIndex = 16
-TextLabel_3.Font = Enum.Font.GothamBold
+TextLabel_3.Font = Enum.Font.Creepster
 TextLabel_3.Text = Name
 TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_3.TextSize = 10.000
@@ -1419,7 +1431,7 @@ TextButton.ClipsDescendants = true
 TextButton.Size = UDim2.new(1, 0, 1, 0)
 TextButton.ZIndex = 16
 TextButton.AutoButtonColor = false
-TextButton.Font = Enum.Font.Gotham
+TextButton.Font = Enum.Font.Creepster
 TextButton.Text = ""
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 14.000
@@ -1492,7 +1504,7 @@ Text.BackgroundTransparency = 1.000
 Text.Position = UDim2.new(0, 10, 0, 10)
 Text.Size = UDim2.new(0, 100, 0, 12)
 Text.ZIndex = 16
-Text.Font = Enum.Font.GothamBold
+Text.Font = Enum.Font.Creepster
 Text.Text = Name
 Text.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text.TextSize = 12.000
@@ -1530,7 +1542,7 @@ TextButton.BorderSizePixel = 0
 TextButton.Size = UDim2.new(1, 0, 1, 0)
 TextButton.ZIndex = 16
 TextButton.AutoButtonColor = false
-TextButton.Font = Enum.Font.Gotham
+TextButton.Font = Enum.Font.Creepster
 TextButton.Text = ""
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 14.000
@@ -1627,7 +1639,7 @@ Text_5.BackgroundTransparency = 1.000
 Text_5.Position = UDim2.new(0, 10, 0, 10)
 Text_5.Size = UDim2.new(0, 43, 0, 12)
 Text_5.ZIndex = 16
-Text_5.Font = Enum.Font.GothamBold
+Text_5.Font = Enum.Font.Creepster
 Text_5.Text = Name
 Text_5.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text_5.TextSize = 11.000
@@ -1652,7 +1664,7 @@ HeadTitle.ClipsDescendants = true
 HeadTitle.Position = UDim2.new(0.74, 0, 0.04, 0)
 HeadTitle.Size = UDim2.new(0, 100, 0, 28)
 HeadTitle.ZIndex = 16
-HeadTitle.Font = Enum.Font.GothamBold
+HeadTitle.Font = Enum.Font.Creepster
 HeadTitle.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
 HeadTitle.PlaceholderText = Placeholder
 HeadTitle.Text = ""
@@ -1721,7 +1733,7 @@ DropTitle.Parent = Dropdown
 DropTitle.BackgroundColor3 = Color3.fromRGB(224,224,224)
 DropTitle.BackgroundTransparency = 1.000
 DropTitle.Size = UDim2.new(0, 240, 0, 31)
-DropTitle.Font = Enum.Font.GothamBold
+DropTitle.Font = Enum.Font.Creepster
 DropTitle.Text = getpro()
 DropTitle.TextColor3 = Color3.fromRGB(225, 225, 225)
 DropTitle.TextSize = 12.000
@@ -1753,14 +1765,14 @@ DropImage.BackgroundTransparency = 1.000
 DropImage.Position = UDim2.new(0, 200, 0, 6)
 DropImage.Rotation = 180.000
 DropImage.Size = UDim2.new(0, 20, 0, 20)
-DropImage.Image = "rbxassetid://15034250264"
+DropImage.Image = "rbxassetid://7072706663"
 
 DropButton.Name = "DropButton"
 DropButton.Parent = Dropdown
 DropButton.BackgroundColor3 = Color3.fromRGB(224,224,224)
 DropButton.BackgroundTransparency = 1.000
 DropButton.Size = UDim2.new(0, 240, 0, 31)
-DropButton.Font = Enum.Font.GothamBold
+DropButton.Font = Enum.Font.Creepster
 DropButton.Text = ""
 DropButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 DropButton.TextSize = 14.000
@@ -1774,7 +1786,7 @@ Item.BackgroundColor3 = Color3.fromRGB(30,30,30)
 Item.BackgroundTransparency = 0.000
 Item.Size = UDim2.new(0, 225, 0, 18)
 Item.BorderSizePixel = 0
-Item.Font = Enum.Font.GothamBold
+Item.Font = Enum.Font.Creepster
 Item.Text = tostring(v)
 Item.TextColor3 = Color3.fromRGB(225, 225, 225)
 Item.TextSize = 13.000
@@ -1853,7 +1865,7 @@ Item.BackgroundColor3 = Color3.fromRGB(30,30,30)
 Item.BackgroundTransparency = 0.000
 Item.Size = UDim2.new(0, 225, 0, 18)
 Item.BorderSizePixel = 0
-Item.Font = Enum.Font.GothamBold
+Item.Font = Enum.Font.Creepster
 Item.Text = tostring(t)
 Item.TextColor3 = Color3.fromRGB(225, 225, 225)
 Item.TextSize = 13.000
@@ -1968,7 +1980,7 @@ v.BorderSizePixel = 0
 v.Size = UDim2.new(1, 0, 1, 0)
 v.ZIndex = 16
 v.AutoButtonColor = false
-v.Font = Enum.Font.GothamBold
+v.Font = Enum.Font.Creepster
 v.Text = ""
 v.TextColor3 = Color3.fromRGB(255, 255, 255)
 v.TextSize = 12.000
@@ -1993,7 +2005,7 @@ Text_2.BackgroundTransparency = 1.000
 Text_2.Position = UDim2.new(0, 10, 0, 10)
 Text_2.Size = UDim2.new(0, 62, 0, 12)
 Text_2.ZIndex = 16
-Text_2.Font = Enum.Font.GothamBold
+Text_2.Font = Enum.Font.Creepster
 Text_2.Text = getpro()
 Text_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Text_2.TextSize = 12.000
@@ -2067,7 +2079,7 @@ _5.ClipsDescendants = true
 _5.Size = UDim2.new(1, -10, 0, 20)
 _5.ZIndex = 17
 _5.AutoButtonColor = false
-_5.Font = Enum.Font.GothamBold
+_5.Font = Enum.Font.Creepster
 _5.Text = Text
 _5.TextColor3 = Color3.fromRGB(255, 255, 255)
 _5.TextSize = 12.000
@@ -2154,7 +2166,7 @@ LabelNameSlider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 LabelNameSlider.BackgroundTransparency = 1.000
 LabelNameSlider.Position = UDim2.new(0.0729926974, 0, 0.0396823473, 0)
 LabelNameSlider.Size = UDim2.new(0, 182, 0, 25)
-LabelNameSlider.Font = Enum.Font.GothamBold
+LabelNameSlider.Font = Enum.Font.Creepster
 LabelNameSlider.Text = tostring(text)
 LabelNameSlider.TextColor3 = Color3.fromRGB(255, 255, 255)
 LabelNameSlider.TextSize = 11.000
@@ -2173,7 +2185,7 @@ CustomValue.AnchorPoint = Vector2.new(0.5, 0.5)
 CustomValue.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 CustomValue.Position = UDim2.new(0.3, 0, 0.5, 0)
 CustomValue.Size = UDim2.new(0, 55, 0, 21)
-CustomValue.Font = Enum.Font.GothamBold
+CustomValue.Font = Enum.Font.Creepster
 CustomValue.Text = "50"
 CustomValue.TextColor3 = Color3.fromRGB(255, 255, 255)
 CustomValue.TextSize = 11.000
