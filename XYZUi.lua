@@ -1,6 +1,6 @@
 
 do
-    local ui = game:GetService("CoreGui"):FindFirstChild("AnbatukamUI")
+    local ui = game.CoreGui:FindFirstChild("AnbatukamUI")
     if ui then
         UI:Destroy()
   ThunderScreen:Destroy()
@@ -17,31 +17,6 @@ local titlefunc = {}
 local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
-local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-local length = 20
-local randomString = ""
-math.randomseed(os.time())
-charTable = {}
-for c in chars:gmatch "." do
-table.insert(charTable, c)
-end
-for i = 1, length do
-randomString = randomString .. charTable[math.random(1, #charTable)]
-end
-for i, v in pairs(game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules"):GetChildren()) do
-if v.ClassName == "ScreenGui" then
-for i1, v1 in pairs(v:GetChildren()) do
-if v1.Name == "Main" then
-do
-local ui = v
-if ui then
-ui:Destroy()
-end
-end
-end
-end
-end
-end
 
 _G.Color = Color3.fromRGB(226, 232, 58)
 function CircleClick(Button, X, Y)
@@ -179,7 +154,7 @@ _G.Logo = 15034250264
 _G.Logo1 = 15034250264
 local UI = Instance.new("ScreenGui")
 UI.Name = "AnbatukamUI"
-UI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
+UI.Parent = CoreGui
 UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 if syn then
 syn.protect_gui(UI)
