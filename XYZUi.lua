@@ -181,7 +181,7 @@ _G.Logo = 15034250264
 _G.Logo1 = 15034250264
 local UI = Instance.new("ScreenGui")
 UI.Name = "AnbatukamUI"
-UI.Parent = CoreGui
+UI.Parent = game.CoreGui
 UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 if syn then
 syn.protect_gui(UI)
