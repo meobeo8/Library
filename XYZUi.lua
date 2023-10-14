@@ -1,13 +1,15 @@
 
 do
-    local ui = game:GetService("CoreGui"):FindFirstChild("UILibrary")
+    local ui = game:GetService("CoreGui"):FindFirstChild("AnbatukamUI")
     if ui then
-        ui:Destroy()
+        UI:Destroy()
+  ThunderScreen:Destroy()
     end
 end
 
-if game.CoreGui:FindFirstChild("UILibrary") then
-		game.CoreGui:FindFirstChild("UILibrary"):Destroy()
+if game.CoreGui:FindFirstChild("AnbatukamUI") then
+		UI:Destroy()
+  ThunderScreen:Destroy()
 	end
 
 local library = {}
@@ -176,7 +178,7 @@ local ThunderImageUI = Instance.new("ImageLabel")
 _G.Logo = 15034250264
 _G.Logo1 = 15034250264
 local UI = Instance.new("ScreenGui")
-UI.Name = randomString
+UI.Name = "AnbatukamUI"
 UI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
 UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 if syn then
