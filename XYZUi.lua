@@ -1,13 +1,5 @@
 
-do
-    local ui = game.CoreGui:FindFirstChild("AnbatukamUI")
-    if ui then
-        UI:Destroy()
-  ThunderScreen:Destroy()
-    end
-end
-
-if game.CoreGui:FindFirstChild("AnbatukamUI") then
+if game.CoreGui:FindFirstChild("AnbatukamUI") or game.CoreGui:FindFirstChild("ThunderCornerUI") then
 		UI:Destroy()
   ThunderScreen:Destroy()
 	end
