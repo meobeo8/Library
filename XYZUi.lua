@@ -1,16 +1,14 @@
 
-if game.CoreGui:FindFirstChild("AnbatukamUI") or game.CoreGui:FindFirstChild("ThunderCornerUI") then
-     game.StarterGui:SetCore(
-    "SendNotification",
-    {
-        Title = "Warning!",
-        Text = "Dont Spam",
-        Icon = "rbxassetid://15034250264",
-        Duration = 10
-    })
-wait(3)
-   UI:Destroy()
-  ThunderScreen:Destroy()
+if game.CoreGui:FindFirstChild("AnbatukamUI") or game.CoreGui:FindFirstChild("ToggleInterface") then
+     game.StarterGui:SetCore("SendNotification", {
+                Title = "Warning!",
+                Text = "Dont Spam",
+                Icon = "rbxassetid://15034250264",
+                Duration = 5
+            })
+            wait(1)
+    UI:Destroy()
+     ThunderScreen:Destroy()
 	end
 
 local library = {}
@@ -146,7 +144,7 @@ local ThunderCornerUI = Instance.new("UICorner")
 local ThunderImageUI = Instance.new("ImageLabel")
 local ThunderImageUI = Instance.new("ImageLabel")
 
-        ThunderScreen.Name = "ThunderScreen"
+        ThunderScreen.Name = "ToggleInterface"
         ThunderScreen.Parent = game.CoreGui
         ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
