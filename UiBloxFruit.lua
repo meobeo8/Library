@@ -1,15 +1,18 @@
-
-do
-    local ui = game:GetService("CoreGui"):FindFirstChild("UILibrary")
-    if ui then
-        ui:Destroy()
-    end
-end
-
-if game.CoreGui:FindFirstChild("UI") then
-		game.CoreGui:FindFirstChild("UI"):Destroy()
+if game.CoreGui:FindFirstChild("AnbatukamUI") or game.CoreGui:FindFirstChild("ThunderCornerUI") then
+     game.StarterGui:SetCore(
+    "SendNotification",
+    {
+        Title = "Warning!",
+        Text = "Dont Spam",
+        Icon = "rbxassetid://15034250264",
+        Duration = 10
+    })
+wait(3)
+   UI:Destroy()
+  ThunderScreen:Destroy()
 	end
 
+	
 local library = {}
 local titlefunc = {}
 local UIConfig = {
@@ -176,8 +179,8 @@ local ThunderImageUI = Instance.new("ImageLabel")
 _G.Logo = 15034250264
 _G.Logo1 = 15034250264
 local UI = Instance.new("ScreenGui")
-UI.Name = randomString
-UI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
+UI.Name = "AnbatukamUI"
+UI.Parent = game.CoreGui
 UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 if syn then
 syn.protect_gui(UI)
