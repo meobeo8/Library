@@ -1,15 +1,12 @@
-if game.CoreGui:FindFirstChild("AnbatukamUI") or game.CoreGui:FindFirstChild("ThunderCornerUI") then
-     game.StarterGui:SetCore(
-    "SendNotification",
-    {
-        Title = "Warning!",
-        Text = "Dont Spam",
-        Icon = "rbxassetid://15034250264",
-        Duration = 10
-    })
-wait(3)
-   UI:Destroy()
-  ThunderScreen:Destroy()
+if game.CoreGui:FindFirstChild("AnbatukamUI") or game.CoreGui:FindFirstChild("ToggleInterface") then
+     game.StarterGui:SetCore("SendNotification", {
+                Title = "Warning!",
+                Text = "Dont Spam",
+                Icon = "rbxassetid://15034250264",
+                Duration = 5
+            })
+    UI:Destroy()
+     ThunderScreen:Destroy()
 	end
 
 	
@@ -148,7 +145,7 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderScreen.Parent = game.CoreGui
         ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-        ThunderToggleUI.Name = "ThunderToggleUI"
+        ThunderToggleUI.Name = "ToggleInterface"
         ThunderToggleUI.Parent = ThunderScreen
         ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
         ThunderToggleUI.BorderSizePixel = 0
@@ -467,7 +464,7 @@ Name.Size = UDim2.new(0, 150, 0, 27)
 Name.Font = Enum.Font.GothamBold
 Name.TextColor3 = Color3.fromRGB(255, 255, 255)
 Name.TextSize = 12.000
-Name.Text = game.Players.LocalPlayer.Name
+Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
 Name.TextXAlignment = Enum.TextXAlignment.Left
 
 Lvl.Name = "Lvl"
