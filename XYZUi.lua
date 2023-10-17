@@ -45,7 +45,7 @@ end
 end
 
 
-_G.Color = Color3.fromRGB(217, 141, 28)
+_G.Color = Color3.fromRGB(204, 171, 52)
 function CircleClick(Button, X, Y)
 coroutine.resume(
   coroutine.create(
@@ -262,7 +262,7 @@ Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
 Title.Font = Enum.Font.Creepster
-Title.Text = "ANBATUKAM HUB  |  ".."<font color='rgb(217, 141, 28)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
+Title.Text = "ANBATUKAM HUB - VERSION.17.10.2023 |  ".."<font color='rgb(204, 171, 52)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
