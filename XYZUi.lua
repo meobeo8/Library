@@ -2,8 +2,7 @@
 if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
      UI:Destroy()
   ThunderScreen:Destroy()
-  library:Destroy()
-  wait(3)
+  wait(1)
           game.StarterGui:SetCore("SendNotification", {
                 Title = "Warning!",
                 Text = "Dont Spam",
