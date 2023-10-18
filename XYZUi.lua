@@ -1,14 +1,4 @@
 
-if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
-     game.StarterGui:SetCore("SendNotification", {
-                Title = "Warning!",
-                Text = "Dont Spam 🤬",
-                Icon = "rbxassetid://15034250264",
-                Duration = 5
-            })
-   UI:Destroy()
-  ThunderScreen:Destroy()
-	end
 
 local library = {}
 local titlefunc = {}
@@ -42,6 +32,21 @@ end
 end
 end
 
+if game.CoreGui:FindFirstChild("AnbatukamHub") or game.CoreGui:FindFirstChild("TrueFalseUi") then
+     game.StarterGui:SetCore("SendNotification", {
+                Title = "Warning!",
+                Text = "Dont Spam !",
+                Icon = "rbxassetid://15034250264",
+                Duration = 5
+            })
+   wait(1)
+   sameui()
+	end
+
+function sameui()
+UI:Destroy()
+ThunderScreen:Destroy()
+  end
 
 _G.Color = Color3.fromRGB(204, 171, 52)
 function CircleClick(Button, X, Y)
