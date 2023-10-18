@@ -1,14 +1,13 @@
 
 if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
-     UI:Destroy()
-  ThunderScreen:Destroy()
-  wait(1)
-          game.StarterGui:SetCore("SendNotification", {
+     game.StarterGui:SetCore("SendNotification", {
                 Title = "Warning!",
                 Text = "Dont Spam",
                 Icon = "rbxassetid://15034250264",
                 Duration = 5
             })
+   UI:Destroy()
+  ThunderScreen:Destroy()
 	end
 
 local library = {}
@@ -261,7 +260,7 @@ Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
 Title.Font = Enum.Font.Creepster
-Title.Text = "ANBATUKAM HUB - VERSION.17.10.2023 |  ".."<font color='rgb(204, 171, 52)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
+Title.Text = "ANBATUKAM HUB - VERSION.17.10.2023 | ".."<font color='rgb(204, 171, 52)'>"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.." </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
@@ -828,7 +827,7 @@ Textlval3.Position = UDim2.new(0.5, 0, 0.5, 0)
 Textlval3.Size = UDim2.new(0, 40, 0, 12)
 Textlval3.ZIndex = 16
 Textlval3.Font = Enum.Font.Creepster
-Textlval3.Text = "DESTROY GUI"
+Textlval3.Text = "DESTROY"
 Textlval3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Textlval3.TextSize = 14.000
 
@@ -875,6 +874,12 @@ Texbslb4.MouseButton1Click:Connect(function()
       TextSize = 12
     }
   ):Play()
+  game.StarterGui:SetCore("SendNotification", {
+                Title = "Anbatukam Hub",
+                Text = "Destroy Success ✅",
+                Icon = "rbxassetid://15034250264",
+                Duration = 5
+            })
   UI:Destroy()
   ThunderScreen:Destroy()
   end)
