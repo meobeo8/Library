@@ -20,7 +20,7 @@ local UIConfig = {
         UI:Destroy()
         AnbatukamTrueFalse:Destroy()
     end
-end
+
 
 local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 local length = 20
