@@ -14,8 +14,6 @@ local UIConfig = {
                     Icon = "rbxassetid://15034250264",
                     Duration = 5
                 })
-                UI:Destroy()
-                AnbatukamTrueFalse:Destroy()
     end
 
 
@@ -879,9 +877,11 @@ Texbslb4.MouseButton1Click:Connect(function()
                 Icon = "rbxassetid://15034250264",
                 Duration = 5
             })
+            wait(1)
            UI:Destroy()
            AnbatukamTrueFalse:Destroy()
   end)
+  
 dragify(ClickFrame, Main)
 local tabs = {}
 local S = false
