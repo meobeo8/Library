@@ -6,6 +6,28 @@ local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
 
+function skibidi()
+    if game.CoreGui:FindFirstChild("AnbatukamHub") or game.CoreGui:FindFirstChild("TrueFalseUi") then
+        game.StarterGui:SetCore(
+            "SendNotification",
+            {
+                Title = "Warning!",
+                Text = "Dont Spam !",
+                Icon = "rbxassetid://15034250264",
+                Duration = 5
+            })
+        wait(1)
+        UI:Destroy()
+        ThunderScreen:Destroy()
+        ThunderImageUI:Destroy()
+        ThunderCornerUI:Destroy()
+        ThunderToggleUI:Destroy()
+        ThunderScreen:Destroy()
+    end
+end
+
+skibidi()
+
 local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 local length = 20
 local randomString = ""
@@ -129,7 +151,6 @@ end
 local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
 local ThunderCornerUI = Instance.new("UICorner")
-local ThunderImageUI = Instance.new("ImageLabel")
 local ThunderImageUI = Instance.new("ImageLabel")
 
         ThunderScreen.Name = "TrueFalseUi"
@@ -2267,17 +2288,7 @@ pcall(function()
   end)
 end
 
-if game.CoreGui:FindFirstChild("AnbatukamHub") or game.CoreGui:FindFirstChild("TrueFalseUi") then
-     game.StarterGui:SetCore("SendNotification", {
-                Title = "Warning!",
-                Text = "Dont Spam !",
-                Icon = "rbxassetid://15034250264",
-                Duration = 5
-            })
-   wait(1)
-   UI:Destroy()
-ThunderScreen:Destroy()
-	end
+
 
 return sliderfunc
 end
