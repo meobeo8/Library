@@ -5,11 +5,17 @@ local titlefunc = {}
 local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
+local function library:Destroy()
+library:Destroy()
+UI:Destroy()
+AnbatukamTrueFalse:Destroy()
+end
+
 
     if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
         library:Destroy()
         game.StarterGui:SetCore("SendNotification", {
-                    Title = "Fucking Niggers Spam?",
+                    Title = "Fucking Niggers Dumb",
                     Text = "Trash ",
                     Icon = "rbxassetid://15034250264",
                     Duration = 5
@@ -182,12 +188,6 @@ UI.Parent = game.CoreGui
 UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 if syn then
 syn.protect_gui(UI)
-end
-
-function library:Destroy()
-library:Destroy()
-UI:Destroy()
-AnbatukamTrueFalse:Destroy()
 end
 
 function library:sex()
