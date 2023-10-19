@@ -8,12 +8,8 @@ local UIConfig = {
 
 
     if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
-        game.StarterGui:SetCore("SendNotification", {
-                    Title = "Fucking Niggers Dumb",
-                    Text = "Trash ",
-                    Icon = "rbxassetid://15034250264",
-                    Duration = 5
-                })
+        ThunderScreen:Destroy()
+        UI:Destroy()
     end
 
 
@@ -137,17 +133,17 @@ game:GetService("UserInputService").InputChanged:Connect(
 )
 end
 
-local AnbatukamTrueFalse = Instance.new("ScreenGui")
+local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
 local ThunderCornerUI = Instance.new("UICorner")
 local ThunderImageUI = Instance.new("ImageLabel")
 
-        AnbatukamTrueFalse.Name = "TrueFalseUi"
-        AnbatukamTrueFalse.Parent = game.CoreGui
-        AnbatukamTrueFalse.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ThunderScreen.Name = "TrueFalseUi"
+        ThunderScreen.Parent = game.CoreGui
+        ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
         ThunderToggleUI.Name = "ThunderToggleUI"
-        ThunderToggleUI.Parent = AnbatukamTrueFalse
+        ThunderToggleUI.Parent = ThunderScreen
         ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
         ThunderToggleUI.BorderSizePixel = 0
         ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
@@ -871,15 +867,8 @@ Texbslb4.MouseButton1Click:Connect(function()
       TextSize = 12
     }
   ):Play()
-  game.StarterGui:SetCore("SendNotification", {
-                Title = "Anbatukam Hub",
-                Text = "Destroy Success",
-                Icon = "rbxassetid://15034250264",
-                Duration = 5
-            })
-            wait(1)
            UI:Destroy()
-           AnbatukamTrueFalse:Destroy()
+           ThunderScreen:Destroy()
   end)
   
 dragify(ClickFrame, Main)
