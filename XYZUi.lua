@@ -5,21 +5,18 @@ local titlefunc = {}
 local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
-local function library:Destroy()
-library:Destroy()
-UI:Destroy()
-AnbatukamTrueFalse:Destroy()
-end
 
 
     if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
-        library:Destroy()
         game.StarterGui:SetCore("SendNotification", {
                     Title = "Fucking Niggers Dumb",
                     Text = "Trash ",
                     Icon = "rbxassetid://15034250264",
                     Duration = 5
                 })
+                library:Destroy()
+                UI:Destroy()
+                AnbatukamTrueFalse:Destroy()
     end
 
 
@@ -883,8 +880,9 @@ Texbslb4.MouseButton1Click:Connect(function()
                 Icon = "rbxassetid://15034250264",
                 Duration = 5
             })
-           wait(1)
            library:Destroy()
+           UI:Destroy()
+           AnbatukamTrueFalse:Destroy()
   end)
 dragify(ClickFrame, Main)
 local tabs = {}
