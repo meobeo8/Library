@@ -6,7 +6,6 @@ local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
 
-function skibidi()
     if game.CoreGui:FindFirstChild("AnbatukamHub") or game.CoreGui:FindFirstChild("TrueFalseUi") then
         game.StarterGui:SetCore(
             "SendNotification",
@@ -17,16 +16,11 @@ function skibidi()
                 Duration = 5
             })
         wait(1)
+        library:Destroy()
         UI:Destroy()
-        ThunderScreen:Destroy()
-        ThunderImageUI:Destroy()
-        ThunderCornerUI:Destroy()
-        ThunderToggleUI:Destroy()
-        ThunderScreen:Destroy()
+        AnbatukamTrueFalse:Destroy()
     end
 end
-
-skibidi()
 
 local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 local length = 20
@@ -148,17 +142,17 @@ game:GetService("UserInputService").InputChanged:Connect(
 )
 end
 
-local ThunderScreen = Instance.new("ScreenGui")
+local AnbatukamTrueFalse = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
 local ThunderCornerUI = Instance.new("UICorner")
 local ThunderImageUI = Instance.new("ImageLabel")
 
-        ThunderScreen.Name = "TrueFalseUi"
-        ThunderScreen.Parent = game.CoreGui
-        ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        AnbatukamTrueFalse.Name = "TrueFalseUi"
+        AnbatukamTrueFalse.Parent = game.CoreGui
+        AnbatukamTrueFalse.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
         ThunderToggleUI.Name = "ThunderToggleUI"
-        ThunderToggleUI.Parent = ThunderScreen
+        ThunderToggleUI.Parent = AnbatukamTrueFalse
         ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
         ThunderToggleUI.BorderSizePixel = 0
         ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
