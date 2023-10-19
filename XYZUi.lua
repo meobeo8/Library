@@ -6,19 +6,14 @@ local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
 
-    if game.CoreGui:FindFirstChild("AnbatukamHub") or game.CoreGui:FindFirstChild("TrueFalseUi") then
-        game.StarterGui:SetCore(
-            "SendNotification",
-            {
-                Title = "Warning!",
-                Text = "Dont Spam !",
-                Icon = "rbxassetid://15034250264",
-                Duration = 5
-            })
-        wait(1)
+    if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
         library:Destroy()
-        UI:Destroy()
-        AnbatukamTrueFalse:Destroy()
+        game.StarterGui:SetCore("SendNotification", {
+                    Title = "Fucking Niggers Spam?",
+                    Text = "Trash ",
+                    Icon = "rbxassetid://15034250264",
+                    Duration = 5
+                })
     end
 
 
@@ -188,9 +183,13 @@ UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 if syn then
 syn.protect_gui(UI)
 end
+
 function library:Destroy()
 library:Destroy()
+UI:Destroy()
+AnbatukamTrueFalse:Destroy()
 end
+
 function library:sex()
 local Main = Instance.new("Frame")
 local Imgaemain = Instance.new("ImageLabel")
@@ -880,12 +879,12 @@ Texbslb4.MouseButton1Click:Connect(function()
   ):Play()
   game.StarterGui:SetCore("SendNotification", {
                 Title = "Anbatukam Hub",
-                Text = "Destroy Success ✅",
+                Text = "Destroy Success",
                 Icon = "rbxassetid://15034250264",
                 Duration = 5
             })
-  UI:Destroy()
-  ThunderScreen:Destroy()
+           wait(1)
+           library:Destroy()
   end)
 dragify(ClickFrame, Main)
 local tabs = {}
