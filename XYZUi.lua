@@ -14,7 +14,6 @@ local UIConfig = {
                     Icon = "rbxassetid://15034250264",
                     Duration = 5
                 })
-                library:Destroy()
                 UI:Destroy()
                 AnbatukamTrueFalse:Destroy()
     end
@@ -880,7 +879,6 @@ Texbslb4.MouseButton1Click:Connect(function()
                 Icon = "rbxassetid://15034250264",
                 Duration = 5
             })
-           library:Destroy()
            UI:Destroy()
            AnbatukamTrueFalse:Destroy()
   end)
