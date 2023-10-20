@@ -5,12 +5,13 @@ local titlefunc = {}
 local UIConfig = {
   Bind = Enum.KeyCode.RightControl
 }
-
-
-    if game.CoreGui:FindFirstChild("AnbatukamHub") and game.CoreGui:FindFirstChild("TrueFalseUi") then
-        ThunderScreen:Destroy()
+    
+    for _, Interface in ipairs(game.CoreGui:GetChildren()) do
+   if AnbatukamHub == TrueFalseUi and AnbatukamHub ~= TrueFalseUi then
+      ThunderScreen:Destroy()
         UI:Destroy()
-    end
+   end
+end
 
 
 local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
