@@ -7,9 +7,8 @@ local UIConfig = {
 }
     
     for _, Interface in ipairs(game.CoreGui:GetChildren()) do
-   if AnbatukamHub == TrueFalseUi and AnbatukamHub ~= TrueFalseUi then
-      ThunderScreen:Destroy()
-        UI:Destroy()
+   if Interface.Name == "AnbatukamHub" or Interface.Name == "TrueFalseUi" then
+      Interface:Destroy()
    end
 end
 
