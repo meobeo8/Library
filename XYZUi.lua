@@ -488,7 +488,6 @@ HealthText.BackgroundTransparency = 1.000
 HealthText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
-HealthText.Text = "Health"
 HealthText.TextColor3 = Color3.fromRGB(85, 255, 127)
 HealthText.TextSize = 12.000
 HealthText.TextWrapped = true
@@ -534,7 +533,6 @@ StaminaText.BackgroundTransparency = 1.000
 StaminaText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 StaminaText.Size = UDim2.new(0, 300, 0, 22)
 StaminaText.Font = Enum.Font.Creepster
-StaminaText.Text = "Speed"
 StaminaText.TextColor3 = Color3.fromRGB(85, 170, 255)
 StaminaText.TextSize = 12.000
 StaminaText.TextWrapped = true
@@ -554,10 +552,8 @@ LineStamina.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
-spawn(function()
-  while wait(0.001) do
-  pcall(function()
-    StaminaText.Text = "Speed : "..game.Players.LocalPlayer.Character.Speed.Value.."/"..game.Players.LocalPlayer.Character.Speed.MaxValue
+  while wait(.1) do
+    StaminaText.Text = "Times : ".. os.date("%H %M %S  |   %d %m 2023") ..
     TweenService:Create(
       LineStamina,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
@@ -572,9 +568,7 @@ spawn(function()
       {
         Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
     ):Play()
-    end)
   end
-  end)
   
 
 
