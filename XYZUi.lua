@@ -482,6 +482,7 @@ HealthBarUICorner.Parent = HealthBar
 
 HealthText.Name = "HealthText"
 HealthText.Parent = HealthBar
+HealthText.Text = "Health : "..game.Players.LocalPlayer.Character.Humanoid.Health.."/"..game.Players.LocalPlayer.Character.Humanoid.MaxHealth
 HealthText.Active = true
 HealthText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 HealthText.BackgroundTransparency = 1.000
@@ -527,6 +528,7 @@ StaminaBarUICorner.Parent = StaminaBar
 
 StaminaText.Name = "StaminaText"
 StaminaText.Parent = StaminaBar
+StaminaText.Text = "Times : ".. os.date("%H:%M:%S  |   %d/%m/2023") ..
 StaminaText.Active = true
 StaminaText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 StaminaText.BackgroundTransparency = 1.000
@@ -553,7 +555,7 @@ LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
   while wait(.1) do
-    StaminaText.Text = "Times : ".. os.date("%H %M %S  |   %d %m 2023") ..
+    StaminaText.Text = "Times : ".. os.date("%H:%M:%S  |   %d/%m/2023") ..
     TweenService:Create(
       LineStamina,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
