@@ -528,7 +528,7 @@ StaminaBarUICorner.Parent = StaminaBar
 
 StaminaText.Name = "StaminaText"
 StaminaText.Parent = StaminaBar
-StaminaText.Text = "Times"
+StaminaText.Text = "Energy"
 StaminaText.Active = true
 StaminaText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 StaminaText.BackgroundTransparency = 1.000
@@ -553,26 +553,6 @@ LineStamina.Parent = StaminaLine
 LineStamina.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
-
-  while wait(.1) do
-    StaminaText.Text = "Times : ".. os.date("%H:%M:%S  |   %d/%m/2023") ..
-    TweenService:Create(
-      LineStamina,
-      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-        Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
-    ):Play()
-
-    HealthText.Text = "Health : "..game.Players.LocalPlayer.Character.Humanoid.Health.."/"..game.Players.LocalPlayer.Character.Humanoid.MaxHealth
-    TweenService:Create(
-      LineHealth,
-      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-        Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
-    ):Play()
-  end
-  
-
 
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
