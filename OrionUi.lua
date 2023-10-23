@@ -394,7 +394,7 @@ Position = UDim2.new(1, -55, 0, 0),
 BackgroundTransparency = 0,
 AutomaticSize = Enum.AutomaticSize.Y
 }), {
-MakeElement("Stroke", Color3.fromRGB(93, 93, 93), 1.2),
+MakeElement("Stroke", Color3.fromRGB(204, 171, 52), 1.2),
 MakeElement("Padding", 12, 12, 12, 12),
 SetProps(MakeElement("Image", NotificationConfig.Image), {
 Size = UDim2.new(0, 20, 0, 20),
