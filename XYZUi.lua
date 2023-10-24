@@ -594,7 +594,7 @@ Beli.Position = UDim2.new(0.018749997, 0, 0.62897433, 0)
 Beli.Size = UDim2.new(0, 200, 0, 27)
 Beli.Font = Enum.Font.Creepster
 Beli.TextColor3 = Color3.fromRGB(15, 245, 130)
-Beli.TextSize = 13.000
+Beli.TextSize = 12.000
 Beli.TextXAlignment = Enum.TextXAlignment.Left
 
 Fragment.Name = "Fragment"
@@ -606,7 +606,7 @@ Fragment.Position = UDim2.new(0.018749997, 0, 0.695191059, 0)
 Fragment.Size = UDim2.new(0, 200, 0, 25)
 Fragment.Font = Enum.Font.Creepster
 Fragment.TextColor3 = Color3.fromRGB(15, 245, 130)
-Fragment.TextSize = 13.000
+Fragment.TextSize = 12.000
 Fragment.TextXAlignment = Enum.TextXAlignment.Left
 
 Bounty.Name = "Bounty"
@@ -618,7 +618,7 @@ Bounty.Position = UDim2.new(0.018749997, 0, 0.752607787, 0)
 Bounty.Size = UDim2.new(0, 200, 0, 27)
 Bounty.Font = Enum.Font.Creepster
 Bounty.TextColor3 = Color3.fromRGB(15, 245, 130)
-Bounty.TextSize = 13.000
+Bounty.TextSize = 12.000
 Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
 spawn(function()
@@ -627,14 +627,14 @@ spawn(function()
       local character = game.Players.LocalPlayer.Character
       if character and character:FindFirstChild("Humanoid") then
         local humanoid = character.Humanoid
-        Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
-        Fragment.Text = "JumpPower : " .. humanoid.JumpPower
-        Bounty.Text = "SlopeAngle : " .. humanoid.MaxSlopeAngle
+        Beli.Text = "Walk Speed : " .. humanoid.WalkSpeed
+        Fragment.Text = "Jump Power : " .. humanoid.JumpPower
+        Bounty.Text = "Slope Angle : " .. humanoid.MaxSlopeAngle
         StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
         HealthText.Text = "Position : " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
         
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        StaminaText.Text = "Position : " .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
+        HealthText.Text = "Position : " .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
       end
     end)
   end
