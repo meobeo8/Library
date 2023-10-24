@@ -511,7 +511,7 @@ LineHealth.Size = UDim2.new(0, 200, 0, 5)
 Lvl.Name = "Time"
 Lvl.Parent = PlayerInfoFrame
 Lvl.Active = true
-Lvl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Lvl.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
 Lvl.BackgroundTransparency = 1.000
 Lvl.Position = UDim2.new(0, 85, 0.113057934, 0)
 Lvl.Size = UDim2.new(0, 200, 0, 27)
@@ -524,7 +524,7 @@ Lvl.TextXAlignment = Enum.TextXAlignment.Left
 Fruit.Name = "Exploit"
 Fruit.Parent = PlayerInfoFrame
 Fruit.Active = true
-Fruit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Fruit.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
 Fruit.BackgroundTransparency = 1.000
 Fruit.Position = UDim2.new(0, 85, 0.199820146, 0)
 Fruit.Size = UDim2.new(0, 200, 0, 27)
@@ -624,24 +624,27 @@ Bounty.TextXAlignment = Enum.TextXAlignment.Left
 spawn(function()
   while wait(0.001) do
   pcall(function()
+  local playerss = game.Players.LocalPlayer.Character
+  if playerss :FindFirstChild("Humanoid") then
     Lvl.Text = "Time : ".. os.date("%d/%m/2023 - %H:%M:%S")
-    Beli.Text = "Soon : "
-    Fragment.Text = "Soon : "
+    Beli.Text = "Speed : " .. playerss.WalkSpeed
+    Fragment.Text = "Jump : " .. playerss.JumpPower
     Bounty.Text = "Soon : "
-    StaminaText.Text = "Soon : "..game.Players.LocalPlayer.Character.Energy.Value.."/"..game.Players.LocalPlayer.Character.Energy.MaxValue
+    
+    StaminaText.Text = "FPS :" .. workspace:GetRealPhysicsFPS()
     TweenService:Create(
       LineStamina,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
       {
-        Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
+        Size = UDim2.new(workspace:GetRealPhysicsFPS(), 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
     ):Play()
 
-    HealthText.Text = "Soon : "..game.Players.LocalPlayer.Character.Humanoid.Health.."/"..game.Players.LocalPlayer.Character.Humanoid.MaxHealth
+    HealthText.Text = "Health : " .. playerss.Health .. "/" .. playerss.MaxHealth
     TweenService:Create(
       LineHealth,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
       {
-        Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
+        Size = UDim2.new(playerss.Health/playerss.MaxHealth, 0, 0, 5)}
     ):Play()
     end)
   end
