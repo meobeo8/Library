@@ -1,4 +1,4 @@
-_G.Color = Color3.fromRGB(255, 255, 255)
+_G.Color = Color3.fromRGB(204, 171, 52)
 
 function Notification(text)
 game.StarterGui:SetCore("SendNotification", {
