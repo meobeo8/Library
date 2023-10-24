@@ -624,11 +624,11 @@ Bounty.TextXAlignment = Enum.TextXAlignment.Left
 spawn(function()
   while wait(0.001) do
     pcall(function()
-      local playerss = game.Players.LocalPlayer.Character
-      if playerss:FindFirstChild("Humanoid") then
-        Lvl.Text = "Time : " ..os.date("%d/%m/%Y - %H:%M:%S")
-        Beli.Text = "Speed : " ..playerss.WalkSpeed
-        Fragment.Text = "Jump : " ..playerss.JumpPower
+      if character and character:FindFirstChild("Humanoid") then
+       local humanoid = game.Players.LocalPlayer.Character.Humanoid
+        Lvl.Text = "Time : " .. os.date("%d/%m/%Y - %H:%M:%S")
+        Beli.Text = "Speed : " .. humanoid.WalkSpeed
+        Fragment.Text = "Jump : " .. humanoid.JumpPower
         Bounty.Text = "Soon : "
         StaminaText.Text = "FPS: "
         game:GetService("TweenService"):Create(
@@ -639,12 +639,12 @@ spawn(function()
           }
         ):Play()
 
-        HealthText.Text = "Health : " .. playerss.Health .. "/" .. playerss.MaxHealth
+        HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
         game:GetService("TweenService"):Create(
           LineHealth,
           TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
           {
-            Size = UDim2.new(playerss.Health/playerss.MaxHealth, 0, 0, 5)
+            Size = UDim2.new(humanoid.Health/humanoid.MaxHealth, 0, 0, 5)
           }
         ):Play()
       end
