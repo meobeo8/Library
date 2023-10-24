@@ -588,37 +588,37 @@ local Bounty = Instance.new("TextLabel")
 Beli.Name = "Beli"
 Beli.Parent = PlayerInfoFrame
 Beli.Active = true
-Beli.BackgroundColor3 = Color3.fromRGB(31, 244, 255)
+Beli.BackgroundColor3 = Color3.fromRGB(15, 114, 245)
 Beli.BackgroundTransparency = 1.000
 Beli.Position = UDim2.new(0.018749997, 0, 0.62897433, 0)
 Beli.Size = UDim2.new(0, 200, 0, 27)
 Beli.Font = Enum.Font.Creepster
-Beli.TextColor3 = Color3.fromRGB(31, 244, 255)
-Beli.TextSize = 14.000
+Beli.TextColor3 = Color3.fromRGB(15, 114, 245)
+Beli.TextSize = 12.000
 Beli.TextXAlignment = Enum.TextXAlignment.Left
 
 Fragment.Name = "Fragment"
 Fragment.Parent = PlayerInfoFrame
 Fragment.Active = true
-Fragment.BackgroundColor3 = Color3.fromRGB(31, 244, 255)
+Fragment.BackgroundColor3 = Color3.fromRGB(15, 114, 245)
 Fragment.BackgroundTransparency = 1.000
 Fragment.Position = UDim2.new(0.018749997, 0, 0.695191059, 0)
 Fragment.Size = UDim2.new(0, 200, 0, 25)
 Fragment.Font = Enum.Font.Creepster
-Fragment.TextColor3 = Color3.fromRGB(31, 244, 255)
-Fragment.TextSize = 14.000
+Fragment.TextColor3 = Color3.fromRGB(15, 114, 245)
+Fragment.TextSize = 12.000
 Fragment.TextXAlignment = Enum.TextXAlignment.Left
 
 Bounty.Name = "Bounty"
 Bounty.Parent = PlayerInfoFrame
 Bounty.Active = true
-Bounty.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Bounty.BackgroundColor3 = Color3.fromRGB(15, 114, 245)
 Bounty.BackgroundTransparency = 1.000
 Bounty.Position = UDim2.new(0.018749997, 0, 0.752607787, 0)
 Bounty.Size = UDim2.new(0, 200, 0, 27)
 Bounty.Font = Enum.Font.Creepster
-Bounty.TextColor3 = Color3.fromRGB(255, 170, 0)
-Bounty.TextSize = 14.000
+Bounty.TextColor3 = Color3.fromRGB(15, 114, 245)
+Bounty.TextSize = 12.000
 Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
 spawn(function()
@@ -629,7 +629,7 @@ spawn(function()
         local humanoid = character.Humanoid
         Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
         Fragment.Text = "JumpPower : " .. humanoid.JumpPower
-        Bounty.Text = "Soon "
+        Bounty.Text = "Soon " .. Stats.Workspace.FPS
         StaminaText.Text = "Soon: "
         HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
       end
