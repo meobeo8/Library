@@ -624,7 +624,8 @@ Bounty.TextXAlignment = Enum.TextXAlignment.Left
 spawn(function()
   while wait(0.001) do
     pcall(function()
-      local playerss = game:GetService("Players").LocalPlayer.Character.Humanoid
+      local playerss = game.Players.LocalPlayer.Character.Humanoid
+      if playerss:FindFirstChild("Humanoid") then
         Lvl.Text = "Time : " ..os.date("%d/%m/%Y - %H:%M:%S")
         Beli.Text = "Speed : " ..playerss.WalkSpeed
         Fragment.Text = "Jump : " ..playerss.JumpPower
