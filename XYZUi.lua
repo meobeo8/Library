@@ -624,11 +624,11 @@ Bounty.TextXAlignment = Enum.TextXAlignment.Left
 spawn(function()
   while wait(0.001) do
     pcall(function()
-    local character = game.Players.LocalPlayer.Character
+      local character = game.Players.LocalPlayer.Character
       if character and character:FindFirstChild("Humanoid") then
-                local humanoid = character.Humanoid
-        Beli.Text = "Speed : " ..humanoid.WalkSpeed
-        Fragment.Text = "Jump : " ..humanoid.JumpPower
+        local humanoid = character.Humanoid
+        Beli.Text = "Speed : " .. humanoid.WalkSpeed
+        Fragment.Text = "Jump : " .. humanoid.JumpPower
         Bounty.Text = "Soon : "
         StaminaText.Text = "Soon: "
         HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
@@ -640,28 +640,24 @@ end)
 spawn(function()
   while wait(0.001) do
     pcall(function()
-    Lvl.Text = "Time : " ..os.date("%d/%m/%Y - %H:%M:%S")
-    
-        game:GetService("TweenService"):Create(
-          LineHealth,
-          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-          {
-            Size = UDim2.new(humanoid.Health/humanoid.MaxHealth, 0, 0, 5)
-          }
-        ):Play()
-        
-        game:GetService("TweenService"):Create(
-          LineStamina,
-          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-          {
-            Size = UDim2.new(humanoid.Health/humanoid.MaxHealth, 0, 1, 0)
-          }
-        ):Play()
-      end
+      Lvl.Text = "Time : " .. os.date("%d/%m/%Y - %H:%M:%S")
+      game:GetService("TweenService"):Create(
+        LineHealth,
+        TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {
+          Size = UDim2.new(humanoid.Health/humanoid.MaxHealth, 0, 0, 5)
+        }
+      ):Play()
+      game:GetService("TweenService"):Create(
+        LineStamina,
+        TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {
+          Size = UDim2.new(humanoid.Health/humanoid.MaxHealth, 0, 1, 0)
+        }
+      ):Play()
     end)
   end
 end)
-
   
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
