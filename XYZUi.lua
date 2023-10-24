@@ -644,12 +644,7 @@ spawn(function()
   while wait(0.001) do
     pcall(function()
       Lvl.Text = "Time : " .. os.date("%d/%m/%Y - %H:%M:%S")
-      
-      local startTime = tick()
-      local elapsedTime = tick() - startTime
-     local roundedTime = math.floor(elapsedTime)
-      Fruit.Text = "Used Time: " .. roundedTime .. " Seconds"
-      
+  
       game:GetService("TweenService"):Create(
         LineHealth,
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
@@ -668,6 +663,19 @@ spawn(function()
     end)
   end
 end)
+
+spawn(function()
+  local startTime = tick()
+  while true do
+    pcall(function()
+      local elapsedTime = tick() - startTime
+      local roundedTime = math.floor(elapsedTime)
+      Fruit.Text = "Used Time: " .. roundedTime .. " Seconds"
+    end)
+    wait(0.001)
+  end
+end)
+
 
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
