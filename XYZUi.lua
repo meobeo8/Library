@@ -554,6 +554,28 @@ LineStamina.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
+spawn(function()
+  while wait(0.001) do
+  pcall(function()
+    StaminaText.Text = "Time : " .. os.date("%d/%m/%y - %H:%M:%S")
+    TweenService:Create(
+      LineStamina,
+      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+      {
+        Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
+    ):Play()
+
+    HealthText.Text = "Health : "..game.Workspace.LocalPlayer.Character.Humanoid.Health.."/"..game.Players.LocalPlayer.Character.Humanoid.MaxHealth
+    TweenService:Create(
+      LineHealth,
+      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+      {
+        Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
+    ):Play()
+    end)
+  end
+  end)
+
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
 Settingcorner.Name = "UserImageCorner"
