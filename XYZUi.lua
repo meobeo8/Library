@@ -621,37 +621,7 @@ Bounty.TextColor3 = Color3.fromRGB(255, 170, 0)
 Bounty.TextSize = 14.000
 Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
-spawn(function()
-  while wait(0.001) do
-    pcall(function()
-      local playerss = game:GetService("Players").LocalPlayer.Character
-      if playerss:FindFirstChild("Humanoid") then
-        Lvl.Text = "Time : ".. os.date("%d/%m/%Y - %H:%M:%S")
-        Beli.Text = "Speed : " .. playerss.Humanoid.WalkSpeed
-        Fragment.Text = "Jump : " .. playerss.Humanoid.JumpPower
-        Bounty.Text = "Soon : "
-        local fps = string.format("%d", workspace:GetRealPhysicsFPS())
-        StaminaText.Text = "FPS: " .. fps
-        game:GetService("TweenService"):Create(
-          LineStamina,
-          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-          {
-            Size = UDim2.new(tonumber(fps), 0, 1, 0)
-          }
-        ):Play()
 
-        HealthText.Text = "Health : " .. playerss.Humanoid.Health .. "/" .. playerss.Humanoid.MaxHealth
-        game:GetService("TweenService"):Create(
-          LineHealth,
-          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-          {
-            Size = UDim2.new(playerss.Humanoid.Health/playerss.Humanoid.MaxHealth, 0, 0, 5)
-          }
-        ):Play()
-      end
-    end)
-  end
-end)
   
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
