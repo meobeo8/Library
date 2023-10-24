@@ -588,24 +588,24 @@ local Bounty = Instance.new("TextLabel")
 Beli.Name = "Beli"
 Beli.Parent = PlayerInfoFrame
 Beli.Active = true
-Beli.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Beli.BackgroundColor3 = Color3.fromRGB(31, 244, 255)
 Beli.BackgroundTransparency = 1.000
 Beli.Position = UDim2.new(0.018749997, 0, 0.62897433, 0)
 Beli.Size = UDim2.new(0, 200, 0, 27)
 Beli.Font = Enum.Font.Creepster
-Beli.TextColor3 = Color3.fromRGB(85, 255, 127)
+Beli.TextColor3 = Color3.fromRGB(31, 244, 255)
 Beli.TextSize = 14.000
 Beli.TextXAlignment = Enum.TextXAlignment.Left
 
 Fragment.Name = "Fragment"
 Fragment.Parent = PlayerInfoFrame
 Fragment.Active = true
-Fragment.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Fragment.BackgroundColor3 = Color3.fromRGB(31, 244, 255)
 Fragment.BackgroundTransparency = 1.000
 Fragment.Position = UDim2.new(0.018749997, 0, 0.695191059, 0)
 Fragment.Size = UDim2.new(0, 200, 0, 25)
 Fragment.Font = Enum.Font.Creepster
-Fragment.TextColor3 = Color3.fromRGB(170, 85, 255)
+Fragment.TextColor3 = Color3.fromRGB(31, 244, 255)
 Fragment.TextSize = 14.000
 Fragment.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -627,9 +627,9 @@ spawn(function()
       local character = game.Players.LocalPlayer.Character
       if character and character:FindFirstChild("Humanoid") then
         local humanoid = character.Humanoid
-        Beli.Text = "Speed : " .. humanoid.WalkSpeed
-        Fragment.Text = "Jump : " .. humanoid.JumpPower
-        Bounty.Text = "Soon : "
+        Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
+        Fragment.Text = "JumpPower : " .. humanoid.JumpPower
+        Bounty.Text = "Rig Type : " .. humanoid.RigType
         StaminaText.Text = "Soon: "
         HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
       end
@@ -641,18 +641,12 @@ spawn(function()
   while wait(0.001) do
     pcall(function()
       Lvl.Text = "Time : " .. os.date("%d/%m/%Y - %H:%M:%S")
+      
       game:GetService("TweenService"):Create(
         LineHealth,
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
-          Size = UDim2.new(humanoid.Health/humanoid.MaxHealth, 0, 0, 5)
-        }
-      ):Play()
-      game:GetService("TweenService"):Create(
-        LineStamina,
-        TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-        {
-          Size = UDim2.new(humanoid.Health/humanoid.MaxHealth, 0, 1, 0)
+          Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)
         }
       ):Play()
     end)
