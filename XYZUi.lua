@@ -556,13 +556,13 @@ StaminaBarUICorner.Parent = StaminaBar
 StaminaText.Name = "StaminaText"
 StaminaText.Parent = StaminaBar
 StaminaText.Active = true
-StaminaText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+StaminaText.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
 StaminaText.BackgroundTransparency = 1.000
 StaminaText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 StaminaText.Size = UDim2.new(0, 300, 0, 22)
 StaminaText.Font = Enum.Font.Creepster
 StaminaText.Text = "N/A"
-StaminaText.TextColor3 = Color3.fromRGB(85, 255, 127)
+StaminaText.TextColor3 = Color3.fromRGB(245, 141, 15)
 StaminaText.TextSize = 12.000
 StaminaText.TextWrapped = true
 StaminaText.TextXAlignment = Enum.TextXAlignment.Left
@@ -630,11 +630,11 @@ spawn(function()
         Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
         Fragment.Text = "JumpPower : " .. humanoid.JumpPower
         Bounty.Text = "Soon "
-        StaminaText.Text = "CFrame : " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z
+        StaminaText.Text = "Position : " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z
         HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
         
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        StaminaText.Text = "CFrame : " .. rootPart.Position.X .. ", " .. rootPart.Position.Y .. ", " .. rootPart.Position.Z
+        StaminaText.Text = "Position : " .. rootPart.Position.X .. ", " .. rootPart.Position.Y .. ", " .. rootPart.Position.Z
       end
     end)
   end
@@ -655,9 +655,9 @@ spawn(function()
       
       game:GetService("TweenService"):Create(
         LineStamina,
-        TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
-          Size = UDim2.new(0, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X, 0, 1)
+          Size = UDim2.new(0, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X, 0, 5)
         }
       ):Play()
     end)
