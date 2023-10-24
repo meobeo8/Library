@@ -490,7 +490,7 @@ HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
 HealthText.Text = "Health"
 HealthText.TextColor3 = Color3.fromRGB(204, 171, 52)
-HealthText.TextSize = 15.000
+HealthText.TextSize = 12.000
 HealthText.TextWrapped = true
 HealthText.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -536,7 +536,7 @@ StaminaText.Size = UDim2.new(0, 300, 0, 22)
 StaminaText.Font = Enum.Font.Creepster
 StaminaText.Text = "N/A"
 StaminaText.TextColor3 = Color3.fromRGB(85, 255, 127)
-StaminaText.TextSize = 13.000
+StaminaText.TextSize = 12.000
 StaminaText.TextWrapped = true
 StaminaText.TextXAlignment = Enum.TextXAlignment.Left
 
