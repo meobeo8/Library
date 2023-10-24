@@ -490,7 +490,7 @@ HealthText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
 HealthText.TextColor3 = Color3.fromRGB(204, 171, 52)
-HealthText.TextSize = 14.000
+HealthText.TextSize = 12.000
 HealthText.TextWrapped = true
 HealthText.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -506,7 +506,7 @@ LineHealth.Name = "LineHealth"
 LineHealth.Parent = Line
 LineHealth.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
 LineHealth.BorderSizePixel = 0
-LineHealth.Size = UDim2.new(0, 210, 0, 5)
+LineHealth.Size = UDim2.new(0, 200, 0, 5)
 
 local StaminaBar = Instance.new("Frame")
 local StaminaBarUICorner = Instance.new("UICorner")
@@ -575,7 +575,7 @@ spawn(function()
             end
 
             TweenService:Create(
-                LineHealth,
+                LineStamina,
                 TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
                 {
                     Size = UDim2.new(0, 1, 0)
