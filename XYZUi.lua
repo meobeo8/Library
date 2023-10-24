@@ -650,7 +650,7 @@ spawn(function()
         LineHealth,
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
-          Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.HealthDisplayDistance, 0, 0, 5)
+          Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)
         }
       ):Play()
       
@@ -907,7 +907,7 @@ Textlval3.Position = UDim2.new(0.5, 0, 0.5, 0)
 Textlval3.Size = UDim2.new(0, 40, 0, 12)
 Textlval3.ZIndex = 16
 Textlval3.Font = Enum.Font.Creepster
-Textlval3.Text = "DESTROY"
+Textlval3.Text = "KEYBOARD"
 Textlval3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Textlval3.TextSize = 14.000
 
@@ -954,8 +954,7 @@ Texbslb4.MouseButton1Click:Connect(function()
       TextSize = 12
     }
   ):Play()
-           UI:Destroy()
-           ThunderScreen:Destroy()
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
   end)
   
   local Buton5 = Instance.new("Frame")
@@ -981,7 +980,7 @@ Textlval4.Position = UDim2.new(0.5, 0, 0.5, 0)
 Textlval4.Size = UDim2.new(0, 40, 0, 12)
 Textlval4.ZIndex = 16
 Textlval4.Font = Enum.Font.Creepster
-Textlval4.Text = "COPY CFRAME"
+Textlval4.Text = "INFNITE YEILD"
 Textlval4.TextColor3 = Color3.fromRGB(255, 255, 255)
 Textlval4.TextSize = 14.000
 
@@ -1028,7 +1027,81 @@ Texbslb5.MouseButton1Click:Connect(function()
       TextSize = 12
     }
   ):Play()
-           loadstring(game:HttpGet("https://raw.githubusercontent.com/TranVanBao1411/SupportBuLon/retard/CoppyCframe"))()
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))() 
+  end)
+  
+  local Buton6 = Instance.new("Frame")
+local Ui6 = Instance.new("UICorner")
+local Textlval5 = Instance.new("TextLabel")
+local Texbslb6 = Instance.new("TextButton")
+
+Buton6.Name = "Buton6"
+Buton6.Parent = SettingFrame
+Buton6.BackgroundColor3 = _G.Color
+Buton6.Size = UDim2.new(0, 190, 0, 30)
+Buton6.Position = UDim2.new(0, 10, 0, 200)
+Buton6.ZIndex = 16
+
+Ui6.CornerRadius = UDim.new(0, 4)
+Ui6.Parent = Buton6
+
+Textlval5.Parent = Buton6
+Textlval5.AnchorPoint = Vector2.new(0.5, 0.5)
+Textlval5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Textlval5.BackgroundTransparency = 1.000
+Textlval5.Position = UDim2.new(0.5, 0, 0.5, 0)
+Textlval5.Size = UDim2.new(0, 40, 0, 12)
+Textlval5.ZIndex = 16
+Textlval5.Font = Enum.Font.Creepster
+Textlval5.Text = "DESTROY LIBRARY"
+Textlval5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Textlval5.TextSize = 14.000
+
+Texbslb6.Parent = Buton6
+Texbslb6.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Texbslb6.BackgroundTransparency = 1.000
+Texbslb6.BorderSizePixel = 0
+Texbslb6.ClipsDescendants = true
+Texbslb6.Size = UDim2.new(1, 0, 1, 0)
+Texbslb6.ZIndex = 16
+Texbslb6.AutoButtonColor = false
+Texbslb6.Font = Enum.Font.Creepster
+Texbslb6.Text = ""
+Texbslb6.TextColor3 = Color3.fromRGB(255, 255, 255)
+Texbslb6.TextSize = 14.000
+
+Texbslb6.MouseEnter:Connect(function()
+  TweenService:Create(
+    Buton6,
+    TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+    {
+      BackgroundTransparency = 0.5
+    }
+  ):Play()
+  end)
+
+Texbslb6.MouseLeave:Connect(function()
+  TweenService:Create(
+    Buton6,
+    TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+    {
+      BackgroundTransparency = 0
+    }
+  ):Play()
+  end)
+
+Texbslb6.MouseButton1Click:Connect(function()
+  CircleClick(Buton6, Mouse.X, Mouse.Y)
+  Textlval5.TextSize = 0
+  TweenService:Create(
+    Textlval5,
+    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+    {
+      TextSize = 12
+    }
+  ):Play()
+           UI:Destroy()
+           ThunderScreen:Destroy()
   end)
   
 dragify(ClickFrame, Main)
