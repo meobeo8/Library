@@ -254,7 +254,7 @@ Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
 Title.Font = Enum.Font.Creepster
-Title.Text = "ANBATUKAM HUB - VERSION " .. os.date("%d.%m.2023") .. " | " .. "<font color='" .. (_G.Color) .. "'>" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " </font>"
+Title.Text = "ANBATUKAM HUB - VERSION " .. os.date("%d.%m.2023") .. " | " .. "<font color='rgb(204, 171, 52)'>" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
@@ -650,7 +650,7 @@ spawn(function()
         LineHealth,
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
-          Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)
+          Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.HealthDisplayDistance, 0, 0, 5)
         }
       ):Play()
       
@@ -956,6 +956,79 @@ Texbslb4.MouseButton1Click:Connect(function()
   ):Play()
            UI:Destroy()
            ThunderScreen:Destroy()
+  end)
+  
+  local Buton5 = Instance.new("Frame")
+local Ui5 = Instance.new("UICorner")
+local Textlval4 = Instance.new("TextLabel")
+local Texbslb5 = Instance.new("TextButton")
+
+Buton5.Name = "Buton5"
+Buton5.Parent = SettingFrame
+Buton5.BackgroundColor3 = _G.Color
+Buton5.Size = UDim2.new(0, 190, 0, 30)
+Buton5.Position = UDim2.new(0, 10, 0, 160)
+Buton5.ZIndex = 16
+
+Ui5.CornerRadius = UDim.new(0, 4)
+Ui5.Parent = Buton5
+
+Textlval4.Parent = Buton5
+Textlval4.AnchorPoint = Vector2.new(0.5, 0.5)
+Textlval4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Textlval4.BackgroundTransparency = 1.000
+Textlval4.Position = UDim2.new(0.5, 0, 0.5, 0)
+Textlval4.Size = UDim2.new(0, 40, 0, 12)
+Textlval4.ZIndex = 16
+Textlval4.Font = Enum.Font.Creepster
+Textlval4.Text = "COPY CFRAME"
+Textlval4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Textlval4.TextSize = 14.000
+
+Texbslb5.Parent = Buton5
+Texbslb5.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Texbslb5.BackgroundTransparency = 1.000
+Texbslb5.BorderSizePixel = 0
+Texbslb5.ClipsDescendants = true
+Texbslb5.Size = UDim2.new(1, 0, 1, 0)
+Texbslb5.ZIndex = 16
+Texbslb5.AutoButtonColor = false
+Texbslb5.Font = Enum.Font.Creepster
+Texbslb5.Text = ""
+Texbslb5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Texbslb5.TextSize = 14.000
+
+Texbslb5.MouseEnter:Connect(function()
+  TweenService:Create(
+    Buton5,
+    TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+    {
+      BackgroundTransparency = 0.5
+    }
+  ):Play()
+  end)
+
+Texbslb5.MouseLeave:Connect(function()
+  TweenService:Create(
+    Buton5,
+    TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+    {
+      BackgroundTransparency = 0
+    }
+  ):Play()
+  end)
+
+Texbslb5.MouseButton1Click:Connect(function()
+  CircleClick(Buton5, Mouse.X, Mouse.Y)
+  Textlval4.TextSize = 0
+  TweenService:Create(
+    Textlval4,
+    TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+    {
+      TextSize = 12
+    }
+  ):Play()
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/TranVanBao1411/SupportBuLon/retard/CoppyCframe"))()
   end)
   
 dragify(ClickFrame, Main)
