@@ -632,7 +632,6 @@ spawn(function()
         Fragment.Text = "Jump Power : " .. humanoid.JumpPower
         StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
         HealthText.Text = "Position : " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
-        
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
         HealthText.Text = "Position : " .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
       end
@@ -643,8 +642,6 @@ end)
 spawn(function()
   while wait(0.001) do
     pcall(function()
-      Lvl.Text = "Time : " .. os.date("%d/%m/%Y - %H:%M:%S")
-  
       game:GetService("TweenService"):Create(
         LineHealth,
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
@@ -671,6 +668,7 @@ spawn(function()
       local elapsedTime = tick() - startTime
       local roundedTime = math.floor(elapsedTime)
       Fruit.Text = "Used Time: " .. roundedTime .. " Seconds"
+      Lvl.Text = "Time : " .. os.date(" %H:%M:%S - %d/%m/2023")
     end)
     wait(0.001)
   end
