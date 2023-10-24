@@ -629,7 +629,7 @@ spawn(function()
         local humanoid = character.Humanoid
         Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
         Fragment.Text = "JumpPower : " .. humanoid.JumpPower
-        Bounty.Text = "Rig Type : " .. humanoid.RigType
+        Bounty.Text = "Soon "
         StaminaText.Text = "Soon: "
         HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
       end
