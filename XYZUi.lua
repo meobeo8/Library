@@ -482,7 +482,7 @@ HealthBarUICorner.Parent = HealthBar
 
 HealthText.Name = "HealthText"
 HealthText.Parent = HealthBar
-HealthText.Text = "Health"
+HealthText.Text = "N/A"
 HealthText.Active = true
 HealthText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 HealthText.BackgroundTransparency = 1.000
@@ -528,7 +528,7 @@ StaminaBarUICorner.Parent = StaminaBar
 
 StaminaText.Name = "StaminaText"
 StaminaText.Parent = StaminaBar
-StaminaText.Text = "Energy"
+StaminaText.Text = "N/A"
 StaminaText.Active = true
 StaminaText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 StaminaText.BackgroundTransparency = 1.000
@@ -565,7 +565,7 @@ spawn(function()
         Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
     ):Play()
 
-    HealthText.Text = "Health : "..game.Workspace.LocalPlayer.Character.Humanoid.Health.."/"..game.Players.LocalPlayer.Character.Humanoid.MaxHealth
+    HealthText.Text = "Health : "..game.Workspace.LocalPlayer.Character.Humanoid.Health.."/"..game.Workspace.LocalPlayer.Character.Humanoid.MaxHealth
     TweenService:Create(
       LineHealth,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
