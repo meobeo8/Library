@@ -39,7 +39,7 @@ end
 end
 end
 
-_G.Color = Color3.fromRGB(204, 171, 52)
+_G.Color = _G.Color
 function CircleClick(Button, X, Y)
 coroutine.resume(
   coroutine.create(
@@ -483,13 +483,13 @@ HealthBarUICorner.Parent = HealthBar
 HealthText.Name = "HealthText"
 HealthText.Parent = HealthBar
 HealthText.Active = true
-HealthText.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
+HealthText.BackgroundColor3 = _G.Color
 HealthText.BackgroundTransparency = 1.000
 HealthText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
 HealthText.Text = "N/A"
-HealthText.TextColor3 = Color3.fromRGB(245, 141, 15)
+HealthText.TextColor3 = _G.Color
 HealthText.TextSize = 12.000
 HealthText.TextWrapped = true
 HealthText.TextXAlignment = Enum.TextXAlignment.Left
@@ -504,34 +504,34 @@ Line.Size = UDim2.new(0, 150, 0, 5)
 
 LineHealth.Name = "LineHealth"
 LineHealth.Parent = Line
-LineHealth.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
+LineHealth.BackgroundColor3 = _G.Color
 LineHealth.BorderSizePixel = 0
 LineHealth.Size = UDim2.new(0, 200, 0, 5)
 
 Lvl.Name = "Time"
 Lvl.Parent = PlayerInfoFrame
 Lvl.Active = true
-Lvl.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
+Lvl.BackgroundColor3 = _G.Color
 Lvl.BackgroundTransparency = 1.000
 Lvl.Position = UDim2.new(0, 85, 0.113057934, 0)
 Lvl.Size = UDim2.new(0, 200, 0, 27)
 Lvl.TextTransparency = 0.8
 Lvl.Font = Enum.Font.Creepster
-Lvl.TextColor3 = Color3.fromRGB(204, 171, 52)
+Lvl.TextColor3 = _G.Color
 Lvl.TextSize = 13.000
 Lvl.TextXAlignment = Enum.TextXAlignment.Left
 
 Fruit.Name = "Exploit"
 Fruit.Parent = PlayerInfoFrame
 Fruit.Active = true
-Fruit.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
+Fruit.BackgroundColor3 = _G.Color
 Fruit.BackgroundTransparency = 1.000
 Fruit.Position = UDim2.new(0, 85, 0.199820146, 0)
 Fruit.Size = UDim2.new(0, 200, 0, 27)
 Fruit.Font = Enum.Font.Creepster
 Fruit.Text = "Exploit : ".. identifyexecutor()
 Fruit.TextTransparency = 0.8
-Fruit.TextColor3 = Color3.fromRGB(204, 171, 52)
+Fruit.TextColor3 = _G.Color
 Fruit.TextSize = 13.000
 Fruit.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -556,13 +556,13 @@ StaminaBarUICorner.Parent = StaminaBar
 StaminaText.Name = "StaminaText"
 StaminaText.Parent = StaminaBar
 StaminaText.Active = true
-StaminaText.BackgroundColor3 = Color3.fromRGB(88, 240, 58)
+StaminaText.BackgroundColor3 = _G.Color
 StaminaText.BackgroundTransparency = 1.000
 StaminaText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 StaminaText.Size = UDim2.new(0, 300, 0, 22)
 StaminaText.Font = Enum.Font.Creepster
 StaminaText.Text = "N/A"
-StaminaText.TextColor3 = Color3.fromRGB(88, 240, 58)
+StaminaText.TextColor3 = _G.Color
 StaminaText.TextSize = 12.000
 StaminaText.TextWrapped = true
 StaminaText.TextXAlignment = Enum.TextXAlignment.Left
@@ -577,7 +577,7 @@ StaminaLine.Size = UDim2.new(0, 150, 0, 5)
 
 LineStamina.Name = "LineStamina"
 LineStamina.Parent = StaminaLine
-LineStamina.BackgroundColor3 = Color3.fromRGB(88, 240, 58)
+LineStamina.BackgroundColor3 = _G.Color
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
