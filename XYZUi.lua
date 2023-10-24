@@ -565,7 +565,7 @@ spawn(function()
         Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
     ):Play()
    local aiosimi = game.Workspace.LocalPlayer.Character.Humanoid
-    HealthText.Text = "Health : "..aiosimi.Health.."/"..aiosimi.MaxHealth
+    HealthText.Text = "Health : " .. aiosimi.Health .."/".. aiosimi.MaxHealth
     TweenService:Create(
       LineHealth,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
