@@ -619,7 +619,7 @@ Bounty.Size = UDim2.new(0, 200, 0, 27)
 Bounty.Font = Enum.Font.Creepster
 Bounty.TextColor3 = _G.Color
 Bounty.TextSize = 12.000
-Bounty.Text = "Exploit : ".. identifyexecutor()
+Bounty.Text = "Exploit: ".. identifyexecutor()
 Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
 spawn(function()
@@ -628,12 +628,12 @@ spawn(function()
       local character = game.Players.LocalPlayer.Character
       if character and character:FindFirstChild("Humanoid") then
         local humanoid = character.Humanoid
-        Beli.Text = "Walk Speed:" .. humanoid.WalkSpeed
-        Fragment.Text = "Jump Power:" .. humanoid.JumpPower
-        StaminaText.Text = "Health:" .. humanoid.Health .. "/" .. humanoid.MaxHealth
-        HealthText.Text = "Position:" .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
+        Beli.Text = "Walk Speed: " .. humanoid.WalkSpeed
+        Fragment.Text = "Jump Power: " .. humanoid.JumpPower
+        StaminaText.Text = "Health: " .. humanoid.Health .. "/" .. humanoid.MaxHealth
+        HealthText.Text = "Position: " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        HealthText.Text = "Position:" .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
+        HealthText.Text = "Position: " .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
       end
     end)
   end
@@ -667,7 +667,7 @@ spawn(function()
     pcall(function()
       local elapsedTime = tick() - startTime
       local roundedTime = math.floor(elapsedTime)
-      Fruit.Text = "Used Time:" .. roundedTime .. " Seconds"
+      Fruit.Text = "Used Time: " .. roundedTime .. " Seconds"
       Lvl.Text = "Time:" .. os.date(" %H:%M:%S - %d/%m/2023")
     end)
     wait(0.001)
