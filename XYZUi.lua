@@ -630,13 +630,13 @@ spawn(function()
         Beli.Text = "Speed : " .. playerss.WalkSpeed
         Fragment.Text = "Jump : " .. playerss.JumpPower
         Bounty.Text = "Soon : "
-        
-        StaminaText.Text = "FPS: ".. game:GetService("Stats").Workspace.FPS
+        local fps = string.format("%d", workspace:GetRealPhysicsFPS()))
+        StaminaText.Text = "FPS: " .. fps
         game:GetService("TweenService"):Create(
           LineStamina,
           TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
           {
-            Size = UDim2.new(game:GetService("Workspace"):game:GetService("Stats").Workspace.FPS, 0, 1, 0)
+            Size = UDim2.new(fps, 0, 1, 0)
           }
         ):Play()
 
