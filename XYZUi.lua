@@ -39,7 +39,7 @@ end
 end
 end
 
-_G.Color = _G.Color
+_G.Color = Color3.fromRGB(204, 171, 52)
 function CircleClick(Button, X, Y)
 coroutine.resume(
   coroutine.create(
@@ -644,6 +644,14 @@ spawn(function()
   while wait(0.001) do
     pcall(function()
       Lvl.Text = "Time : " .. os.date("%d/%m/%Y - %H:%M:%S")
+      
+      game:GetService("TweenService"):Create(
+        LineHealth,
+        TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {
+          Size = UDim2.new(0, string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X), 0, 5)
+        }
+      ):Play()
       
       game:GetService("TweenService"):Create(
         LineStamina,
