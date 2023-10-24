@@ -624,14 +624,14 @@ Bounty.TextXAlignment = Enum.TextXAlignment.Left
 spawn(function()
   while wait(0.001) do
   pcall(function()
-  local playerss = game.Players.LocalPlayer.Character
-  if playerss :FindFirstChild("Humanoid") then
+  local playerss = game.Players.LocalPlayer.Character.Humanoid
+  if playerss:FindFirstChild("Humanoid") then
     Lvl.Text = "Time : ".. os.date("%d/%m/2023 - %H:%M:%S")
     Beli.Text = "Speed : " .. playerss.WalkSpeed
     Fragment.Text = "Jump : " .. playerss.JumpPower
     Bounty.Text = "Soon : "
     
-    StaminaText.Text = "FPS :" .. workspace:GetRealPhysicsFPS()
+    StaminaText.Text = "FPS :" .. game.Stats.Workspace.FPS
     TweenService:Create(
       LineStamina,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
