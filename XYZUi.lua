@@ -629,9 +629,9 @@ spawn(function()
         local humanoid = character.Humanoid
         Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
         Fragment.Text = "JumpPower : " .. humanoid.JumpPower
-        Bounty.Text = "Soon "
-        StaminaText.Text = "Position : " .. string.format("%.1f", humanoid.Health) .. "/" .. string.format("%.1f", humanoid.MaxHealth)
-        HealthText.Text = "Health : " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
+        Bounty.Text = "SlopeAngle : " .. humanoid.MaxSlopeAngle
+        StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
+        HealthText.Text = "Position : " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
         
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
         StaminaText.Text = "Position : " .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
