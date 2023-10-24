@@ -623,32 +623,35 @@ Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
 spawn(function()
   while wait(0.001) do
-  pcall(function()
-  local playerss = game.Players.LocalPlayer.Character.Humanoid
-  if playerss:FindFirstChild("Humanoid") then
-    Lvl.Text = "Time : ".. os.date("%d/%m/2023 - %H:%M:%S")
-    Beli.Text = "Speed : " .. playerss.WalkSpeed
-    Fragment.Text = "Jump : " .. playerss.JumpPower
-    Bounty.Text = "Soon : "
-    
-    StaminaText.Text = "FPS :" .. game.Stats.Workspace.FPS
-    TweenService:Create(
-      LineStamina,
-      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-        Size = UDim2.new(workspace:GetRealPhysicsFPS(), 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
-    ):Play()
+    pcall(function()
+      local playerss = game:GetService("Players").LocalPlayer.Character.Humanoid
+      if playerss:FindFirstChild("Humanoid") then
+        Lvl.Text = "Time : ".. os.date("%d/%m/%Y - %H:%M:%S")
+        Beli.Text = "Speed : " .. playerss.WalkSpeed
+        Fragment.Text = "Jump : " .. playerss.JumpPower
+        Bounty.Text = "Soon : "
+        
+        StaminaText.Text = "FPS: ".. game:GetService("Stats").Workspace.FPS
+        game:GetService("TweenService"):Create(
+          LineStamina,
+          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+          {
+            Size = UDim2.new(game:GetService("Workspace"):game:GetService("Stats").Workspace.FPS, 0, 1, 0)
+          }
+        ):Play()
 
-    HealthText.Text = "Health : " .. playerss.Health .. "/" .. playerss.MaxHealth
-    TweenService:Create(
-      LineHealth,
-      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-        Size = UDim2.new(playerss.Health/playerss.MaxHealth, 0, 0, 5)}
-    ):Play()
+        HealthText.Text = "Health : " .. playerss.Health .. "/" .. playerss.MaxHealth
+        game:GetService("TweenService"):Create(
+          LineHealth,
+          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+          {
+            Size = UDim2.new(playerss.Health/playerss.MaxHealth, 0, 0, 5)
+          }
+        ):Play()
+      end
     end)
   end
-  end)
+end)
   
   
 local Settingcorner = Instance.new("UICorner")
