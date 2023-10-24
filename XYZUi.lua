@@ -483,13 +483,13 @@ HealthBarUICorner.Parent = HealthBar
 HealthText.Name = "HealthText"
 HealthText.Parent = HealthBar
 HealthText.Active = true
-HealthText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HealthText.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
 HealthText.BackgroundTransparency = 1.000
 HealthText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
 HealthText.Text = "N/A"
-HealthText.TextColor3 = Color3.fromRGB(88, 240, 58)
+HealthText.TextColor3 = Color3.fromRGB(245, 141, 15)
 HealthText.TextSize = 12.000
 HealthText.TextWrapped = true
 HealthText.TextXAlignment = Enum.TextXAlignment.Left
@@ -504,7 +504,7 @@ Line.Size = UDim2.new(0, 150, 0, 5)
 
 LineHealth.Name = "LineHealth"
 LineHealth.Parent = Line
-LineHealth.BackgroundColor3 = Color3.fromRGB(88, 240, 58)
+LineHealth.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
 LineHealth.BorderSizePixel = 0
 LineHealth.Size = UDim2.new(0, 200, 0, 5)
 
@@ -556,13 +556,13 @@ StaminaBarUICorner.Parent = StaminaBar
 StaminaText.Name = "StaminaText"
 StaminaText.Parent = StaminaBar
 StaminaText.Active = true
-StaminaText.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
+StaminaText.BackgroundColor3 = Color3.fromRGB(88, 240, 58)
 StaminaText.BackgroundTransparency = 1.000
 StaminaText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 StaminaText.Size = UDim2.new(0, 300, 0, 22)
 StaminaText.Font = Enum.Font.Creepster
 StaminaText.Text = "N/A"
-StaminaText.TextColor3 = Color3.fromRGB(245, 141, 15)
+StaminaText.TextColor3 = Color3.fromRGB(88, 240, 58)
 StaminaText.TextSize = 12.000
 StaminaText.TextWrapped = true
 StaminaText.TextXAlignment = Enum.TextXAlignment.Left
@@ -577,7 +577,7 @@ StaminaLine.Size = UDim2.new(0, 150, 0, 5)
 
 LineStamina.Name = "LineStamina"
 LineStamina.Parent = StaminaLine
-LineStamina.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
+LineStamina.BackgroundColor3 = Color3.fromRGB(88, 240, 58)
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
@@ -630,11 +630,11 @@ spawn(function()
         Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
         Fragment.Text = "JumpPower : " .. humanoid.JumpPower
         Bounty.Text = "Soon "
-        StaminaText.Text = "Position : " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z
-        HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
+        StaminaText.Text = "Position : " .. string.format("%.1f", humanoid.Health) .. "/" .. string.format("%.1f", humanoid.MaxHealth)
+        HealthText.Text = "Health : " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
         
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        StaminaText.Text = "Position : " .. rootPart.Position.X .. ", " .. rootPart.Position.Y .. ", " .. rootPart.Position.Z
+        StaminaText.Text = "Position : " .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
       end
     end)
   end
@@ -649,7 +649,7 @@ spawn(function()
         LineHealth,
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
-          Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)
+          Size = UDim2.new(0, string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X), 0, 5)
         }
       ):Play()
       
@@ -657,7 +657,7 @@ spawn(function()
         LineStamina,
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
-          Size = UDim2.new(0, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X, 0, 5)
+          Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)
         }
       ):Play()
     end)
