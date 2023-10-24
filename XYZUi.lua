@@ -490,7 +490,7 @@ HealthText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
 HealthText.TextColor3 = Color3.fromRGB(204, 171, 52)
-HealthText.TextSize = 12.000
+HealthText.TextSize = 14.000
 HealthText.TextWrapped = true
 HealthText.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -508,19 +508,82 @@ LineHealth.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
 LineHealth.BorderSizePixel = 0
 LineHealth.Size = UDim2.new(0, 210, 0, 5)
 
+local StaminaBar = Instance.new("Frame")
+local StaminaBarUICorner = Instance.new("UICorner")
+local StaminaText = Instance.new("TextLabel")
+local StaminaLine = Instance.new("Frame")
+local LineStamina = Instance.new("Frame")
+
+StaminaBar.Name = "StaminaBar"
+StaminaBar.Parent = PlayerInfoFrame
+StaminaBar.BackgroundColor3 = Color3.fromRGB(40,40,40)
+StaminaBar.BorderSizePixel = 0
+StaminaBar.BackgroundTransparency = 1
+StaminaBar.Position = UDim2.new(0.0166666675, 0, 0.50803858, 0)
+StaminaBar.Size = UDim2.new(0, 150, 0, 45)
+
+StaminaBarUICorner.CornerRadius = UDim.new(0, 4)
+StaminaBarUICorner.Name = "StaminaBarUICorner"
+StaminaBarUICorner.Parent = StaminaBar
+
+StaminaText.Name = "StaminaText"
+StaminaText.Parent = StaminaBar
+StaminaText.Active = true
+StaminaText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+StaminaText.BackgroundTransparency = 1.000
+StaminaText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
+StaminaText.Size = UDim2.new(0, 300, 0, 22)
+StaminaText.Font = Enum.Font.Creepster
+StaminaText.Text = "N/A"
+StaminaText.TextColor3 = Color3.fromRGB(85, 255, 127)
+StaminaText.TextSize = 12.000
+StaminaText.TextWrapped = true
+StaminaText.TextXAlignment = Enum.TextXAlignment.Left
+
+StaminaLine.Name = "StaminaLine"
+StaminaLine.Parent = StaminaBar
+StaminaLine.AnchorPoint = Vector2.new(0.5, 0.5)
+StaminaLine.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+StaminaLine.BorderSizePixel = 0
+StaminaLine.Position = UDim2.new(0.498908311, 0, 0.766666651, 0)
+StaminaLine.Size = UDim2.new(0, 150, 0, 5)
+
+LineStamina.Name = "LineStamina"
+LineStamina.Parent = StaminaLine
+LineStamina.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
+LineStamina.BorderSizePixel = 0
+LineStamina.Size = UDim2.new(0, 200, 0, 5)
+
 spawn(function()
-  while wait(0.001) do
-  pcall(function()
- HealthText.Text = "Time : " .. os.date("%d/%m/%y - %H:%M:%S")
-    TweenService:Create(
-      LineHealth,
-      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-        Size = UDim2.new(aiosimi.Humanoid.Health/aiosimi.MaxHealth, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
-    ):Play()
-    end)
-  end
-  end)
+    while wait(0.001) do
+        pcall(function()
+          HealthText.Text = "Time : " .. os.date("%d/%m/2023 - %H:%M:%S")
+
+            TweenService:Create(
+                LineHealth,
+                TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                {
+                    Size = UDim2.new(0, 1, 0)
+                }
+            ):Play() 
+            local player = game.Players.LocalPlayer
+            local character = player.Character
+
+            if character and character:FindFirstChild("Humanoid") then
+                local humanoid = character.Humanoid
+                StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
+            end
+
+            TweenService:Create(
+                LineHealth,
+                TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                {
+                    Size = UDim2.new(0, 1, 0)
+                }
+            ):Play()
+        end)
+    end
+end)
 
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
