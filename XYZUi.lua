@@ -516,7 +516,7 @@ Lvl.BackgroundTransparency = 1.000
 Lvl.Position = UDim2.new(0, 85, 0.113057934, 0)
 Lvl.Size = UDim2.new(0, 200, 0, 27)
 Lvl.TextTransparency = 0.8
-Lvl.Font = Enum.Font.GothamBold
+Lvl.Font = Enum.Font.Creepster
 Lvl.TextColor3 = Color3.fromRGB(255, 255, 255)
 Lvl.TextSize = 10.000
 Lvl.TextXAlignment = Enum.TextXAlignment.Left
@@ -528,7 +528,8 @@ Fruit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Fruit.BackgroundTransparency = 1.000
 Fruit.Position = UDim2.new(0, 85, 0.199820146, 0)
 Fruit.Size = UDim2.new(0, 200, 0, 27)
-Fruit.Font = Enum.Font.GothamBold
+Fruit.Font = Enum.Font.Creepster
+Fruit.Text = "Exploit : ".. identifyexecutor()
 Fruit.TextTransparency = 0.8
 Fruit.TextColor3 = Color3.fromRGB(255, 255, 255)
 Fruit.TextSize = 10.000
@@ -624,9 +625,9 @@ spawn(function()
   while wait(0.001) do
   pcall(function()
     Lvl.Text = "Time : ".. os.date("%d/%m/2023 - %H:%M:%S")
-    Beli.Text = "Exploit : ".. identifyexecutor()
-    Fragment.Text = "Soon : "..game:GetService("Players").LocalPlayer.Data.Fragments.Value
-    Bounty.Text = "Soon : "..game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value
+    Beli.Text = "Soon : "
+    Fragment.Text = "Soon : "
+    Bounty.Text = "Soon : "
     StaminaText.Text = "Soon : "..game.Players.LocalPlayer.Character.Energy.Value.."/"..game.Players.LocalPlayer.Character.Energy.MaxValue
     TweenService:Create(
       LineStamina,
