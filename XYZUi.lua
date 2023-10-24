@@ -555,22 +555,29 @@ LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
 spawn(function()
-    while wait(0.001) do
-        pcall(function()
-          HealthText.Text = "Time : " .. os.date("%d/%m/2023 - %H:%M:%S")
-            TweenService:Create(
-       TweenService:Create(LineHealth, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value / game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)}):Play()
-       
-            local player = game.Players.LocalPlayer
-            local character = player.Character
-            if character and character:FindFirstChild("Humanoid") then
-                local humanoid = character.Humanoid
-                StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
-            end
-      TweenService:Create(LineStamina, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value / game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)}):Play()
-        end)
-    end
-end)
+while wait(0.001) do
+   pcall(function()
+   HealthText.Text = "Time : " .. os.date("%d/%m/2023 - %H:%M:%S")
+   LineHealth,
+   TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+   {
+      Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
+      ):Play()
+
+      local player = game.Players.LocalPlayer
+      local character = player.Character
+      if character and character:FindFirstChild("Humanoid") then
+         local humanoid = character.Humanoid
+         StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
+      end
+      LineStamina,
+      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+      {
+         Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
+         ):Play()
+         end)
+      end
+      end)
 
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
