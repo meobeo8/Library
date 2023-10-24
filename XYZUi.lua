@@ -254,7 +254,7 @@ Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
 Title.Font = Enum.Font.Creepster
-Title.Text = "ANBATUKAM HUB - VERSION " .. os.date("%d.%m.2023") .. " | " .. "<font color='" .. tostring(_G.Color) .. "'>" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " </font>"
+Title.Text = "ANBATUKAM HUB - VERSION " .. os.date("%d.%m.2023") .. " | " .. "<font color='" .. (_G.Color) .. "'>" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 15.000
