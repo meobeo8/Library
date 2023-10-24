@@ -630,8 +630,11 @@ spawn(function()
         Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
         Fragment.Text = "JumpPower : " .. humanoid.JumpPower
         Bounty.Text = "Soon "
-        StaminaText.Text = "CFrame : " .. game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        StaminaText.Text = "CFrame : " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y .. ", " .. game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z
         HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
+        
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        StaminaText.Text = "CFrame : " .. rootPart.Position.X .. ", " .. rootPart.Position.Y .. ", " .. rootPart.Position.Z
       end
     end)
   end
@@ -654,13 +657,13 @@ spawn(function()
         LineStamina,
         TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
-          Size = UDim2.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame, 0, 0, 1)
+          Size = UDim2.new(0, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X, 0, 1)
         }
       ):Play()
     end)
   end
 end)
-  
+
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
 Settingcorner.Name = "UserImageCorner"
