@@ -522,7 +522,7 @@ Lvl.TextColor3 = _G.Color
 Lvl.TextSize = 13.000
 Lvl.TextXAlignment = Enum.TextXAlignment.Left
 
-Fruit.Name = "Exploit"
+Fruit.Name = "UsedTime"
 Fruit.Parent = PlayerInfoFrame
 Fruit.Active = true
 Fruit.BackgroundColor3 = _G.Color
@@ -530,7 +530,6 @@ Fruit.BackgroundTransparency = 1.000
 Fruit.Position = UDim2.new(0, 85, 0.199820146, 0)
 Fruit.Size = UDim2.new(0, 200, 0, 27)
 Fruit.Font = Enum.Font.Creepster
-Fruit.Text = "Exploit : ".. identifyexecutor()
 Fruit.TextTransparency = 0.8
 Fruit.TextColor3 = _G.Color
 Fruit.TextSize = 13.000
@@ -620,6 +619,7 @@ Bounty.Size = UDim2.new(0, 200, 0, 27)
 Bounty.Font = Enum.Font.Creepster
 Bounty.TextColor3 = _G.Color
 Bounty.TextSize = 12.000
+Bounty.Text = "Exploit : ".. identifyexecutor()
 Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
 spawn(function()
@@ -630,7 +630,6 @@ spawn(function()
         local humanoid = character.Humanoid
         Beli.Text = "Walk Speed : " .. humanoid.WalkSpeed
         Fragment.Text = "Jump Power : " .. humanoid.JumpPower
-        Bounty.Text = "Slope Angle : " .. humanoid.MaxSlopeAngle
         StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
         HealthText.Text = "Position : " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
         
@@ -645,6 +644,11 @@ spawn(function()
   while wait(0.001) do
     pcall(function()
       Lvl.Text = "Time : " .. os.date("%d/%m/%Y - %H:%M:%S")
+      
+      local startTime = tick()
+      local elapsedTime = tick() - startTime
+     local roundedTime = math.floor(elapsedTime)
+      Fruit.Text = "Used Time: " .. roundedTime .. " Seconds"
       
       game:GetService("TweenService"):Create(
         LineHealth,
