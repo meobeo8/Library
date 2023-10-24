@@ -506,7 +506,7 @@ LineHealth.Name = "LineHealth"
 LineHealth.Parent = Line
 LineHealth.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
 LineHealth.BorderSizePixel = 0
-LineHealth.Size = UDim2.new(0, 210, 0, 5)
+LineHealth.Size = UDim2.new(0, 200, 0, 5)
 
 local StaminaBar = Instance.new("Frame")
 local StaminaBarUICorner = Instance.new("UICorner")
@@ -558,28 +558,16 @@ spawn(function()
 while wait(0.001) do
    pcall(function()
    HealthText.Text = "Time : " .. os.date("%d/%m/2023 - %H:%M:%S")
-   TweenService:Create(
-   LineHealth,
-   TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-   {
-      Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 5, 5, 5)} -- UDim2.new(0, 128, 0, 25)
-      ):Play()
 
-      local player = game.Players.LocalPlayer
-      local character = player.Character
-      if character and character:FindFirstChild("Humanoid") then
-         local humanoid = character.Humanoid
-         StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
-      end
-      TweenService:Create(
-      LineStamina,
-      TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-      {
-         Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
-         ):Play()
-         end)
-      end
-      end)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character and character:FindFirstChild("Humanoid") then
+      local humanoid = character.Humanoid
+      StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
+   end
+   end)
+end
+end)
 
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
