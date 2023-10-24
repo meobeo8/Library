@@ -508,6 +508,32 @@ LineHealth.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
 LineHealth.BorderSizePixel = 0
 LineHealth.Size = UDim2.new(0, 200, 0, 5)
 
+Lvl.Name = "Time"
+Lvl.Parent = PlayerInfoFrame
+Lvl.Active = true
+Lvl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Lvl.BackgroundTransparency = 1.000
+Lvl.Position = UDim2.new(0, 85, 0.113057934, 0)
+Lvl.Size = UDim2.new(0, 200, 0, 27)
+Lvl.TextTransparency = 0.8
+Lvl.Font = Enum.Font.GothamBold
+Lvl.TextColor3 = Color3.fromRGB(255, 255, 255)
+Lvl.TextSize = 10.000
+Lvl.TextXAlignment = Enum.TextXAlignment.Left
+
+Fruit.Name = "Exploit"
+Fruit.Parent = PlayerInfoFrame
+Fruit.Active = true
+Fruit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Fruit.BackgroundTransparency = 1.000
+Fruit.Position = UDim2.new(0, 85, 0.199820146, 0)
+Fruit.Size = UDim2.new(0, 200, 0, 27)
+Fruit.Font = Enum.Font.GothamBold
+Fruit.TextTransparency = 0.8
+Fruit.TextColor3 = Color3.fromRGB(255, 255, 255)
+Fruit.TextSize = 10.000
+Fruit.TextXAlignment = Enum.TextXAlignment.Left
+
 local StaminaBar = Instance.new("Frame")
 local StaminaBarUICorner = Instance.new("UICorner")
 local StaminaText = Instance.new("TextLabel")
@@ -554,21 +580,73 @@ LineStamina.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
+local Beli = Instance.new("TextLabel")
+local Fragment = Instance.new("TextLabel")
+local Bounty = Instance.new("TextLabel")
+
+Beli.Name = "Beli"
+Beli.Parent = PlayerInfoFrame
+Beli.Active = true
+Beli.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Beli.BackgroundTransparency = 1.000
+Beli.Position = UDim2.new(0.018749997, 0, 0.62897433, 0)
+Beli.Size = UDim2.new(0, 200, 0, 27)
+Beli.Font = Enum.Font.Creepster
+Beli.TextColor3 = Color3.fromRGB(85, 255, 127)
+Beli.TextSize = 14.000
+Beli.TextXAlignment = Enum.TextXAlignment.Left
+
+Fragment.Name = "Fragment"
+Fragment.Parent = PlayerInfoFrame
+Fragment.Active = true
+Fragment.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Fragment.BackgroundTransparency = 1.000
+Fragment.Position = UDim2.new(0.018749997, 0, 0.695191059, 0)
+Fragment.Size = UDim2.new(0, 200, 0, 25)
+Fragment.Font = Enum.Font.Creepster
+Fragment.TextColor3 = Color3.fromRGB(170, 85, 255)
+Fragment.TextSize = 14.000
+Fragment.TextXAlignment = Enum.TextXAlignment.Left
+
+Bounty.Name = "Bounty"
+Bounty.Parent = PlayerInfoFrame
+Bounty.Active = true
+Bounty.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Bounty.BackgroundTransparency = 1.000
+Bounty.Position = UDim2.new(0.018749997, 0, 0.752607787, 0)
+Bounty.Size = UDim2.new(0, 200, 0, 27)
+Bounty.Font = Enum.Font.Creepster
+Bounty.TextColor3 = Color3.fromRGB(255, 170, 0)
+Bounty.TextSize = 14.000
+Bounty.TextXAlignment = Enum.TextXAlignment.Left
+
 spawn(function()
-while wait(0.001) do
-   pcall(function()
-   HealthText.Text = "Time : " .. os.date("%d/%m/2023 - %H:%M:%S")
+  while wait(0.001) do
+  pcall(function()
+    Lvl.Text = "Time : ".. os.date("%d/%m/2023 - %H:%M:%S")
+    Beli.Text = "Exploit : ".. identifyexecutor()
+    Fragment.Text = "Soon : "..game:GetService("Players").LocalPlayer.Data.Fragments.Value
+    Bounty.Text = "Soon : "..game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value
+    StaminaText.Text = "Soon : "..game.Players.LocalPlayer.Character.Energy.Value.."/"..game.Players.LocalPlayer.Character.Energy.MaxValue
+    TweenService:Create(
+      LineStamina,
+      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+      {
+        Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
+    ):Play()
 
-   local player = game.Players.LocalPlayer
-   local character = player.Character
-   if character and character:FindFirstChild("Humanoid") then
-      local humanoid = character.Humanoid
-      StaminaText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
-   end
-   end)
-end
-end)
-
+    HealthText.Text = "Soon : "..game.Players.LocalPlayer.Character.Humanoid.Health.."/"..game.Players.LocalPlayer.Character.Humanoid.MaxHealth
+    TweenService:Create(
+      LineHealth,
+      TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+      {
+        Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
+    ):Play()
+    end)
+  end
+  end)
+  
+  
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
 Settingcorner.Name = "UserImageCorner"
