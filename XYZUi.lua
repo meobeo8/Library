@@ -626,9 +626,9 @@ spawn(function()
     pcall(function()
       local playerss = game:GetService("Players").LocalPlayer.Character
       if playerss:FindFirstChild("Humanoid") then
-        Lvl.Text = "Time : ".. os.date("%d/%m/%Y - %H:%M:%S")
-        Beli.Text = "Speed : " .. playerss.WalkSpeed
-        Fragment.Text = "Jump : " .. playerss.JumpPower
+        Lvl.Text = "Time : " ..os.date("%d/%m/%Y - %H:%M:%S")
+        Beli.Text = "Speed : " ..playerss.WalkSpeed
+        Fragment.Text = "Jump : " ..playerss.JumpPower
         Bounty.Text = "Soon : "
         StaminaText.Text = "FPS: "
         game:GetService("TweenService"):Create(
