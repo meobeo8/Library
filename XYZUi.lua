@@ -577,7 +577,7 @@ StaminaLine.Size = UDim2.new(0, 150, 0, 5)
 
 LineStamina.Name = "LineStamina"
 LineStamina.Parent = StaminaLine
-LineStamina.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
+LineStamina.BackgroundColor3 = Color3.fromRGB(245, 141, 15)
 LineStamina.BorderSizePixel = 0
 LineStamina.Size = UDim2.new(0, 200, 0, 5)
 
@@ -588,37 +588,37 @@ local Bounty = Instance.new("TextLabel")
 Beli.Name = "Beli"
 Beli.Parent = PlayerInfoFrame
 Beli.Active = true
-Beli.BackgroundColor3 = Color3.fromRGB(15, 114, 245)
+Beli.BackgroundColor3 = Color3.fromRGB(15, 245, 130)
 Beli.BackgroundTransparency = 1.000
 Beli.Position = UDim2.new(0.018749997, 0, 0.62897433, 0)
 Beli.Size = UDim2.new(0, 200, 0, 27)
 Beli.Font = Enum.Font.Creepster
-Beli.TextColor3 = Color3.fromRGB(15, 114, 245)
-Beli.TextSize = 12.000
+Beli.TextColor3 = Color3.fromRGB(15, 245, 130)
+Beli.TextSize = 13.000
 Beli.TextXAlignment = Enum.TextXAlignment.Left
 
 Fragment.Name = "Fragment"
 Fragment.Parent = PlayerInfoFrame
 Fragment.Active = true
-Fragment.BackgroundColor3 = Color3.fromRGB(15, 114, 245)
+Fragment.BackgroundColor3 = Color3.fromRGB(15, 245, 130)
 Fragment.BackgroundTransparency = 1.000
 Fragment.Position = UDim2.new(0.018749997, 0, 0.695191059, 0)
 Fragment.Size = UDim2.new(0, 200, 0, 25)
 Fragment.Font = Enum.Font.Creepster
-Fragment.TextColor3 = Color3.fromRGB(15, 114, 245)
-Fragment.TextSize = 12.000
+Fragment.TextColor3 = Color3.fromRGB(15, 245, 130)
+Fragment.TextSize = 13.000
 Fragment.TextXAlignment = Enum.TextXAlignment.Left
 
 Bounty.Name = "Bounty"
 Bounty.Parent = PlayerInfoFrame
 Bounty.Active = true
-Bounty.BackgroundColor3 = Color3.fromRGB(15, 114, 245)
+Bounty.BackgroundColor3 = Color3.fromRGB(15, 245, 130)
 Bounty.BackgroundTransparency = 1.000
 Bounty.Position = UDim2.new(0.018749997, 0, 0.752607787, 0)
 Bounty.Size = UDim2.new(0, 200, 0, 27)
 Bounty.Font = Enum.Font.Creepster
-Bounty.TextColor3 = Color3.fromRGB(15, 114, 245)
-Bounty.TextSize = 12.000
+Bounty.TextColor3 = Color3.fromRGB(15, 245, 130)
+Bounty.TextSize = 13.000
 Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
 spawn(function()
@@ -629,8 +629,8 @@ spawn(function()
         local humanoid = character.Humanoid
         Beli.Text = "WalkSpeed : " .. humanoid.WalkSpeed
         Fragment.Text = "JumpPower : " .. humanoid.JumpPower
-        Bounty.Text = "Soon " .. Stats.Workspace.FPS
-        StaminaText.Text = "Soon: "
+        Bounty.Text = "Soon "
+        StaminaText.Text = "CFrame : " .. game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
         HealthText.Text = "Health : " .. humanoid.Health .. "/" .. humanoid.MaxHealth
       end
     end)
@@ -647,6 +647,14 @@ spawn(function()
         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
         {
           Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)
+        }
+      ):Play()
+      
+      game:GetService("TweenService"):Create(
+        LineStamina,
+        TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {
+          Size = UDim2.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame, 0, 0, 1)
         }
       ):Play()
     end)
