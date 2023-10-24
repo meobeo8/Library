@@ -488,7 +488,7 @@ HealthText.BackgroundTransparency = 1.000
 HealthText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
-HealthText.Text = "Health"
+HealthText.Text = "N/A"
 HealthText.TextColor3 = Color3.fromRGB(88, 240, 58)
 HealthText.TextSize = 12.000
 HealthText.TextWrapped = true
@@ -621,7 +621,36 @@ Bounty.TextColor3 = Color3.fromRGB(255, 170, 0)
 Bounty.TextSize = 14.000
 Bounty.TextXAlignment = Enum.TextXAlignment.Left
 
+spawn(function()
+  while wait(0.001) do
+    pcall(function()
+      local playerss = game:GetService("Players").LocalPlayer.Character.Humanoid
+      if playerss:FindFirstChild("Humanoid") then
+        Lvl.Text = "Time : ".. os.date("%d/%m/%Y - %H:%M:%S")
+        Beli.Text = "Speed : " .. playerss.WalkSpeed
+        Fragment.Text = "Jump : " .. playerss.JumpPower
+        Bounty.Text = "Soon : "
+        StaminaText.Text = "FPS: "
+        game:GetService("TweenService"):Create(
+          LineStamina,
+          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+          {
+            Size = UDim2.new(tonumber(fps), 0, 1, 0)
+          }
+        ):Play()
 
+        HealthText.Text = "Health : " .. playerss.Health .. "/" .. playerss.MaxHealth
+        game:GetService("TweenService"):Create(
+          LineHealth,
+          TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+          {
+            Size = UDim2.new(playerss.Health/playerss.MaxHealth, 0, 0, 5)
+          }
+        ):Play()
+      end
+    end)
+  end
+end)
   
 local Settingcorner = Instance.new("UICorner")
 Settingcorner.CornerRadius = UDim.new(0, 60)
