@@ -489,7 +489,7 @@ HealthText.Position = UDim2.new(0.0260000005, 0, 0.100000001, 0)
 HealthText.Size = UDim2.new(0, 300, 0, 22)
 HealthText.Font = Enum.Font.Creepster
 HealthText.Text = "Health"
-HealthText.TextColor3 = Color3.fromRGB(204, 171, 52)
+HealthText.TextColor3 = Color3.fromRGB(88, 240, 58)
 HealthText.TextSize = 12.000
 HealthText.TextWrapped = true
 HealthText.TextXAlignment = Enum.TextXAlignment.Left
@@ -504,7 +504,7 @@ Line.Size = UDim2.new(0, 150, 0, 5)
 
 LineHealth.Name = "LineHealth"
 LineHealth.Parent = Line
-LineHealth.BackgroundColor3 = Color3.fromRGB(204, 171, 52)
+LineHealth.BackgroundColor3 = Color3.fromRGB(88, 240, 58)
 LineHealth.BorderSizePixel = 0
 LineHealth.Size = UDim2.new(0, 200, 0, 5)
 
@@ -517,8 +517,8 @@ Lvl.Position = UDim2.new(0, 85, 0.113057934, 0)
 Lvl.Size = UDim2.new(0, 200, 0, 27)
 Lvl.TextTransparency = 0.8
 Lvl.Font = Enum.Font.Creepster
-Lvl.TextColor3 = Color3.fromRGB(255, 255, 255)
-Lvl.TextSize = 10.000
+Lvl.TextColor3 = Color3.fromRGB(204, 171, 52)
+Lvl.TextSize = 13.000
 Lvl.TextXAlignment = Enum.TextXAlignment.Left
 
 Fruit.Name = "Exploit"
@@ -531,8 +531,8 @@ Fruit.Size = UDim2.new(0, 200, 0, 27)
 Fruit.Font = Enum.Font.Creepster
 Fruit.Text = "Exploit : ".. identifyexecutor()
 Fruit.TextTransparency = 0.8
-Fruit.TextColor3 = Color3.fromRGB(255, 255, 255)
-Fruit.TextSize = 10.000
+Fruit.TextColor3 = Color3.fromRGB(204, 171, 52)
+Fruit.TextSize = 13.000
 Fruit.TextXAlignment = Enum.TextXAlignment.Left
 
 local StaminaBar = Instance.new("Frame")
