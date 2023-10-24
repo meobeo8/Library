@@ -561,7 +561,7 @@ while wait(0.001) do
    LineHealth,
    TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
    {
-      Size = UDim2.new(game.Players.LocalPlayer.Character.Humanoid.Health/game.Players.LocalPlayer.Character.Humanoid.MaxHealth, 0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
+      Size = UDim2.new(0, 0, 5)} -- UDim2.new(0, 128, 0, 25)
       ):Play()
 
       local player = game.Players.LocalPlayer
@@ -573,7 +573,7 @@ while wait(0.001) do
       LineStamina,
       TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
       {
-         Size = UDim2.new(game.Players.LocalPlayer.Character.Energy.Value/game.Players.LocalPlayer.Character.Energy.MaxValue, 0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
+         Size = UDim2.new(0, 1, 0)} -- UDim2.new(0, 128, 0, 25)
          ):Play()
          end)
       end
