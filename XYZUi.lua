@@ -253,11 +253,11 @@ Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1.000
 Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 Title.Size = UDim2.new(0, 483, 0, 31)
-Title.Font = Enum.Font.GothamBold
+Title.Font = Enum.Font.Creepster
 Title.Text = "ANBATUKAM HUB - VERSION " .. os.date("%d.%m.2023") .. " | " .. "<font color='rgb(204, 171, 52)'>" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 10.000
+Title.TextSize = 15.000
 Title.TextWrapped = true
 Title.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -459,7 +459,7 @@ Name.Position = UDim2.new(0.22916666, 0, 0, 0)
 Name.Size = UDim2.new(0, 150, 0, 27)
 Name.Font = Enum.Font.GothamBold
 Name.TextColor3 = Color3.fromRGB(255, 255, 255)
-Name.TextSize = 10.000
+Name.TextSize = 9.000
 Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
 Name.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -628,12 +628,11 @@ spawn(function()
       local character = game.Players.LocalPlayer.Character
       if character and character:FindFirstChild("Humanoid") then
         local humanoid = character.Humanoid
-        Beli.Text = "Walk Speed: " .. humanoid.WalkSpeed
-        Fragment.Text = "Jump Power: " .. humanoid.JumpPower
+        Beli.Text = "Walk Speed: " .. math.floor(humanoid.WalkSpeed)
+        Fragment.Text = "Jump Power: " .. math.floor(humanoid.JumpPower)
         StaminaText.Text = "Health: " .. humanoid.Health .. "/" .. humanoid.MaxHealth
-        HealthText.Text = "Position: " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y) .. ", " .. string.format("%.1f", game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        HealthText.Text = "Position: " .. string.format("%.1f", rootPart.Position.X) .. ", " .. string.format("%.1f", rootPart.Position.Y) .. ", " .. string.format("%.1f", rootPart.Position.Z)
+        HealthText.Text = "Position: " .. string.format("%.0f", rootPart.Position.X) .. ", " .. string.format("%.0f", rootPart.Position.Y) .. ", " .. string.format("%.0f", rootPart.Position.Z)
       end
     end)
   end
