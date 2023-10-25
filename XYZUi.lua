@@ -257,7 +257,7 @@ Title.Font = Enum.Font.Creepster
 Title.Text = "ANBATUKAM HUB - VERSION " .. os.date("%d.%m.2023") .. " | " .. "<font color='rgb(204, 171, 52)'>" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 15.000
+Title.TextSize = 13.000
 Title.TextWrapped = true
 Title.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -519,7 +519,7 @@ Lvl.Size = UDim2.new(0, 200, 0, 27)
 Lvl.TextTransparency = 0.8
 Lvl.Font = Enum.Font.GothamBold
 Lvl.TextColor3 = _G.Color
-Lvl.TextSize = 12.000
+Lvl.TextSize = 11.000
 Lvl.TextXAlignment = Enum.TextXAlignment.Left
 
 Fruit.Name = "UsedTime"
@@ -532,7 +532,7 @@ Fruit.Size = UDim2.new(0, 200, 0, 27)
 Fruit.Font = Enum.Font.GothamBold
 Fruit.TextTransparency = 0.8
 Fruit.TextColor3 = _G.Color
-Fruit.TextSize = 12.000
+Fruit.TextSize = 11.000
 Fruit.TextXAlignment = Enum.TextXAlignment.Left
 
 local StaminaBar = Instance.new("Frame")
