@@ -257,7 +257,7 @@ Title.Font = Enum.Font.GothamBold
 Title.Text = "ANBATUKAM HUB - VERSION " .. os.date("%d.%m.2023") .. " | " .. "<font color='rgb(204, 171, 52)'>" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " </font>"
 Title.RichText = true;
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 15.000
+Title.TextSize = 10.000
 Title.TextWrapped = true
 Title.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -459,7 +459,7 @@ Name.Position = UDim2.new(0.22916666, 0, 0, 0)
 Name.Size = UDim2.new(0, 150, 0, 27)
 Name.Font = Enum.Font.GothamBold
 Name.TextColor3 = Color3.fromRGB(255, 255, 255)
-Name.TextSize = 10.000
+Name.TextSize = 5.000
 Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
 Name.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -519,7 +519,7 @@ Lvl.Size = UDim2.new(0, 200, 0, 27)
 Lvl.TextTransparency = 0.8
 Lvl.Font = Enum.Font.GothamBold
 Lvl.TextColor3 = _G.Color
-Lvl.TextSize = 10.000
+Lvl.TextSize = 6.000
 Lvl.TextXAlignment = Enum.TextXAlignment.Left
 
 Fruit.Name = "UsedTime"
