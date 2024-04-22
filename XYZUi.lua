@@ -7,7 +7,7 @@ local UIConfig = {
 }
     
     for _, Interface in ipairs(game.CoreGui:GetChildren()) do
-   if Interface.Name == "LuaHub" or Interface.Name == "TrueFalseUi" then
+   if Interface.Name == "MewingHub" or Interface.Name == "TrueFalseUi" then
       Interface:Destroy()
    end
 end
@@ -50,7 +50,7 @@ coroutine.resume(
     Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Circle.BackgroundTransparency = 1.000
     Circle.ZIndex = 10
-    Circle.Image = "rbxassetid://17252496488"
+    Circle.Image = "rbxassetid://17252686559"
     Circle.ImageColor3 = Color3.fromRGB(255, 255, 255)
     Circle.ImageTransparency = 0.7
     Circle.Visible = false
@@ -168,12 +168,12 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderImageUI.BorderSizePixel = 0
         ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
         ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-        ThunderImageUI.Image = "rbxassetid://17252496488"
+        ThunderImageUI.Image = "rbxassetid://17252686559"
 
-_G.Logo = 17252496488
-_G.Logo1 = 17252496488
+_G.Logo = 17252686559
+_G.Logo1 = 17252686559
 local UI = Instance.new("ScreenGui")
-UI.Name = "LuaHub"
+UI.Name = "MewingHub"
 UI.Parent = game.CoreGui
 UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 if syn then
