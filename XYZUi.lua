@@ -50,7 +50,7 @@ coroutine.resume(
     Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Circle.BackgroundTransparency = 1.000
     Circle.ZIndex = 10
-    Circle.Image = "rbxassetid://17252505344"
+    Circle.Image = "rbxassetid://17252496488"
     Circle.ImageColor3 = Color3.fromRGB(255, 255, 255)
     Circle.ImageTransparency = 0.7
     Circle.Visible = false
@@ -168,10 +168,10 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderImageUI.BorderSizePixel = 0
         ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
         ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-        ThunderImageUI.Image = "rbxassetid://17252505344"
+        ThunderImageUI.Image = "rbxassetid://17252496488"
 
-_G.Logo = 17252505344
-_G.Logo1 = 17252505344
+_G.Logo = 17252496488
+_G.Logo1 = 17252496488
 local UI = Instance.new("ScreenGui")
 UI.Name = "LuaHub"
 UI.Parent = game.CoreGui
