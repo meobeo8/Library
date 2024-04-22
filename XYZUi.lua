@@ -48,7 +48,7 @@ coroutine.resume(
     Circle.Parent = Button
     Circle.Name = "Circle"
     Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Circle.Image = "rbxassetid://15297431949",
+    Circle.Image = "rbxassetid://15297431949"
     Circle.BackgroundTransparency = 1.000
     Circle.ZIndex = 10
     Circle.ImageColor3 = Color3.fromRGB(255, 255, 255)
@@ -168,7 +168,7 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderImageUI.BorderSizePixel = 0
         ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
         ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-        ThunderImageUI.Image = "rbxassetid://17254161253",
+        ThunderImageUI.Image = "rbxassetid://17254161253"
 
 local UI = Instance.new("ScreenGui")
 UI.Name = "MewingHub"
