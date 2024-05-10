@@ -4332,7 +4332,7 @@ local L_1139_, L_1140_, L_1141_, L_1142_, L_1143_ = L_2_(51)
 return {
 Name = 'Darker',
 Accent = Color3.fromRGB(232, 181, 138),
-AcrylicMain = Color3.fromRGB(10, 10, 10),
+AcrylicMain = Color3.fromRGB(5, 5, 5),
 AcrylicBorder = Color3.fromRGB(60, 60, 60),
 AcrylicGradient = ColorSequence.new(Color3.fromRGB(25, 25, 25), Color3.fromRGB(15, 15, 15)),
 AcrylicNoise = 0.94,
