@@ -1,3 +1,46 @@
+for _, Interface in ipairs(game.CoreGui:GetChildren()) do
+    if Interface.Name == "ScreenGui" or Interface.Name == "TrueFalseUi" then
+        Interface:Destroy()
+    end
+end
+
+local ThunderScreen = Instance.new("ScreenGui")
+local ThunderToggleUI = Instance.new("TextButton")
+local ThunderCornerUI = Instance.new("UICorner")
+local ThunderImageUI = Instance.new("ImageLabel")
+
+ThunderScreen.Name = "TrueFalseUi"
+ThunderScreen.Parent = game.CoreGui
+ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ThunderToggleUI.Name = "ThunderToggleUI"
+ThunderToggleUI.Parent = ThunderScreen
+ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
+ThunderToggleUI.BorderSizePixel = 0
+ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ThunderToggleUI.Size = UDim2.new(0, 50, 0, 50)
+ThunderToggleUI.Font = Enum.Font.FredokaOne
+ThunderToggleUI.Text = ""
+ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
+ThunderToggleUI.TextSize = 14.000
+ThunderToggleUI.Draggable = true
+ThunderToggleUI.MouseButton1Click:Connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F15,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F15,false,game)
+end)
+
+ThunderCornerUI.Name = "ThunderCornerUI"
+ThunderCornerUI.Parent = ThunderToggleUI
+
+ThunderImageUI.Name = "MODILEMAGE"
+ThunderImageUI.Parent = ThunderToggleUI
+ThunderImageUI.BackgroundColor3 = Color3.fromRGB(192,192,192)
+ThunderImageUI.BackgroundTransparency = 1.000
+ThunderImageUI.BorderSizePixel = 0
+ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
+ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
+ThunderImageUI.Image = "rbxassetid://17254290146"
+
 local L_1_, L_2_ = {
    {
       1,
