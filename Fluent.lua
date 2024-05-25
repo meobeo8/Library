@@ -1,5 +1,5 @@
 for _, Interface in ipairs(game.CoreGui:GetChildren()) do
-    if Interface.Name == "ScreenGui" or Interface.Name == "TrueFalseUi" then
+    if Interface.Name == "ScreenGui" or Interface.Name == "TrueFalseUi" or Interface.Name == "hi22" then
         Interface:Destroy()
     end
 end
@@ -8,6 +8,7 @@ local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
 local ThunderCornerUI = Instance.new("UICorner")
 local ThunderImageUI = Instance.new("ImageLabel")
+local hi22 = Instance.new("Hint")
 
 ThunderScreen.Name = "TrueFalseUi"
 ThunderScreen.Parent = game.CoreGui
@@ -35,11 +36,28 @@ ThunderCornerUI.Parent = ThunderToggleUI
 ThunderImageUI.Name = "MODILEMAGE"
 ThunderImageUI.Parent = ThunderToggleUI
 ThunderImageUI.BackgroundColor3 = Color3.fromRGB(192,192,192)
-ThunderImageUI.BackgroundTransparency = 1.000
+ThunderImageUI.BackgroundTransparency = 0.1
 ThunderImageUI.BorderSizePixel = 0
 ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
 ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
 ThunderImageUI.Image = "rbxassetid://17254290146"
+
+hi22.Name = "hi22"
+hi22.Parent = game.CoreGui
+hi22.Text = "Client Time"
+
+spawn(function()
+  local startTime = tick()
+  while wait(1) do
+    pcall(function()
+      local elapsedTime = tick() - startTime
+	local hours = math.floor(elapsedTime / 3600)
+	local minutes = math.floor((elapsedTime % 3600) / 60)
+	local seconds = math.floor(elapsedTime % 60)
+	hi22.Text = "Client Time: ".. hours.. ":".. minutes.. ":".. seconds.. " | script made by .tranvanbaodeptrai"
+    end)
+  end
+end)
 
 local L_1_, L_2_ = {
    {
@@ -4378,13 +4396,13 @@ Accent = Color3.fromRGB(232, 181, 138),
 AcrylicMain = Color3.fromRGB(1, 1, 1),
 AcrylicBorder = Color3.fromRGB(60, 60, 60),
 AcrylicGradient = ColorSequence.new(Color3.fromRGB(25, 25, 25), Color3.fromRGB(15, 15, 15)),
-AcrylicNoise = 0.94,
-TitleBarLine = Color3.fromRGB(65, 65, 65),
+AcrylicNoise = 0.80,
+TitleBarLine = Color3.fromRGB(232, 181, 138),
 Tab = Color3.fromRGB(100, 100, 100),
 Element = Color3.fromRGB(70, 70, 70),
 ElementBorder = Color3.fromRGB(25, 25, 25),
 InElementBorder = Color3.fromRGB(55, 55, 55),
-ElementTransparency = 0.82,
+ElementTransparency = 0.90,
 DropdownFrame = Color3.fromRGB(120, 120, 120),
 DropdownHolder = Color3.fromRGB(35, 35, 35),
 DropdownBorder = Color3.fromRGB(25, 25, 25),
