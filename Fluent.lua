@@ -39,7 +39,7 @@ ThunderImageUI.BackgroundTransparency = 0.1
 ThunderImageUI.BorderSizePixel = 0
 ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
 ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-ThunderImageUI.Image = "rbxassetid://17254290146"
+ThunderImageUI.Image = "rbxassetid://17611786590"
 
 local hi22 = Instance.new("Hint")
 hi22.Name = "hi22"
