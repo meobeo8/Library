@@ -41,24 +41,6 @@ ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
 ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
 ThunderImageUI.Image = "rbxassetid://17612064986"
 
-local hi22 = Instance.new("Hint")
-hi22.Name = "hi22"
-hi22.Parent = game.CoreGui
-hi22.Text = "by .tranvanbaodeptrai"
-
-spawn(function()
-  local startTime = tick()
-  while wait(1) do
-    pcall(function()
-      local elapsedTime = tick() - startTime
-	local hours = math.floor(elapsedTime / 3600)
-	local minutes = math.floor((elapsedTime % 3600) / 60)
-	local seconds = math.floor(elapsedTime % 60)
-	hi22.Text = "Time: ".. hours.. ":".. minutes.. ":".. seconds.. " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()).. " | Ping: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString().. " | Country: " .. game:GetService("LocalizationService"):GetCountryRegionForPlayerAsync(game.Players.LocalPlayer) .. " | Exploit: " .. identifyexecutor()
-    end)
-  end
-end)
-
 local L_1_, L_2_ = {
    {
       1,
