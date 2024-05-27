@@ -1,8 +1,6 @@
-for _, Interface in ipairs(game.CoreGui:GetChildren()) do
-    if Interface.Name == "TrueFalseUi" then
-        Interface:Destroy()
-    end
-end
+if game.CoreGui:FindFirstChild("TrueFalseUi") then
+                game.CoreGui.TrueFalseUi:Destroy()
+            end
 
 local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
