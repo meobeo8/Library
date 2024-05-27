@@ -1,6 +1,8 @@
-if game.CoreGui:FindFirstChild("TrueFalseUi") then
-                game.CoreGui.TrueFalseUi:Destroy()
-            end
+for _, v in ipairs(game.CoreGui:GetChildren()) do
+    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "hi22" then
+        v:Destroy()
+    end
+end
 
 local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
@@ -24,7 +26,7 @@ ThunderToggleUI.TextSize = 14.000
 ThunderToggleUI.Draggable = true
 ThunderToggleUI.MouseButton1Click:Connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F15,false,game)
-    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F15,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F15,true,game)
 end)
 
 ThunderCornerUI.Name = "ThunderCornerUI"
@@ -468,11 +470,6 @@ local L_1_, L_2_ = {
    }
 }
 
-for _, Interface in ipairs(game.CoreGui:GetChildren()) do
-    if Interface.Name == "ScreenGui" then
-        Interface:Destroy()
-    end
-end
 local L_3_ = {
    function()
       local L_4_, L_5_, L_6_, L_7_, L_8_ = L_2_(1)
