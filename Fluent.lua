@@ -16,9 +16,9 @@ ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ThunderToggleUI.Name = "ThunderToggleUI"
 ThunderToggleUI.Parent = ThunderScreen
 ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
-ThunderToggleUI.BorderSizePixel = 0
+ThunderToggleUI.BorderSizePixel = -5
 ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-ThunderToggleUI.Size = UDim2.new(0, 50, 0, 50)
+ThunderToggleUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderToggleUI.Font = Enum.Font.FredokaOne
 ThunderToggleUI.Text = ""
 ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -35,11 +35,56 @@ ThunderCornerUI.Parent = ThunderToggleUI
 ThunderImageUI.Name = "MODILEMAGE"
 ThunderImageUI.Parent = ThunderToggleUI
 ThunderImageUI.BackgroundColor3 = Color3.fromRGB(192,192,192)
-ThunderImageUI.BackgroundTransparency = 0.1
-ThunderImageUI.BorderSizePixel = 0
+ThunderImageUI.BackgroundTransparency = 3
+ThunderImageUI.BorderSizePixel = -5
 ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
-ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
+ThunderImageUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderImageUI.Image = "rbxassetid://17612064986"
+
+local function YTZCAJC_fake_script()
+	local script = Instance.new('LocalScript', ThunderToggleUI)
+
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	end
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+	script.Parent.MouseButton1Click:Connect(function()
+		game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F15,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F15,false,game)
+	end)
+end
+
+coroutine.wrap(YTZCAJC_fake_script)()
 
 local L_1_, L_2_ = {
    {
@@ -4375,7 +4420,7 @@ local L_1139_, L_1140_, L_1141_, L_1142_, L_1143_ = L_2_(51)
 return {
 Name = 'Darker',
 Accent = Color3.fromRGB(232, 181, 138),
-AcrylicMain = Color3.fromRGB(1, 1, 1),
+AcrylicMain = Color3.fromRGB(232, 181, 138),
 AcrylicBorder = Color3.fromRGB(60, 60, 60),
 AcrylicGradient = ColorSequence.new(Color3.fromRGB(25, 25, 25), Color3.fromRGB(15, 15, 15)),
 AcrylicNoise = 0.80,
@@ -4384,7 +4429,7 @@ Tab = Color3.fromRGB(100, 100, 100),
 Element = Color3.fromRGB(70, 70, 70),
 ElementBorder = Color3.fromRGB(25, 25, 25),
 InElementBorder = Color3.fromRGB(55, 55, 55),
-ElementTransparency = 0.90,
+ElementTransparency = 0.50,
 DropdownFrame = Color3.fromRGB(120, 120, 120),
 DropdownHolder = Color3.fromRGB(35, 35, 35),
 DropdownBorder = Color3.fromRGB(25, 25, 25),
