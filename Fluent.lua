@@ -18,7 +18,7 @@ ThunderToggleUI.Parent = ThunderScreen
 ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
 ThunderToggleUI.BorderSizePixel = 0
 ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-ThunderToggleUI.Size = UDim2.new(0, 50, 0, 50)
+ThunderToggleUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderToggleUI.Font = Enum.Font.FredokaOne
 ThunderToggleUI.Text = ""
 ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -35,10 +35,10 @@ ThunderCornerUI.Parent = ThunderToggleUI
 ThunderImageUI.Name = "MODILEMAGE"
 ThunderImageUI.Parent = ThunderToggleUI
 ThunderImageUI.BackgroundColor3 = Color3.fromRGB(192,192,192)
-ThunderImageUI.BackgroundTransparency = 0.1
+ThunderImageUI.BackgroundTransparency = -10
 ThunderImageUI.BorderSizePixel = 0
 ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
-ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
+ThunderImageUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderImageUI.Image = "rbxassetid://17612064986"
 
 local function YTZCAJC_fake_script()
@@ -47,7 +47,7 @@ local function YTZCAJC_fake_script()
 	local UIS = game:GetService('UserInputService')
 	local frame = script.Parent
 	local dragToggle = nil
-	local dragSpeed = 0.25
+	local dragSpeed = 0
 	local dragStart = nil
 	local startPos = nil
 	
