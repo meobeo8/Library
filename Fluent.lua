@@ -78,9 +78,6 @@ local function YTZCAJC_fake_script()
 			end
 		end
 	end)
-	script.Parent.MouseButton1Click:Connect(function()
-		game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
-	end)
 end
 
 coroutine.wrap(YTZCAJC_fake_script)()
