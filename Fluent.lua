@@ -41,6 +41,15 @@ ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
 ThunderImageUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderImageUI.Image = "rbxassetid://17612064986"
 
+function CloseUi()
+    for _, v in ipairs(game.CoreGui:GetChildren()) do
+        if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "hi22" then
+            v:Destroy()
+        end
+    end
+end
+
+
 local L_1_, L_2_ = {
    {
       1,
@@ -429,13 +438,7 @@ local L_1_, L_2_ = {
    }
 }
 
-function library:Destroy()
-    for _, v in ipairs(game.CoreGui:GetChildren()) do
-    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "hi22" then
-        v:Destroy()
-    end
-end
-end
+
 
 local L_3_ = {
    function()
