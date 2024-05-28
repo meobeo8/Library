@@ -429,6 +429,14 @@ local L_1_, L_2_ = {
    }
 }
 
+function library:Destroy()
+    for _, v in ipairs(game.CoreGui:GetChildren()) do
+    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "hi22" then
+        v:Destroy()
+    end
+end
+end
+
 local L_3_ = {
    function()
       local L_4_, L_5_, L_6_, L_7_, L_8_ = L_2_(1)
