@@ -36,13 +36,12 @@ ThunderCornerUI.Parent = ThunderToggleUI
 
 ThunderImageUI.Name = "MODILEMAGE"
 ThunderImageUI.Parent = ThunderToggleUI
-ThunderImageUI.BackgroundColor3 = Color3.fromRGB(192,192,192)
-ThunderImageUI.BackgroundTransparency = 0.1
+ThunderImageUI.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
+ThunderImageUI.BackgroundTransparency = 9
 ThunderImageUI.BorderSizePixel = 0
 ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
 ThunderImageUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderImageUI.Image = "rbxassetid://17664629557"
-
 
 
 local L_1_, L_2_ = {
