@@ -6,6 +6,14 @@ for _, v in ipairs(game.CoreGui:GetChildren()) do
     end
 end
 
+function CloseUi()
+for _, v in ipairs(game.CoreGui:GetChildren()) do
+    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "hi22" then
+        v:Destroy()
+    end
+end
+end
+
 local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
 local ThunderCornerUI = Instance.new("UICorner")
