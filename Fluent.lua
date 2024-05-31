@@ -1,7 +1,7 @@
 --discord.gg/boronide, code generated using luamin.js™
 
 for _, v in ipairs(game.CoreGui:GetChildren()) do
-    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "hi22" then
+    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" then
         v:Destroy()
     end
 end
