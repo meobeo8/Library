@@ -80,11 +80,11 @@ ThunderToggleUI.Parent = ThunderScreen
 ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(255, 248, 51)
 ThunderToggleUI.BorderSizePixel = 0
 ThunderToggleUI.Position = UDim2.new(0.16, 0, 0.1, 0)
-ThunderToggleUI.Size = UDim2.new(-0.12, 60, -0.14, 60)
+ThunderToggleUI.Size = UDim2.new(-0.15, 40, -0.17, 40)
 ThunderToggleUI.Font = Enum.Font.SourceSansSemibold
 ThunderToggleUI.Text = "Stop Tween"
 ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-ThunderToggleUI.TextSize = 17
+ThunderToggleUI.TextSize = 18
 ThunderToggleUI.Draggable = false
 
 ThunderCornerUI.Name = "ThunderCornerUI"
