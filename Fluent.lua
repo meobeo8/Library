@@ -1,7 +1,5 @@
---discord.gg/boronide, code generated using luamin.js™
-
 for _, v in ipairs(game.CoreGui:GetChildren()) do
-    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" then
+    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "StopTween" then
         v:Destroy()
     end
 end
@@ -19,7 +17,7 @@ ThunderToggleUI.Name = "ThunderToggleUI"
 ThunderToggleUI.Parent = ThunderScreen
 ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
 ThunderToggleUI.BorderSizePixel = 0
-ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ThunderToggleUI.Position = UDim2.new(0.16, 0, 0.2, 0)
 ThunderToggleUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderToggleUI.Font = Enum.Font.FredokaOne
 ThunderToggleUI.Text = ""
@@ -42,7 +40,6 @@ ThunderImageUI.BorderSizePixel = 0
 ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
 ThunderImageUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderImageUI.Image = "rbxassetid://17664629557"
-
 
 local L_1_, L_2_ = {
 	{
