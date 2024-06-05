@@ -4,8 +4,29 @@ for _, v in ipairs(game.CoreGui:GetChildren()) do
     end
 end
 
-function FTP(Pos)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+local Speed = 555
+local Rootx = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+function TP(Pos)
+   if Rootx then
+    Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+    if Distance < 25 then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+    elseif Distance < 50 then
+        Speed = 300
+    elseif Distance < 250 then
+        Speed = 350
+    elseif Distance < 500 then
+        Speed = 450
+    elseif Distance < 1000 then
+        Speed = 500
+    end
+    game:GetService("TweenService"):Create(
+        game.Players.LocalPlayer.Character.HumanoidRootPart,
+        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+        {CFrame = Pos}
+    ):Play()
+end
 end
 
 local ThunderScreen = Instance.new("ScreenGui")
@@ -69,7 +90,7 @@ ThunderToggleUI.MouseButton1Click:Connect(function()
     if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
         game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
     end
-    FTP(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+    TP(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end)
 
 ThunderCornerUI.Name = "ThunderCornerUI"
