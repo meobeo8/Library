@@ -80,21 +80,22 @@ ThunderToggleUI.Parent = ThunderScreen
 ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(255, 248, 51)
 ThunderToggleUI.BorderSizePixel = 0
 ThunderToggleUI.Position = UDim2.new(0.16, 0, 0.1, 0)
-ThunderToggleUI.Size = UDim2.new(-0.12, 40, -0.17, 40)
-ThunderToggleUI.Font = Enum.Font.FredokaOne
-ThunderToggleUI.Text = "STOP TP"
+ThunderToggleUI.Size = UDim2.new(-0.12, 60, -0.14, 60)
+ThunderToggleUI.Font = Enum.Font.SourceSansSemibold
+ThunderToggleUI.Text = "Stop Tween"
 ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
 ThunderToggleUI.TextSize = 17
 ThunderToggleUI.Draggable = false
+
+ThunderCornerUI.Name = "ThunderCornerUI"
+ThunderCornerUI.Parent = ThunderToggleUI
+
 ThunderToggleUI.MouseButton1Click:Connect(function()
     if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
         game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
     end
     TP(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end)
-
-ThunderCornerUI.Name = "ThunderCornerUI"
-ThunderCornerUI.Parent = ThunderToggleUI
 
 local L_1_, L_2_ = {
 	{
