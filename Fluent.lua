@@ -4,6 +4,10 @@ for _, v in ipairs(game.CoreGui:GetChildren()) do
     end
 end
 
+function FTP(Pos)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+end
+
 local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
 local ThunderCornerUI = Instance.new("UICorner")
@@ -40,6 +44,36 @@ ThunderImageUI.BorderSizePixel = 0
 ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
 ThunderImageUI.Size = UDim2.new(0, 45, 0, 45)
 ThunderImageUI.Image = "rbxassetid://17664629557"
+
+local ThunderScreen = Instance.new("ScreenGui")
+local ThunderToggleUI = Instance.new("TextButton")
+local ThunderCornerUI = Instance.new("UICorner")
+local ThunderImageUI = Instance.new("ImageLabel")
+
+ThunderScreen.Name = "StopTween"
+ThunderScreen.Parent = game.CoreGui
+ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ThunderToggleUI.Name = "ThunderToggleUI"
+ThunderToggleUI.Parent = ThunderScreen
+ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(255, 248, 51)
+ThunderToggleUI.BorderSizePixel = 0
+ThunderToggleUI.Position = UDim2.new(0.16, 0, 0.1, 0)
+ThunderToggleUI.Size = UDim2.new(-0.12, 40, -0.17, 40)
+ThunderToggleUI.Font = Enum.Font.FredokaOne
+ThunderToggleUI.Text = "STOP TP"
+ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
+ThunderToggleUI.TextSize = 17
+ThunderToggleUI.Draggable = false
+ThunderToggleUI.MouseButton1Click:Connect(function()
+    if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+        game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+    end
+    FTP(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+end)
+
+ThunderCornerUI.Name = "ThunderCornerUI"
+ThunderCornerUI.Parent = ThunderToggleUI
 
 local L_1_, L_2_ = {
 	{
