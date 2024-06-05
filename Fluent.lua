@@ -77,18 +77,14 @@ ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 ThunderToggleUI.Name = "ThunderToggleUI"
 ThunderToggleUI.Parent = ThunderScreen
-ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(255, 248, 51)
-ThunderToggleUI.BorderSizePixel = 0
-ThunderToggleUI.Position = UDim2.new(0.16, 0, 0.1, 0)
-ThunderToggleUI.Size = UDim2.new(-0.15, 40, -0.17, 40)
+ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(244, 244, 0)
+ThunderToggleUI.Position = UDim2.new(0.100, 0, 0.127, 0)
+ThunderToggleUI.Size = UDim2.new(0, 89, 0, 33)
 ThunderToggleUI.Font = Enum.Font.SourceSansSemibold
 ThunderToggleUI.Text = "Stop Tween"
 ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-ThunderToggleUI.TextSize = 18
+ThunderToggleUI.TextSize = 19
 ThunderToggleUI.Draggable = false
-
-ThunderCornerUI.Name = "ThunderCornerUI"
-ThunderCornerUI.Parent = ThunderToggleUI
 
 ThunderToggleUI.MouseButton1Click:Connect(function()
     if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
