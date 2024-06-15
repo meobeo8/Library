@@ -68,8 +68,6 @@ ThunderImageUI.Image = "rbxassetid://17664629557"
 
 local ThunderScreen = Instance.new("ScreenGui")
 local ThunderToggleUI = Instance.new("TextButton")
-local ThunderCornerUI = Instance.new("UICorner")
-local ThunderImageUI = Instance.new("ImageLabel")
 
 ThunderScreen.Name = "StopTween"
 ThunderScreen.Parent = game.CoreGui
@@ -79,11 +77,11 @@ ThunderToggleUI.Name = "ThunderToggleUI"
 ThunderToggleUI.Parent = ThunderScreen
 ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(244, 244, 0)
 ThunderToggleUI.Position = UDim2.new(0.100, 0, 0.127, 0)
-ThunderToggleUI.Size = UDim2.new(0, 89, 0, 33)
+ThunderToggleUI.Size = UDim2.new(0, 89, 0, 29)
 ThunderToggleUI.Font = Enum.Font.SourceSansSemibold
 ThunderToggleUI.Text = "Stop Tween"
 ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-ThunderToggleUI.TextSize = 19
+ThunderToggleUI.TextSize = 20
 ThunderToggleUI.Draggable = false
 
 ThunderToggleUI.MouseButton1Click:Connect(function()
