@@ -350,14 +350,14 @@ function Library.CreateNoti(Setting)
     local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
     local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
     local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelNoti.Text = "<font color=\"rgb(" .. color .. ")\">ELGATO HUB | </font> "..getgenv().TitleNameNoti
+    TextLabelNoti.Text = "<font color=\"rgb(" .. color .. ")\">ELGATO HUB </font> "..getgenv().TitleNameNoti
 
     table.insert(UpdateCallBack["Title Text Color"],function() 
         local colorR = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[1])
         local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
         local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
         local color = colorR .. ',' .. colorG .. ',' .. colorB
-        TextLabelNoti.Text = "<font color=\"rgb(" .. color .. ")\">ELGATO HUB | </font> "..getgenv().TitleNameNoti
+        TextLabelNoti.Text = "<font color=\"rgb(" .. color .. ")\">ELGATO HUB </font> "..getgenv().TitleNameNoti
     end)
     
     TextLabelNoti.Name = "TextLabelNoti"
@@ -459,7 +459,7 @@ end
 function Library.CreateMain(Setting)
 
     local TitleNameMain = "ELGATO HUB "
-    getgenv().MainDesc = "|" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "| Join Discord to get about updates"
+    getgenv().MainDesc = "| " .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " | Join Discord to get about updates"
     
     local djtmemay = false
     cac = false
