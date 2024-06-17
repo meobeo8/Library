@@ -823,8 +823,8 @@ function Library.CreateMain(Setting)
     ControlTitle.Position = UDim2.new(0, 5, 0, 0)
     ControlTitle.Size = UDim2.new(1, 0, 0, 25)
     ControlTitle.Font = Enum.Font.GothamBold
-    ControlTitle.Text = 'ACB Script'
-    ControlTitle.TextSize = 14.000
+    ControlTitle.Text = 'List Tab '
+    ControlTitle.TextSize = 17.000
     ControlTitle.TextXAlignment = Enum.TextXAlignment.Left
     ControlTitle.TextColor3 = getgenv().UIColor["GUI Text Color"]
     table.insert(UpdateCallBack["GUI Text Color"], function() 
