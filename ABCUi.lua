@@ -458,8 +458,8 @@ end
 
 function Library.CreateMain(Setting)
 
-    local TitleNameMain = "ELGATO HUB | "
-    getgenv().MainDesc = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " | PlaceId: " .. game.PlaceId
+    local TitleNameMain = "ELGATO HUB |"
+    getgenv().MainDesc = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "| Join Discord to get about updates"
     
     local djtmemay = false
     cac = false
