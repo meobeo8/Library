@@ -458,9 +458,9 @@ end
 
 function Library.CreateMain(Setting)
 
-    local TitleNameMain = "ELGATO HUB  |  "
-    getgenv().MainDesc = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.. "  |  https://discord.gg/UrkE64Mfb7"
-
+    local TitleNameMain = "ELGATO HUB | "
+    getgenv().MainDesc = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " | PlaceId: " .. game.PlaceId
+    
     local djtmemay = false
     cac = false
 
@@ -823,7 +823,7 @@ function Library.CreateMain(Setting)
     ControlTitle.Position = UDim2.new(0, 5, 0, 0)
     ControlTitle.Size = UDim2.new(1, 0, 0, 25)
     ControlTitle.Font = Enum.Font.GothamBold
-    ControlTitle.Text = 'List Tab '
+    ControlTitle.Text = 'Tabs Available: 7'
     ControlTitle.TextSize = 17.000
     ControlTitle.TextXAlignment = Enum.TextXAlignment.Left
     ControlTitle.TextColor3 = getgenv().UIColor["GUI Text Color"]
