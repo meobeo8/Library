@@ -458,8 +458,8 @@ end
 
 function Library.CreateMain(Setting)
 
-    local TitleNameMain = "ELGATO HUB |"
-    getgenv().MainDesc = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "| Join Discord to get about updates"
+    local TitleNameMain = "ELGATO HUB "
+    getgenv().MainDesc = "|" .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "| Join Discord to get about updates"
     
     local djtmemay = false
     cac = false
@@ -556,14 +556,14 @@ function Library.CreateMain(Setting)
         local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
         local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
         local color = colorR .. ',' .. colorG .. ',' .. colorB
-        TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB | </font> " .. getgenv().MainDesc
+        TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB </font> " .. getgenv().MainDesc
         table.insert(UpdateCallBack["Title Text Color"],function() 
             maingui.ImageColor3 = getgenv().UIColor['Title Text Color']
             local colorR = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[1])
             local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
             local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
             local color = colorR .. ',' .. colorG .. ',' .. colorB
-            TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB | </font> " .. getgenv().MainDesc
+            TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB </font> " .. getgenv().MainDesc
         end)
         local MainContainer_
         if v ~= ""
@@ -617,14 +617,14 @@ function Library.CreateMain(Setting)
     local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
     local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
     local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB | </font> " .. getgenv().MainDesc
+    TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB </font> " .. getgenv().MainDesc
     table.insert(UpdateCallBack["Title Text Color"],function() 
         maingui.ImageColor3 = getgenv().UIColor['Title Text Color']
         local colorR = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[1])
         local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
         local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
         local color = colorR .. ',' .. colorG .. ',' .. colorB
-        TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB | </font> " .. getgenv().MainDesc
+        TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB </font> " .. getgenv().MainDesc
     end)
     local MainContainer
     local defurl = getgenv().UIColor["Background Image"]
@@ -739,13 +739,13 @@ function Library.CreateMain(Setting)
     local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
     local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
     local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB | </font> " .. getgenv().MainDesc
+    TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB </font> " .. getgenv().MainDesc
     table.insert(UpdateCallBack["Title Text Color"],function() 
         local colorR = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[1])
         local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
         local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
         local color = colorR .. ',' .. colorG .. ',' .. colorB
-        TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB | </font> " .. getgenv().MainDesc
+        TextLabelMain.Text = "<font color=\"rgb("..color..")\">ELGATO HUB </font> " .. getgenv().MainDesc
     end)
     
     SettionMain.Name = "SettionMain"
