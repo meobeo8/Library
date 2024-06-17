@@ -5,8 +5,8 @@ end
 getgenv().Tvk = true
 
 function TurnUi(e)
- if game.CoreGui:FindFirstChild('ACB HUB GUI') then
-    game.CoreGui:FindFirstChild('ACB HUB GUI').Enabled = e
+ if game.CoreGui:FindFirstChild('ELGATO HUB GUI') then
+    game.CoreGui:FindFirstChild('ELGATO HUB GUI').Enabled = e
  end
 end
 local ScreenGui = Instance.new("ScreenGui")
@@ -458,8 +458,8 @@ end
 
 function Library.CreateMain(Setting)
 
-    local TitleNameMain = tostring(Setting.Title) or "ELGATO HUB"
-    getgenv().MainDesc = "Script Blox Fruits V3"
+    local TitleNameMain = tostring(Setting.Title) or "ELGATO HUB | "
+    getgenv().MainDesc = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.. "by .tranvanbaodeptrai"
 
     local djtmemay = false
     cac = false
