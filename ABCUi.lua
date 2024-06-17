@@ -366,7 +366,7 @@ function Library.CreateNoti(Setting)
     TextLabelNoti.BackgroundTransparency = 1.000
     TextLabelNoti.Position = UDim2.new(0, 40, 0, 0)
     TextLabelNoti.Size = UDim2.new(1, -40, 1, 0)
-    TextLabelNoti.Font = Enum.Font.GothamBold
+    TextLabelNoti.Font = Enum.Font.FredokaOne
     TextLabelNoti.TextSize = 14.000
     TextLabelNoti.TextWrapped = true
     TextLabelNoti.TextXAlignment = Enum.TextXAlignment.Left
@@ -413,7 +413,7 @@ function Library.CreateNoti(Setting)
         TextLabelNoti2.BackgroundTransparency = 1.000
         TextLabelNoti2.Position = UDim2.new(0, 10, 0, 35)
         TextLabelNoti2.Size = UDim2.new(1, -15, 0, 0)
-        TextLabelNoti2.Font = Enum.Font.GothamBold
+        TextLabelNoti2.Font = Enum.Font.FredokaOne
         TextLabelNoti2.Text = Desc
         TextLabelNoti2.TextSize = 14.000
         TextLabelNoti2.TextXAlignment = Enum.TextXAlignment.Left
@@ -726,7 +726,7 @@ function Library.CreateMain(Setting)
     TextLabelMain.BackgroundTransparency = 1.000
     TextLabelMain.Position = UDim2.new(0, 35, 0, 0)
     TextLabelMain.Size = UDim2.new(1, -35, 1, 0)
-    TextLabelMain.Font = Enum.Font.GothamBold
+    TextLabelMain.Font = Enum.Font.FredokaOne
     TextLabelMain.RichText = true
     TextLabelMain.TextSize = 16.000
     TextLabelMain.TextWrapped = true
@@ -822,7 +822,7 @@ function Library.CreateMain(Setting)
     ControlTitle.BackgroundTransparency = 1.000
     ControlTitle.Position = UDim2.new(0, 5, 0, 0)
     ControlTitle.Size = UDim2.new(1, 0, 0, 25)
-    ControlTitle.Font = Enum.Font.GothamBold
+    ControlTitle.Font = Enum.Font.FredokaOne
     ControlTitle.Text = 'Status Script: Working ✅'
     ControlTitle.TextSize = 17.000
     ControlTitle.TextXAlignment = Enum.TextXAlignment.Left
@@ -902,7 +902,7 @@ function Library.CreateMain(Setting)
     CustomTitle.BackgroundTransparency = 1.000
     CustomTitle.Position = UDim2.new(0, 15, 0, 0)
     CustomTitle.Size = UDim2.new(1, -15, 0, 25)
-    CustomTitle.Font = Enum.Font.GothamBold
+    CustomTitle.Font = Enum.Font.FredokaOne
     CustomTitle.Text = ''
     CustomTitle.TextSize = 16.000
     CustomTitle.TextXAlignment = Enum.TextXAlignment.Left
@@ -969,7 +969,7 @@ function Library.CreateMain(Setting)
     SearchBucu.BackgroundTransparency = 1.000
     SearchBucu.Position = UDim2.new(0, 30, 0, 0)
     SearchBucu.Size = UDim2.new(1, -30, 1, 0)
-    SearchBucu.Font = Enum.Font.GothamBold
+    SearchBucu.Font = Enum.Font.FredokaOne
     SearchBucu.Text = ''
     SearchBucu.TextSize = 14.000
     SearchBucu.TextXAlignment = Enum.TextXAlignment.Left
@@ -1074,7 +1074,7 @@ function Library.CreateMain(Setting)
             Sectiontitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             Sectiontitle.BackgroundTransparency = 1.000
             Sectiontitle.Size = UDim2.new(1, 0, 1, 0)
-            Sectiontitle.Font = Enum.Font.GothamBold
+            Sectiontitle.Font = Enum.Font.FredokaOne
             Sectiontitle.Text = Section_Name
             Sectiontitle.TextSize = 14.000
             Sectiontitle.TextColor3 = getgenv().UIColor["Section Text Color"]
@@ -1281,7 +1281,7 @@ function Library.CreateMain(Setting)
                     RText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                     RText.BackgroundTransparency = 1.000
                     RText.Size = UDim2.new(0, 25, 0, 25)
-                    RText.Font = Enum.Font.GothamBold
+                    RText.Font = Enum.Font.FredokaOne
                     RText.Text = "R:"
                     RText.TextColor3 = Color3.fromRGB(115, 115, 115)
                     RText.TextSize = 14.000
@@ -1294,7 +1294,7 @@ function Library.CreateMain(Setting)
                     RBox.Position = UDim2.new(0, 25, 0, 0)
                     RBox.Size = UDim2.new(1, -25, 1, 0)
                     RBox.ClearTextOnFocus = false
-                    RBox.Font = Enum.Font.GothamBold
+                    RBox.Font = Enum.Font.FredokaOne
                     RBox.Text = "255"
                     RBox.TextColor3 = Color3.fromRGB(255, 255, 255)
                     RBox.TextSize = 14.000
@@ -1312,7 +1312,7 @@ function Library.CreateMain(Setting)
                     GText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                     GText.BackgroundTransparency = 1.000
                     GText.Size = UDim2.new(0, 25, 0, 25)
-                    GText.Font = Enum.Font.GothamBold
+                    GText.Font = Enum.Font.FredokaOne
                     GText.Text = "G:"
                     GText.TextColor3 = Color3.fromRGB(115, 115, 115)
                     GText.TextSize = 14.000
@@ -1325,7 +1325,7 @@ function Library.CreateMain(Setting)
                     GBox.Position = UDim2.new(0, 25, 0, 0)
                     GBox.Size = UDim2.new(1, -25, 1, 0)
                     GBox.ClearTextOnFocus = false
-                    GBox.Font = Enum.Font.GothamBold
+                    GBox.Font = Enum.Font.FredokaOne
                     GBox.Text = "255"
                     GBox.TextColor3 = Color3.fromRGB(255, 255, 255)
                     GBox.TextSize = 14.000
@@ -1343,7 +1343,7 @@ function Library.CreateMain(Setting)
                     BText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                     BText.BackgroundTransparency = 1.000
                     BText.Size = UDim2.new(0, 25, 0, 25)
-                    BText.Font = Enum.Font.GothamBold
+                    BText.Font = Enum.Font.FredokaOne
                     BText.Text = "B:"
                     BText.TextColor3 = Color3.fromRGB(115, 115, 115)
                     BText.TextSize = 14.000
@@ -1356,7 +1356,7 @@ function Library.CreateMain(Setting)
                     BBox.Position = UDim2.new(0, 25, 0, 0)
                     BBox.Size = UDim2.new(1, -25, 1, 0)
                     BBox.ClearTextOnFocus = false
-                    BBox.Font = Enum.Font.GothamBold
+                    BBox.Font = Enum.Font.FredokaOne
                     BBox.Text = "255"
                     BBox.TextColor3 = Color3.fromRGB(255, 255, 255)
                     BBox.TextSize = 14.000
@@ -1377,7 +1377,7 @@ function Library.CreateMain(Setting)
                     HexText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                     HexText.BackgroundTransparency = 1.000
                     HexText.Size = UDim2.new(0, 25, 0, 25)
-                    HexText.Font = Enum.Font.GothamBold
+                    HexText.Font = Enum.Font.FredokaOne
                     HexText.Text = "#"
                     HexText.TextColor3 = Color3.fromRGB(115, 115, 115)
                     HexText.TextSize = 14.000
@@ -1390,7 +1390,7 @@ function Library.CreateMain(Setting)
                     HexBox.Position = UDim2.new(0, 25, 0, 0)
                     HexBox.Size = UDim2.new(1, -25, 1, 0)
                     HexBox.ClearTextOnFocus = false
-                    HexBox.Font = Enum.Font.GothamBold
+                    HexBox.Font = Enum.Font.FredokaOne
                     HexBox.Text = "FFFFFF"
                     HexBox.TextColor3 = Color3.fromRGB(255, 255, 255)
                     HexBox.TextSize = 14.000
@@ -1430,7 +1430,7 @@ function Library.CreateMain(Setting)
                     cungroitext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                     cungroitext.BackgroundTransparency = 1.000
                     cungroitext.Size = UDim2.new(0, 85, 0, 25)
-                    cungroitext.Font = Enum.Font.GothamBold
+                    cungroitext.Font = Enum.Font.FredokaOne
                     cungroitext.Text = "Rainbow"
                     cungroitext.TextSize = 14.000
                     cungroitext.TextXAlignment = Enum.TextXAlignment.Left
@@ -1512,7 +1512,7 @@ function Library.CreateMain(Setting)
                     hoithotext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                     hoithotext.BackgroundTransparency = 1.000
                     hoithotext.Size = UDim2.new(0, 85, 0, 25)
-                    hoithotext.Font = Enum.Font.GothamBold
+                    hoithotext.Font = Enum.Font.FredokaOne
                     hoithotext.Text = "Breathing"
                     hoithotext.TextSize = 14.000
                     hoithotext.TextXAlignment = Enum.TextXAlignment.Left
@@ -1982,7 +1982,7 @@ function Library.CreateMain(Setting)
                     Boxxxx.BackgroundTransparency = 1.000
                     Boxxxx.Position = UDim2.new(0, 5, 0, 0)
                     Boxxxx.Size = UDim2.new(1, -5, 1, 0)
-                    Boxxxx.Font = Enum.Font.GothamBold
+                    Boxxxx.Font = Enum.Font.FredokaOne
                     Boxxxx.PlaceholderText = Placeholder
                     Boxxxx.Text = ""
                     Boxxxx.TextSize = 14.000
@@ -2125,7 +2125,7 @@ function Library.CreateMain(Setting)
                     SliderButton.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                     SliderButton.BackgroundTransparency = 1.000
                     SliderButton.Size = UDim2.new(1, 0, 1, 0)
-                    SliderButton.Font = Enum.Font.GothamBold
+                    SliderButton.Font = Enum.Font.FredokaOne
                     SliderButton.Text = ""
                     SliderButton.TextColor3 = Color3.fromRGB(230, 230, 230)
                     SliderButton.TextSize = 14.000
@@ -2167,7 +2167,7 @@ function Library.CreateMain(Setting)
                     Sliderbox_2.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                     Sliderbox_2.BackgroundTransparency = 1.000
                     Sliderbox_2.Size = UDim2.new(1, 0, 1, 0)
-                    Sliderbox_2.Font = Enum.Font.GothamBold
+                    Sliderbox_2.Font = Enum.Font.FredokaOne
                     Sliderbox_2.Text = ""
                     Sliderbox_2.TextSize = 14.000
                     Sliderbox_2.TextColor3 = getgenv().UIColor["Text Color"]
@@ -2342,7 +2342,7 @@ function Library.CreateMain(Setting)
         TabTitle.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
         TabTitle.BackgroundTransparency = 1.000
         TabTitle.Size = UDim2.new(1, 0, 1, 0)
-        TabTitle.Font = Enum.Font.GothamBold
+        TabTitle.Font = Enum.Font.FredokaOne
         TabTitle.Text = Page_Name
         TabTitle.TextColor3 = Color3.fromRGB(230, 230, 230)
         TabTitle.TextSize = 14.000
@@ -2395,7 +2395,7 @@ function Library.CreateMain(Setting)
         PageTitle.BackgroundTransparency = 1.000
         PageTitle.Position = UDim2.new(0, 5, 0, 0)
         PageTitle.Size = UDim2.new(1, 0, 0, 25)
-        PageTitle.Font = Enum.Font.GothamBold
+        PageTitle.Font = Enum.Font.FredokaOne
         PageTitle.Text = Page_Title
         PageTitle.TextSize = 16.000
         PageTitle.TextXAlignment = Enum.TextXAlignment.Left
@@ -2482,7 +2482,7 @@ function Library.CreateMain(Setting)
         Bucu.BackgroundTransparency = 1.000
         Bucu.Position = UDim2.new(0, 30, 0, 0)
         Bucu.Size = UDim2.new(1, -30, 1, 0)
-        Bucu.Font = Enum.Font.GothamBold
+        Bucu.Font = Enum.Font.FredokaOne
         Bucu.Text = ""
         Bucu.TextSize = 14.000
         Bucu.TextXAlignment = Enum.TextXAlignment.Left
@@ -2640,7 +2640,7 @@ function Library.CreateMain(Setting)
                 Sectiontitle.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                 Sectiontitle.BackgroundTransparency = 1.000
                 Sectiontitle.Size = UDim2.new(1, 0, 1, 0)
-                Sectiontitle.Font = Enum.Font.GothamBold
+                Sectiontitle.Font = Enum.Font.FredokaOne
                 Sectiontitle.Text = Section_Name
                 Sectiontitle.TextSize = 14.000
                 Sectiontitle.TextColor3 = getgenv().UIColor["Section Text Color"]
@@ -3121,7 +3121,7 @@ function Library.CreateMain(Setting)
                         DropdownButton.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                         DropdownButton.BackgroundTransparency = 1.000
                         DropdownButton.Size = UDim2.new(1, 0, 1, 0)
-                        DropdownButton.Font = Enum.Font.GothamBold
+                        DropdownButton.Font = Enum.Font.FredokaOne
                         DropdownButton.Text = ""
                         DropdownButton.TextColor3 = Color3.fromRGB(230, 230, 230)
                         DropdownButton.TextSize = 14.000
@@ -3274,7 +3274,7 @@ function Library.CreateMain(Setting)
                                     Dropvalbutton.BackgroundTransparency = 1.000
                                     Dropvalbutton.Selectable = false
                                     Dropvalbutton.Size = UDim2.new(1, 0, 1, 0)
-                                    Dropvalbutton.Font = Enum.Font.GothamBold
+                                    Dropvalbutton.Font = Enum.Font.FredokaOne
                                     Dropvalbutton.Text = v
                                     Dropvalbutton.TextSize = 14.000
                                     Dropvalbutton.TextWrapped = true
@@ -3382,7 +3382,7 @@ function Library.CreateMain(Setting)
                                     Dropvalbutton.BackgroundTransparency = 1.000
                                     Dropvalbutton.Selectable = false
                                     Dropvalbutton.Size = UDim2.new(1, 0, 1, 0)
-                                    Dropvalbutton.Font = Enum.Font.GothamBold
+                                    Dropvalbutton.Font = Enum.Font.FredokaOne
                                     Dropvalbutton.Text = i
                                     Dropvalbutton.TextSize = 14.000
                                     Dropvalbutton.TextWrapped = true
@@ -3599,7 +3599,7 @@ function Library.CreateMain(Setting)
                         Bindkey.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                         Bindkey.BackgroundTransparency = 1.000
                         Bindkey.Size = UDim2.new(1, 0, 1, 0)
-                        Bindkey.Font = Enum.Font.GothamBold
+                        Bindkey.Font = Enum.Font.FredokaOne
                         Bindkey.Text = tostring(Default):gsub("Enum.KeyCode.", "");
                         Bindkey.TextSize = 14.000
                         Bindkey.TextColor3 = getgenv().UIColor["Text Color"]
@@ -3736,7 +3736,7 @@ function Library.CreateMain(Setting)
                         Boxxx.BackgroundTransparency = 1.000
                         Boxxx.Position = UDim2.new(0, 5, 0, 0)
                         Boxxx.Size = UDim2.new(1, -5, 1, 0)
-                        Boxxx.Font = Enum.Font.GothamBold
+                        Boxxx.Font = Enum.Font.FredokaOne
                         Boxxx.PlaceholderText = Placeholder
                         Boxxx.Text = ""
                         Boxxx.TextSize = 14.000
@@ -3895,7 +3895,7 @@ function Library.CreateMain(Setting)
                         SliderButton.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                         SliderButton.BackgroundTransparency = 1.000
                         SliderButton.Size = UDim2.new(1, 0, 1, 0)
-                        SliderButton.Font = Enum.Font.GothamBold
+                        SliderButton.Font = Enum.Font.FredokaOne
                         SliderButton.Text = ""
                         SliderButton.TextColor3 = Color3.fromRGB(230, 230, 230)
                         SliderButton.TextSize = 14.000
@@ -3937,7 +3937,7 @@ function Library.CreateMain(Setting)
                         Sliderbox_2.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
                         Sliderbox_2.BackgroundTransparency = 1.000
                         Sliderbox_2.Size = UDim2.new(1, 0, 1, 0)
-                        Sliderbox_2.Font = Enum.Font.GothamBold
+                        Sliderbox_2.Font = Enum.Font.FredokaOne
                         Sliderbox_2.Text = ""
                         Sliderbox_2.TextSize = 14.000
                         Sliderbox_2.TextColor3 = getgenv().UIColor["Text Color"]
