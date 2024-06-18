@@ -1,5 +1,5 @@
 if getgenv().Tvk then 
-    if game.CoreGui:FindFirstChild("ELGATO HUB GUI") then for i, v in ipairs(game.CoreGui:GetChildren()) do if v.Name == "ELGATO HUB GUI" or v.Name == "ELGATO HUB Notification" then v:Destroy() end end end
+    if game.CoreGui:FindFirstChild("ELGATO HUB GUI") then for i, v in ipairs(game.CoreGui:GetChildren()) do if v.Name == "ELGATO HUB GUI" or v.Name == "ELGATO HUB Notification" or v.Name == "ELGATO HUB ON/OFF" then v:Destroy() end end end
 end
 
 getgenv().Tvk = true
@@ -13,7 +13,7 @@ local ScreenGui = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
         
-ScreenGui.Name = "ImageButton"
+ScreenGui.Name = "ELGATO HUB ON/OFF"
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 UILock = true
