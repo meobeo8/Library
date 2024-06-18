@@ -1,95 +1,29 @@
 for _, v in ipairs(game.CoreGui:GetChildren()) do
-    if v.Name == "ScreenGui" or v.Name == "TrueFalseUi" or v.Name == "StopTween" then
+    if v.Name == "ScreenGui" or v.Name == "ELGATO HUB ON/OFF" then
         v:Destroy()
     end
 end
 
-local Speed = 555
-local Rootx = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-
-function TP(Pos)
-   if Rootx then
-    Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    if Distance < 25 then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
-    elseif Distance < 50 then
-        Speed = 300
-    elseif Distance < 250 then
-        Speed = 350
-    elseif Distance < 500 then
-        Speed = 450
-    elseif Distance < 1000 then
-        Speed = 500
-    end
-    game:GetService("TweenService"):Create(
-        game.Players.LocalPlayer.Character.HumanoidRootPart,
-        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-        {CFrame = Pos}
-    ):Play()
-end
-end
-
-local ThunderScreen = Instance.new("ScreenGui")
-local ThunderToggleUI = Instance.new("TextButton")
-local ThunderCornerUI = Instance.new("UICorner")
-local ThunderImageUI = Instance.new("ImageLabel")
-
-ThunderScreen.Name = "TrueFalseUi"
-ThunderScreen.Parent = game.CoreGui
-ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-ThunderToggleUI.Name = "ThunderToggleUI"
-ThunderToggleUI.Parent = ThunderScreen
-ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
-ThunderToggleUI.BorderSizePixel = 0
-ThunderToggleUI.Position = UDim2.new(0.16, 0, 0.2, 0)
-ThunderToggleUI.Size = UDim2.new(0, 45, 0, 45)
-ThunderToggleUI.Font = Enum.Font.FredokaOne
-ThunderToggleUI.Text = ""
-ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-ThunderToggleUI.TextSize = 14.000
-ThunderToggleUI.Draggable = true
-ThunderToggleUI.MouseButton1Click:Connect(function()
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+        
+ScreenGui.Name = "ELGATO HUB ON/OFF"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+UILock = true
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ImageButton.Size = UDim2.new(0, 50, 0, 50)
+ImageButton.Draggable = true
+ImageButton.Image = "http://www.roblox.com/asset/?id=17664629557"
+ImageButton.MouseButton1Down:connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F15,false,game)
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F15,true,game)
 end)
-
-ThunderCornerUI.Name = "ThunderCornerUI"
-ThunderCornerUI.Parent = ThunderToggleUI
-
-ThunderImageUI.Name = "MODILEMAGE"
-ThunderImageUI.Parent = ThunderToggleUI
-ThunderImageUI.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
-ThunderImageUI.BackgroundTransparency = 9
-ThunderImageUI.BorderSizePixel = 0
-ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
-ThunderImageUI.Size = UDim2.new(0, 45, 0, 45)
-ThunderImageUI.Image = "rbxassetid://17664629557"
-
-local ThunderScreen = Instance.new("ScreenGui")
-local ThunderToggleUI = Instance.new("TextButton")
-
-ThunderScreen.Name = "StopTween"
-ThunderScreen.Parent = game.CoreGui
-ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-ThunderToggleUI.Name = "ThunderToggleUI"
-ThunderToggleUI.Parent = ThunderScreen
-ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(244, 244, 0)
-ThunderToggleUI.Position = UDim2.new(0.100, 0, 0.127, 0)
-ThunderToggleUI.Size = UDim2.new(0, 89, 0, 29)
-ThunderToggleUI.Font = Enum.Font.SourceSansSemibold
-ThunderToggleUI.Text = "Stop Tween"
-ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-ThunderToggleUI.TextSize = 20
-ThunderToggleUI.Draggable = false
-
-ThunderToggleUI.MouseButton1Click:Connect(function()
-    if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-        game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-    end
-    TP(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
+UICorner.Parent = ImageButton
 
 local L_1_, L_2_ = {
 	{
