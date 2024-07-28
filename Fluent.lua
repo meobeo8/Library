@@ -1,5 +1,5 @@
 for _, v in ipairs(game.CoreGui:GetChildren()) do
-    if v.Name == "ScreenGui" or v.Name == "ELGATO HUB ON/OFF" then
+    if v.Name == "ScreenGui" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "Main" then
         v:Destroy()
     end
 end
