@@ -5,7 +5,7 @@ local UserInputService = game:GetService("UserInputService")
 
     local Library = {}
 
-function Library()
+function Library:Window()
 
     pcall(function()
         OldInstance:Destroy()
