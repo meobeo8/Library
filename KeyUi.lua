@@ -5,7 +5,7 @@ local UserInputService = game:GetService("UserInputService")
 
     local Library = {}
 
-function Library:Window()
+function Library()
 
     pcall(function()
         OldInstance:Destroy()
@@ -332,7 +332,9 @@ function Library:Window()
                 while true do end do return end
             end
         end)
-        return Window
+        
     end
-    return Library
+    
 end
+return Window
+return Library
