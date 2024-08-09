@@ -6,14 +6,33 @@ for _, v in ipairs(game.CoreGui:GetChildren()) do
     end
 end
 
-local Value = game:GetService("VirtualUser")
-		repeat wait() until game:IsLoaded()
-			game:GetService("Players").LocalPlayer.Idled:connect(function()
-		    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
-				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-				wait(1)
-				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-		   end)
+--anti afk
+local VirtualUser = game:GetService("VirtualUser")
+local character = game.Players.LocalPlayer.Character
+
+game.Players.LocalPlayer.Idled:Connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+
+local hi22 = Instance.new("Hint")
+hi22.Name = "hi22"
+hi22.Parent = game.CoreGui
+hi22.Text = "by .tranvanbaodeptrai"
+
+spawn(function()
+    local startTime = tick()
+    while task.wait() do
+        pcall(function()
+            local elapsedTime = tick() - startTime
+            local hours = math.floor(elapsedTime / 3600)
+            local minutes = math.floor((elapsedTime % 3600) / 60)
+            local seconds = math.floor(elapsedTime % 60)
+            hi22.Text = "Time: ".. hours.. ":".. minutes.. ":".. seconds.. " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()).. " | Ping: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+        end)
+    end
+end)
+
 
 local ScreenGui = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
