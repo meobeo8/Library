@@ -22,7 +22,7 @@ hi22.Text = "by .tranvanbaodeptrai"
 
 spawn(function()
     local startTime = tick()
-    while task.wait() do
+    while wait() do
         pcall(function()
             local elapsedTime = tick() - startTime
             local hours = math.floor(elapsedTime / 3600)
