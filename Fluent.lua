@@ -28,7 +28,7 @@ spawn(function()
             local hours = math.floor(elapsedTime / 3600)
             local minutes = math.floor((elapsedTime % 3600) / 60)
             local seconds = math.floor(elapsedTime % 60)
-            hi22.Text = "Time: ".. hours.. ":".. minutes.. ":".. seconds.. " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()).. " | Ping: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+            hi22.Text = "Time Client: ".. hours.. ":".. minutes.. ":".. seconds.. " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()).. " | Ping: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
         end)
     end
 end)
