@@ -37,7 +37,7 @@ end)
 local ScreenGui = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
-        
+
 ScreenGui.Name = "ELGATO HUB ON/OFF"
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -46,14 +46,69 @@ ImageButton.Parent = ScreenGui
 ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-ImageButton.Size = UDim2.new(0, 50, 0, 50)
+ImageButton.Size = UDim2.new(0, 53, 0, 53)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=17664629557"
+ImageButton.Image = "http://www.roblox.com/asset/?id=18915696341"
 ImageButton.MouseButton1Down:connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F15,false,game)
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F15,true,game)
 end)
+
 UICorner.Parent = ImageButton
+
+if gethui then
+    ScreenGui.Parent = gethui()
+elseif syn.protect_gui then
+    syn.protect_gui(ScreenGui)
+    ScreenGui.Parent = CoreGui
+else
+    ScreenGui.Parent = CoreGui
+end
+
+getgenv().OldInstance = ScreenGui
+
+local function MakeDraggable(gui)
+    local dragging
+    local dragInput
+    local dragStart
+    local startPos
+    local function update(input)
+        local delta = input.Position - dragStart
+        gui.Position =
+            UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+    gui.InputBegan:Connect(function(input)
+        if
+            input.UserInputType == Enum.UserInputType.MouseButton1
+            or input.UserInputType == Enum.UserInputType.Touch
+        then
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+    gui.InputChanged:Connect(function(input)
+        if
+            input.UserInputType == Enum.UserInputType.MouseMovement
+            or input.UserInputType == Enum.UserInputType.Touch
+        then
+            dragInput = input
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            update(input)
+        end
+    end)
+end
+
 
 local L_1_, L_2_ = {
    {
