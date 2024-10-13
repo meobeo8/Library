@@ -12,15 +12,15 @@ local redzlib = {
     Themes = {
         Darker = {
             ["Color Hub 1"] = ColorSequence.new({
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(245, 245, 245)),
-                ColorSequenceKeypoint.new(0.50, Color3.fromRGB(250, 250, 250)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(245, 245, 245))
+                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27.5, 25, 30)),
+                ColorSequenceKeypoint.new(0.50, Color3.fromRGB(32.5, 32.5, 32.5)),
+                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27.5, 25, 30))
             }),
-            ["Color Hub 2"] = Color3.fromRGB(255, 255, 255),
-            ["Color Stroke"] = Color3.fromRGB(220, 220, 220),
-            ["Color Theme"] = Color3.fromRGB(255, 0, 0), -- a deep red color to represent blood
-            ["Color Text"] = Color3.fromRGB(255, 255, 255),
-            ["Color Dark Text"] = Color3.fromRGB(200, 200, 200)
+            ["Color Hub 2"] = Color3.fromRGB(30, 30, 30),
+            ["Color Stroke"] = Color3.fromRGB(40, 40, 40),
+            ["Color Theme"] = Color3.fromRGB(150, 0, 255),
+            ["Color Text"] = Color3.fromRGB(240, 240, 240),
+            ["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
         },
         Dark = {
             ["Color Hub 1"] = ColorSequence.new({
@@ -792,7 +792,7 @@ function redzlib:MakeWindow(Configs)
 	end
 	function Window:AddMinimizeButton(Configs)
 		local Button = MakeDrag(Create("ImageButton", ScreenGui, {
-			Size = UDim2.fromOffset(40, 40),
+			Size = UDim2.fromOffset(45, 45),
 			Position = UDim2.fromScale(0.15, 0.15),
 			BackgroundTransparency = 0,
 			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
