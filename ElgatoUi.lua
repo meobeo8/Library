@@ -331,7 +331,7 @@ local function MakeDrag(Instance)
 			local delta = Input.Position - DragStart
 			local Position = UDim2.new(StartPos.X.Scale, StartPos.X.Offset + delta.X / UIScale, StartPos.Y.Scale, StartPos.Y.Offset + delta.Y / UIScale)
 			-- Instance.Position = Position
-			CreateTween({Instance, "Position", Position, 0.15})
+			CreateTween({Instance, "Position", Position, 0.30})
 		end
 		
 		Instance.MouseButton1Down:Connect(function()
@@ -1808,7 +1808,8 @@ function redzlib:MakeWindow(Configs)
 				Size = UDim2.new(0, 30, 0, 30),
 				Position = UDim2.new(0, 7, 0, 7),
 				Image = Logo,
-				BackgroundTransparency = 1
+				BackgroundTransparency = 0
+				BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			})Make("Corner", ImageLabel, UDim.new(0, 4))Make("Stroke", ImageLabel)
 			
 			local LTitle = InsertTheme(Create("TextLabel", FrameHolder, {
