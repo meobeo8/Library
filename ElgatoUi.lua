@@ -1808,7 +1808,7 @@ function redzlib:MakeWindow(Configs)
 				Size = UDim2.new(0, 30, 0, 30),
 				Position = UDim2.new(0, 7, 0, 7),
 				Image = Logo,
-				BackgroundTransparency = 0
+				BackgroundTransparency = 0,
 				BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			})Make("Corner", ImageLabel, UDim.new(0, 4))Make("Stroke", ImageLabel)
 			
