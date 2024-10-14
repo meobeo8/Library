@@ -9,6 +9,60 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
+
+ScreenGui.Name = "ELGATO HUB ON/OFF"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- TextLabel Properties
+TextLabel.Parent = ScreenGui
+TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BackgroundTransparency = 0.2
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.5, -125, 0, 2)  -- Centered, slightly adjusted for width
+TextLabel.Size = UDim2.new(0, 250, 0, 30)  -- Increased height for better readability
+TextLabel.Font = Enum.Font.GothamBlack
+TextLabel.Text = "ELGATO TIME"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 11.5  -- Slightly increased for better readability
+TextLabel.TextStrokeTransparency = 0.8  -- Added subtle stroke effect for visibility
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)  -- Black stroke for better contrast
+TextLabel.TextWrapped = true
+
+-- UI Gradient for TextLabel background
+local TextLabel_Gradient = Instance.new("UIGradient")
+TextLabel_Gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 105, 180)),  -- Pinkish gradient start
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 191, 255))    -- Light blue gradient end
+}
+TextLabel_Gradient.Rotation = 45  -- Diagonal gradient effect
+TextLabel_Gradient.Parent = TextLabel
+
+-- UICorner for rounded edges
+UICorner.Parent = TextLabel
+UICorner.CornerRadius = UDim.new(0, 8)  -- Slightly rounded corners
+
+-- FPS, PING, and Timer updating logic
+spawn(function()
+    local startTime = tick()
+    while task.wait() do
+        pcall(function()
+            local elapsedTime = tick() - startTime
+            local hours = math.floor(elapsedTime / 3600)
+            local minutes = math.floor((elapsedTime % 3600) / 60)
+            local seconds = math.floor(elapsedTime % 60)
+            TextLabel.Text = "TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
+                " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()) ..
+                " | PING: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+        end)
+    end
+end)
+
+
 local MarketplaceService = game:GetService("MarketplaceService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
