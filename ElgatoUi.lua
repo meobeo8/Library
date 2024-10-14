@@ -21,30 +21,32 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 -- TextLabel Properties
 TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BackgroundTransparency = 0.2
+TextLabel.BackgroundTransparency = 0.5
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, -125, 0, -45)  -- Centered, slightly adjusted for width
-TextLabel.Size = UDim2.new(0, 250, 0, 30)  -- Increased height for better readability
+TextLabel.Position = UDim2.new(0.5, -125, 0, -45)  -- 
+TextLabel.Size = UDim2.new(0, 250, 0, 30)  -- 
 TextLabel.Font = Enum.Font.GothamBlack
 TextLabel.Text = "ELGATO TIME"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 11.5  -- Slightly increased for better readability
-TextLabel.TextStrokeTransparency = 0.8  -- Added subtle stroke effect for visibility
-TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)  -- Black stroke for better contrast
+TextLabel.TextSize = 11.5  -- 
+TextLabel.TextStrokeTransparency = 0.8  -- 
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)  -- 
 TextLabel.TextWrapped = true
 
 -- UI Gradient for TextLabel background
 local TextLabel_Gradient = Instance.new("UIGradient")
 TextLabel_Gradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 105, 180)),  -- Pinkish gradient start
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 191, 255))    -- Light blue gradient end
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),  -- White
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(135, 206, 250))   -- Light Sky Blue
 }
 TextLabel_Gradient.Rotation = 45  -- Diagonal gradient effect
 TextLabel_Gradient.Parent = TextLabel
 
 -- UICorner for rounded edges
 UICorner.Parent = TextLabel
-UICorner.CornerRadius = UDim.new(0, 8)  -- Slightly rounded corners
+UICorner.CornerRadius = UDim.new(0, 8) 
+
+local NG = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
 -- FPS, PING, and Timer updating logic
 spawn(function()
@@ -57,11 +59,11 @@ spawn(function()
             local seconds = math.floor(elapsedTime % 60)
             TextLabel.Text = "TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
                 " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()) ..
-                " | PING: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+                " | PING: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString() ..
+                "\nGAME:  " .. NG
         end)
     end
 end)
-
 
 local MarketplaceService = game:GetService("MarketplaceService")
 local UserInputService = game:GetService("UserInputService")
@@ -129,7 +131,6 @@ local redzlib = {
     Tabs = {},
     Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/refs/heads/main/Icons.Lua"))()
 }
-
 
 local ViewportSize = workspace.CurrentCamera.ViewportSize
 local UIScale = ViewportSize.Y / 450
