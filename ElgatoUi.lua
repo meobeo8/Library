@@ -1,5 +1,5 @@
 for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "redz Library V5" then
+    if v.Name == "elgato status" or v.Name == "redz Library V5" then
         v:Destroy()
     elseif v:IsA("ScreenGui") then
         local frame = v:FindFirstChild("Frame")
@@ -14,7 +14,7 @@ local ImageButton = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
 local TextLabel = Instance.new("TextLabel")
 
-ScreenGui.Name = "ELGATO HUB ON/OFF"
+ScreenGui.Name = "elgato status"
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -23,7 +23,7 @@ TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BackgroundTransparency = 0.5
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, -125, 0, -45)  -- 
+TextLabel.Position = UDim2.new(0.5, -125, 0, -30)  -- 
 TextLabel.Size = UDim2.new(0, 250, 0, 30)  -- 
 TextLabel.Font = Enum.Font.GothamBlack
 TextLabel.Text = "ELGATO TIME"
