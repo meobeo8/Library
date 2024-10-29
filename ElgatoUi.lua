@@ -59,8 +59,7 @@ spawn(function()
             local seconds = math.floor(elapsedTime % 60)
             TextLabel.Text = "TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
                 " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()) ..
-                " | PING: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString() ..
-                "\nGAME:  " .. NG
+                " | PING: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
         end)
     end
 end)
