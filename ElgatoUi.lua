@@ -9,10 +9,11 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
+local UserInputService = game:GetService("UserInputService")
+
 local ScreenGui = Instance.new("ScreenGui")
-local ImageButton = Instance.new("ImageButton")
-local UICorner = Instance.new("UICorner")
 local TextLabel = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
 
 ScreenGui.Name = "elgato status"
 ScreenGui.Parent = game.CoreGui
@@ -23,14 +24,14 @@ TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BackgroundTransparency = 0.5
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, -125, 0, -30)  -- 
-TextLabel.Size = UDim2.new(0, 250, 0, 30)  -- 
+TextLabel.Position = UDim2.new(0.5, -125, 0, -30)
+TextLabel.Size = UDim2.new(0, 250, 0, 30)
 TextLabel.Font = Enum.Font.GothamBlack
 TextLabel.Text = "ELGATO TIME"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 11.5  -- 
-TextLabel.TextStrokeTransparency = 0.8  -- 
-TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)  -- 
+TextLabel.TextSize = 11.5
+TextLabel.TextStrokeTransparency = 0.8
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextWrapped = true
 
 -- UI Gradient for TextLabel background
@@ -44,9 +45,7 @@ TextLabel_Gradient.Parent = TextLabel
 
 -- UICorner for rounded edges
 UICorner.Parent = TextLabel
-UICorner.CornerRadius = UDim.new(0, 8) 
-
-local NG = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+UICorner.CornerRadius = UDim.new(0, 8)
 
 -- FPS, PING, and Timer updating logic
 spawn(function()
@@ -63,6 +62,50 @@ spawn(function()
         end)
     end
 end)
+
+-- Make TextLabel draggable
+local function MakeDraggable(gui)
+    local dragging
+    local dragInput
+    local dragStart
+    local startPos
+
+    local function update(input)
+        local delta = input.Position - dragStart
+        gui.Position = UDim2.new(
+            startPos.X.Scale, startPos.X.Offset + delta.X,
+            startPos.Y.Scale, startPos.Y.Offset + delta.Y
+        )
+    end
+
+    gui.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    gui.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            update(input)
+        end
+    end)
+end
+
+MakeDraggable(TextLabel)
 
 local MarketplaceService = game:GetService("MarketplaceService")
 local UserInputService = game:GetService("UserInputService")
