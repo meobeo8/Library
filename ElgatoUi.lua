@@ -25,11 +25,11 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BackgroundTransparency = 0.5
 TextLabel.BorderSizePixel = 0
 TextLabel.Position = UDim2.new(0.5, -125, 0, -30)
-TextLabel.Size = UDim2.new(0, 250, 0, 30)
+TextLabel.Size = UDim2.new(0, 230, 0, 30)
 TextLabel.Font = Enum.Font.GothamBlack
 TextLabel.Text = "ELGATO TIME"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 11.5
+TextLabel.TextSize = 11
 TextLabel.TextStrokeTransparency = 0.8
 TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextWrapped = true
@@ -47,18 +47,29 @@ TextLabel_Gradient.Parent = TextLabel
 UICorner.Parent = TextLabel
 UICorner.CornerRadius = UDim.new(0, 8)
 
+-- Required Services
+local Stats = game:GetService("Stats")
+local RunService = game:GetService("RunService")
+
 -- FPS, PING, and Timer updating logic
 spawn(function()
     local startTime = tick()
-    while task.wait() do
+    while task.wait(0.1) do  -- Reduced wait for quicker updates
         pcall(function()
             local elapsedTime = tick() - startTime
             local hours = math.floor(elapsedTime / 3600)
             local minutes = math.floor((elapsedTime % 3600) / 60)
             local seconds = math.floor(elapsedTime % 60)
-            TextLabel.Text = "TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
-                " | FPS: " .. math.floor(workspace:GetRealPhysicsFPS()) ..
-                " | PING: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+
+            -- Get FPS
+            local fps = math.floor(workspace:GetRealPhysicsFPS())
+            -- Get Ping
+            local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
+
+            -- Display in TextLabel
+            TextLabel.Text = "CLIENT TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
+                " | FPS: " .. fps ..
+                " | PING: " .. ping .. " ms"
         end)
     end
 end)
