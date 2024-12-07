@@ -1849,17 +1849,18 @@ function redzlib:MakeWindow(Configs)
 			}), "Stroke")Make("Corner", SelectedFrame, UDim.new(0, 4))
 			
 			local TextBoxInput = InsertTheme(Create("TextBox", SelectedFrame, {
-				Size = UDim2.new(0.85, 0, 0.85, 0),
-				AnchorPoint = Vector2.new(0.5, 0.5),
-				Position = UDim2.new(0.5, 0, 0.5, 0),
-				BackgroundTransparency = 1,
-				Font = Enum.Font.GothamBold,
-				TextScaled = true,
-				TextColor3 = Theme["Color Text"],
-				ClearTextOnFocus = TClearText,
-				PlaceholderText = TPlaceholderText,
-				Text = TDefault
-			}), "Text")
+    Size = UDim2.new(0.85, 0, 0.85, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    BackgroundTransparency = 1,
+    Font = Enum.Font.GothamBold,
+    TextScaled = false,
+    TextSize = 10,
+    TextColor3 = Theme["Color Text"],
+    ClearTextOnFocus = TClearText,
+    PlaceholderText = TPlaceholderText,
+    Text = TDefault
+}), "Text")
 			
 			local Pencil = Create("ImageLabel", SelectedFrame, {
 				Size = UDim2.new(0, 12, 0, 12),
