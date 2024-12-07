@@ -1855,7 +1855,7 @@ function redzlib:MakeWindow(Configs)
     BackgroundTransparency = 1,
     Font = Enum.Font.GothamBold,
     TextScaled = false,
-    TextSize = 8,
+    TextSize = 1,
     TextColor3 = Theme["Color Text"],
     ClearTextOnFocus = TClearText,
     PlaceholderText = TPlaceholderText,
