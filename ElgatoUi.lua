@@ -1740,7 +1740,7 @@ function redzlib:MakeWindow(Configs)
 			local LabelVal = InsertTheme(Create("TextLabel", SliderHolder, {
 				Size = UDim2.new(0, 14, 0, 14),
 				AnchorPoint = Vector2.new(1, 0.5),
-				Position = UDim2.new(0, 0, 0.5),
+				Position = UDim2.new(-0.05, 0, 0.5),
 				BackgroundTransparency = 1,
 				TextColor3 = Theme["Color Text"],
 				Font = Enum.Font.FredokaOne,
