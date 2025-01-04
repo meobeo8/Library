@@ -171,10 +171,10 @@ local redzlib = {
         Version = "1.1.0"
     },
     Save = {
-        UISize = {550, 380},
-        TabSize = 160,
-        Theme = "Darker"
-    },
+    UISize = _G.SizeUI or {550, 380},
+    TabSize = 160,
+    Theme = "Darker"
+    }
     Settings = {},
     Connection = {},
     Instances = {},
