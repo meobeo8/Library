@@ -9,6 +9,32 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
+repeat wait() until game:IsLoaded()
+local Players = game:GetService("Players")
+local plr = Players.LocalPlayer
+
+for _, v in next, getconnections(plr.Idled) do
+    v:Disable()
+end
+
+local VirtualUser = game:GetService("VirtualUser")
+local status = getgenv().afk_toggle
+if status == nil then
+    getgenv().afk_toggle = false
+end
+
+if not plr then
+    error("Failed to get LocalPlayer reference")
+end
+
+plr.Idled:Connect(function()
+    if not getgenv().afk_toggle then return end
+    pcall(function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+    end)
+end)
+
 local UserInputService = game:GetService("UserInputService")
 
 local ScreenGui = Instance.new("ScreenGui")
