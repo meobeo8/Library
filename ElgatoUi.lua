@@ -1,5 +1,5 @@
 for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "elgato status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" then
+    if v.Name == "elgato status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "elgato_blackscreen" then
         v:Destroy()
     elseif v:IsA("ScreenGui") then
         local frame = v:FindFirstChild("Frame")
