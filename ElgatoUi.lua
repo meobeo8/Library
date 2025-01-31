@@ -36,7 +36,6 @@ plr.Idled:Connect(function()
 end)
 
 local UserInputService = game:GetService("UserInputService")
-
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
 local UICorner = Instance.new("UICorner")
@@ -45,7 +44,6 @@ ScreenGui.Name = "elgato status"
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
--- TextLabel Properties
 TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BackgroundTransparency = 0.5
@@ -60,47 +58,38 @@ TextLabel.TextStrokeTransparency = 0.8
 TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextWrapped = true
 
--- UI Gradient for TextLabel background
 local TextLabel_Gradient = Instance.new("UIGradient")
 TextLabel_Gradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),  -- White
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(135, 206, 250))   -- Light Sky Blue
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(135, 206, 250))
 }
-TextLabel_Gradient.Rotation = 45  -- Diagonal gradient effect
+TextLabel_Gradient.Rotation = 45
 TextLabel_Gradient.Parent = TextLabel
 
--- UICorner for rounded edges
 UICorner.Parent = TextLabel
 UICorner.CornerRadius = UDim.new(0, 8)
 
--- Required Services
 local Stats = game:GetService("Stats")
-local RunService = game:GetService("RunService")
 
--- FPS, PING, and Timer updating logic
 spawn(function()
     local startTime = tick()
-    while task.wait(0.1) do  -- Reduced wait for quicker updates
+    while task.wait(0.1) do
         pcall(function()
             local elapsedTime = tick() - startTime
             local hours = math.floor(elapsedTime / 3600)
             local minutes = math.floor((elapsedTime % 3600) / 60)
             local seconds = math.floor(elapsedTime % 60)
-
-            -- Get FPS
             local fps = math.floor(workspace:GetRealPhysicsFPS())
-            -- Get Ping
-            local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
+            local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) -- Define ping here
 
-            -- Display in TextLabel
             TextLabel.Text = "CLIENT TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
                 " | FPS: " .. fps ..
-                " | PING: " .. ping .. " ms"
+                " | PING: " .. ping .. " ms\nEXECUTOR: " .. (identifyexecutor() or "Unknown") .. 
+                " | TOTAL PLAYERS: " .. #game.Players:GetPlayers()
         end)
     end
 end)
 
--- Make TextLabel draggable
 local function MakeDraggable(gui)
     local dragging
     local dragInput
