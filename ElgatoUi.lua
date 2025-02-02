@@ -73,7 +73,7 @@ local Stats = game:GetService("Stats")
 
 spawn(function()
     local startTime = tick()
-    while task.wait(0.1) do
+    while task.wait() do
         pcall(function()
             local elapsedTime = tick() - startTime
             local hours = math.floor(elapsedTime / 3600)
