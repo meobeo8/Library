@@ -79,8 +79,8 @@ spawn(function()
             local hours = math.floor(elapsedTime / 3600)
             local minutes = math.floor((elapsedTime % 3600) / 60)
             local seconds = math.floor(elapsedTime % 60)
-            local fps = math.floor(workspace:GetRealPhysicsFPS())
-            local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) -- Define ping here
+            local fps = math.floor(Stats.Workspace.FPS:GetValue()) 
+            local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
 
             TextLabel.Text = "CLIENT TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
                 " | FPS: " .. fps ..
@@ -89,6 +89,7 @@ spawn(function()
         end)
     end
 end)
+
 
 local function MakeDraggable(gui)
     local dragging
