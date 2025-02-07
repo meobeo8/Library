@@ -10,29 +10,16 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
 end
 
 repeat wait() until game:IsLoaded()
-local Players = game:GetService("Players")
-local plr = Players.LocalPlayer
+local VirtualUser = game:GetService("VirtualUser")
+local plr = game:GetService("Players").LocalPlayer
 
 for _, v in next, getconnections(plr.Idled) do
     v:Disable()
 end
 
-local VirtualUser = game:GetService("VirtualUser")
-local status = getgenv().afk_toggle
-if status == nil then
-    getgenv().afk_toggle = false
-end
-
-if not plr then
-    error("Failed to get LocalPlayer reference")
-end
-
 plr.Idled:Connect(function()
-    if not getgenv().afk_toggle then return end
-    pcall(function()
-        VirtualUser:CaptureController()
-        VirtualUser:ClickButton2(Vector2.new())
-    end)
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
 end)
 
 local UserInputService = game:GetService("UserInputService")
@@ -82,10 +69,10 @@ spawn(function()
             local fps = math.floor(Stats.Workspace.FPS:GetValue()) 
             local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
 
-            TextLabel.Text = "CLIENT TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
+            TextLabel.Text = "TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
                 " | FPS: " .. fps ..
                 " | PING: " .. ping .. " ms\nEXECUTOR: " .. (identifyexecutor() or "Unknown") .. 
-                " | TOTAL PLAYERS: " .. #game.Players:GetPlayers()
+                " | PLAYERS: " .. #game.Players:GetPlayers()
         end)
     end
 end)
