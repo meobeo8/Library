@@ -35,12 +35,12 @@ TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 TextLabel.BackgroundTransparency = 0.2
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, -110, 0.2, 50)
-TextLabel.Size = UDim2.new(0, 190, 0, 100)
+TextLabel.Position = UDim2.new(0.5, -110, 0.01, 50)
+TextLabel.Size = UDim2.new(0, 170, 0, 90)
 TextLabel.Font = Enum.Font.GothamBold
 TextLabel.Text = "ELGATO STATUS"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 17
+TextLabel.TextSize = 15
 TextLabel.TextStrokeTransparency = 0.6
 TextLabel.TextWrapped = true
 
