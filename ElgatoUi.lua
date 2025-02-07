@@ -35,7 +35,7 @@ TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 TextLabel.BackgroundTransparency = 0.2
 TextLabel.BorderSizePixel = 0
-TextLabel.Size = UDim2.new(0, 170, 0, 90)
+TextLabel.Size = UDim2.new(0, 165, 0, 90)
 TextLabel.Position = UDim2.new(0.5, 0, 0.10, 0) 
 TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 TextLabel.Font = Enum.Font.GothamBold
@@ -60,11 +60,13 @@ spawn(function()
             local seconds = math.floor(elapsedTime % 60)
             local fps = math.floor(Stats.Workspace.FPS:GetValue())
             local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
+            local exec = identifyexecutor() or "TELL EM"
 
             TextLabel.Text =
                 "— ELGATO STATUS —\n" ..
                 "⏳ TIME : " .. string.format("%02d:%02d:%02d", hours, minutes, seconds) .. "\n" ..
                 "📶 PING : " .. ping .. " ms\n" ..
+                "🖥️ EXEC : " .. exec .. "\n" ..
                 "👥 PLAYERS : " .. #game.Players:GetPlayers() .. "\n" ..
                 "🎮 FPS  : " .. fps
         end)
