@@ -32,26 +32,17 @@ ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 TextLabel.Parent = ScreenGui
-TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BackgroundTransparency = 0.5
+TextLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+TextLabel.BackgroundTransparency = 0.2
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, -125, 0, -30)
-TextLabel.Size = UDim2.new(0, 250, 0, 40)
-TextLabel.Font = Enum.Font.GothamBlack
-TextLabel.Text = "ELGATO TIME"
+TextLabel.Position = UDim2.new(0.5, -110, 0, 50)
+TextLabel.Size = UDim2.new(0, 190, 0, 100)
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Text = "ELGATO STATUS"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 11
-TextLabel.TextStrokeTransparency = 0.8
-TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 17
+TextLabel.TextStrokeTransparency = 0.6
 TextLabel.TextWrapped = true
-
-local TextLabel_Gradient = Instance.new("UIGradient")
-TextLabel_Gradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(135, 206, 250))
-}
-TextLabel_Gradient.Rotation = 45
-TextLabel_Gradient.Parent = TextLabel
 
 UICorner.Parent = TextLabel
 UICorner.CornerRadius = UDim.new(0, 8)
@@ -60,19 +51,21 @@ local Stats = game:GetService("Stats")
 
 spawn(function()
     local startTime = tick()
-    while task.wait() do
+    while wait() do
         pcall(function()
             local elapsedTime = tick() - startTime
             local hours = math.floor(elapsedTime / 3600)
             local minutes = math.floor((elapsedTime % 3600) / 60)
             local seconds = math.floor(elapsedTime % 60)
-            local fps = math.floor(Stats.Workspace.FPS:GetValue()) 
+            local fps = math.floor(Stats.Workspace.FPS:GetValue())
             local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
 
-            TextLabel.Text = "TIME: " .. hours .. ":" .. minutes .. ":" .. seconds ..
-                " | FPS: " .. fps ..
-                " | PING: " .. ping .. " ms\nEXECUTOR: " .. (identifyexecutor() or "Unknown") .. 
-                " | PLAYERS: " .. #game.Players:GetPlayers()
+            TextLabel.Text =
+                "— ELGATO STATUS —\n" ..
+                "⏳ TIME : " .. string.format("%02d:%02d:%02d", hours, minutes, seconds) .. "\n" ..
+                "📶 PING : " .. ping .. " ms\n" ..
+                "🎮 FPS  : " .. fps .. "\n" ..
+                "👥 PLAYERS : " .. #game.Players:GetPlayers()
         end)
     end
 end)
