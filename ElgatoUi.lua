@@ -35,8 +35,9 @@ TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 TextLabel.BackgroundTransparency = 0.2
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, -110, 0.01, 50)
 TextLabel.Size = UDim2.new(0, 170, 0, 90)
+TextLabel.Position = UDim2.new(0.5, 0, 0.10, 0) 
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 TextLabel.Font = Enum.Font.GothamBold
 TextLabel.Text = "ELGATO STATUS"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -64,12 +65,11 @@ spawn(function()
                 "— ELGATO STATUS —\n" ..
                 "⏳ TIME : " .. string.format("%02d:%02d:%02d", hours, minutes, seconds) .. "\n" ..
                 "📶 PING : " .. ping .. " ms\n" ..
-                "🎮 FPS  : " .. fps .. "\n" ..
-                "👥 PLAYERS : " .. #game.Players:GetPlayers()
+                "👥 PLAYERS : " .. #game.Players:GetPlayers() .. "\n" ..
+                "🎮 FPS  : " .. fps
         end)
     end
 end)
-
 
 local function MakeDraggable(gui)
     local dragging
