@@ -35,18 +35,18 @@ TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 TextLabel.BackgroundTransparency = 0.2
 TextLabel.BorderSizePixel = 0
-TextLabel.Size = UDim2.new(0, 165, 0, 90)
-TextLabel.Position = UDim2.new(0.5, 0, 0.10, 0) 
+TextLabel.Size = UDim2.new(0, 140, 0, 80)
+TextLabel.Position = UDim2.new(0.5, 0, 0.10, 0)
 TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 TextLabel.Font = Enum.Font.GothamBold
 TextLabel.Text = "ELGATO STATUS"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 15
+TextLabel.TextSize = 13.5
 TextLabel.TextStrokeTransparency = 0.6
 TextLabel.TextWrapped = true
 
 UICorner.Parent = TextLabel
-UICorner.CornerRadius = UDim.new(0, 8)
+UICorner.CornerRadius = UDim.new(0, 7)
 
 local Stats = game:GetService("Stats")
 
