@@ -35,20 +35,30 @@ TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 TextLabel.BackgroundTransparency = 0.2
 TextLabel.BorderSizePixel = 0
-TextLabel.Size = UDim2.new(0, 140, 0, 80)
+TextLabel.Size = UDim2.new(0, 105, 0, 65)
 TextLabel.Position = UDim2.new(0.5, 0, 0.10, 0)
 TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 TextLabel.Font = Enum.Font.GothamBold
 TextLabel.Text = "ELGATO STATUS"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 13.5
+TextLabel.TextSize = 10
 TextLabel.TextStrokeTransparency = 0.6
 TextLabel.TextWrapped = true
 
 UICorner.Parent = TextLabel
-UICorner.CornerRadius = UDim.new(0, 7)
+UICorner.CornerRadius = UDim.new(0, 6)
 
 local Stats = game:GetService("Stats")
+local RunService = game:GetService("RunService")
+
+local fps = 0
+local lastTick = tick()
+
+RunService.RenderStepped:Connect(function()
+    local now = tick()
+    fps = math.floor(1 / (now - lastTick))
+    lastTick = now
+end)
 
 spawn(function()
     local startTime = tick()
@@ -58,9 +68,8 @@ spawn(function()
             local hours = math.floor(elapsedTime / 3600)
             local minutes = math.floor((elapsedTime % 3600) / 60)
             local seconds = math.floor(elapsedTime % 60)
-            local fps = math.floor(Stats.Workspace.FPS:GetValue())
             local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
-            local exec = identifyexecutor() or "TELL EM"
+            local exec = identifyexecutor() or "IDK"
 
             TextLabel.Text =
                 "— ELGATO STATUS —\n" ..
