@@ -51,18 +51,32 @@ UICorner.CornerRadius = UDim.new(0, 6)
 local Stats = game:GetService("Stats")
 local RunService = game:GetService("RunService")
 
-local fps = 0
+local fpsValues = {}
+local maxSamples = 30  
 local lastTick = tick()
 
 RunService.RenderStepped:Connect(function()
     local now = tick()
-    fps = math.floor(1 / (now - lastTick))
+    local currentFPS = math.floor(1 / (now - lastTick))
     lastTick = now
+
+    table.insert(fpsValues, currentFPS)
+    if #fpsValues > maxSamples then
+        table.remove(fpsValues, 1)
+    end
 end)
+
+local function getAverageFPS()
+    local sum = 0
+    for _, value in ipairs(fpsValues) do
+        sum = sum + value
+    end
+    return #fpsValues > 0 and math.floor(sum / #fpsValues) or 0
+end
 
 spawn(function()
     local startTime = tick()
-    while wait() do
+    while wait(0.01) do
         pcall(function()
             local elapsedTime = tick() - startTime
             local hours = math.floor(elapsedTime / 3600)
@@ -77,7 +91,7 @@ spawn(function()
                 "📶 PING : " .. ping .. " ms\n" ..
                 "🖥️ EXEC : " .. exec .. "\n" ..
                 "👥 PLAYERS : " .. #game.Players:GetPlayers() .. "\n" ..
-                "🎮 FPS  : " .. fps
+                "🎮 FPS  : " .. getAverageFPS()
         end)
     end
 end)
