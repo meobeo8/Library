@@ -877,6 +877,8 @@ function redzlib:SetTheme(NewTheme)
     end
 
     table.foreach(redzlib.Instances, function(_, Val)
+        if not Val.Instance then return end
+
         if Val.Type == "Gradient" then
             Val.Instance.Color = Theme["Color Hub 1"]
         elseif Val.Type == "Frame" then
@@ -885,22 +887,24 @@ function redzlib:SetTheme(NewTheme)
             Val.Instance[GetColor(Val.Instance)] = Theme["Color Stroke"]
         elseif Val.Type == "Theme" then
             Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
-        elseif Val.Type == "Text" then
-            Val.Instance[GetColor(Val.Instance)] = Theme["Color Text"]
-        elseif Val.Type == "DarkText" then
-            Val.Instance[GetColor(Val.Instance)] = Theme["Color Dark Text"]
-        elseif Val.Type == "ScrollBar" then
-            Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
+        elseif Val.Type == "Text" and Val.Instance:IsA("TextLabel") then
+            Val.Instance.TextColor3 = Theme["Color Text"]
+        elseif Val.Type == "DarkText" and Val.Instance:IsA("TextLabel") then
+            Val.Instance.TextColor3 = Theme["Color Dark Text"]
+        elseif Val.Type == "ScrollBar" and Val.Instance:IsA("ScrollingFrame") then
+            Val.Instance.ScrollBarImageColor3 = Theme["Color Theme"]
+        elseif Val.Type == "TextBox" and Val.Instance:IsA("TextBox") then
+            Val.Instance.TextColor3 = Theme["Color Text"] 
+            Val.Instance.BackgroundColor3 = Theme["Color Stroke"] or Color3.fromRGB(50, 50, 50)
         end
     end)
 end
-
 
 function redzlib:SetScale(NewScale)
 	NewScale = ViewportSize.Y / math.clamp(NewScale, 300, 2000)
 	UIScale, ScreenGui.Scale.Scale = NewScale, NewScale
 end
-
+--
 function redzlib:MakeWindow(Configs)
 	local WTitle = Configs[1] or Configs.Name or Configs.Title or "redz Library V5"
 	local WMiniText = Configs[2] or Configs.SubTitle or "by : redz9999"
