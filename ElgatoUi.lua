@@ -1,4 +1,4 @@
--- ui made by redz - remake by me
+-- ui made by redz - remake by elgato
 
 for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     if v.Name == "elgato status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "elgato_blackscreen" or v.Name == "elgato_keysystem" then
