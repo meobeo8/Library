@@ -1,3 +1,5 @@
+-- ui made by redz - remake by me
+
 for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     if v.Name == "elgato status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "elgato_blackscreen" or v.Name == "elgato_keysystem" then
         v:Destroy()
@@ -921,16 +923,32 @@ local function LoadFile()
     end
 end;LoadFile()
 
-local UISizeX, UISizeY = unpack(redzlib.Save.UISize)
+local RunService = game:GetService("RunService")
+local Camera = workspace.CurrentCamera
+
+local BASE_WIDTH, BASE_HEIGHT = 500, 320
+
 local MainFrame = InsertTheme(Create("ImageButton", ScreenGui, {
-    Size = UDim2.fromOffset(UISizeX, UISizeY),
-    Position = UDim2.new(0.5, -UISizeX/2, 0.5, -UISizeY/2),
+    Size = UDim2.fromOffset(BASE_WIDTH, BASE_HEIGHT),
+    Position = UDim2.new(0.5, -BASE_WIDTH/2, 0.5, -BASE_HEIGHT/2),
     BackgroundTransparency = 0.03,
     Name = "Hub"
 }), "Main")
-Make("Gradient", MainFrame, {
-    Rotation = 45
-})MakeDrag(MainFrame)
+Make("Gradient", MainFrame, { Rotation = 45 })
+MakeDrag(MainFrame)
+
+local function elgatofunc1()
+    local viewportSize = Camera.ViewportSize
+    local desiredWidth = math.min(viewportSize.X * 0.6, BASE_WIDTH)
+    local desiredHeight = math.min(viewportSize.Y * 0.6, BASE_HEIGHT)
+
+    MainFrame.Size = UDim2.fromOffset(desiredWidth, desiredHeight)
+    MainFrame.Position = UDim2.new(0.5, -desiredWidth/2, 0.5, -desiredHeight/2)
+end
+
+Camera:GetPropertyChangedSignal("ViewportSize"):Connect(elgatofunc1)
+elgatofunc1()
+
 
 local MainCorner = Make("Corner", MainFrame)
 
@@ -1408,13 +1426,11 @@ function Tab:Destroy() TabSelect:Destroy() Container:Destroy() end
 
 function Tab:AddSection(Configs)
     local SectionName = type(Configs) == "string" and Configs or Configs[1] or Configs.Name or Configs.Title or Configs.Section
-
     local SectionFrame = Create("Frame", Container, {
         Size = UDim2.new(1, 0, 0, 20),
         BackgroundTransparency = 1,
         Name = "Option"
     })
-
     local SectionLabel = InsertTheme(Create("TextLabel", SectionFrame, {
         Font = Enum.Font.GothamBold,
         Text = SectionName,
@@ -1426,19 +1442,18 @@ function Tab:AddSection(Configs)
         TextSize = 14,
         TextXAlignment = "Left"
     }), "Text")
-
     local Section = {}
     table.insert(redzlib.Options, {type = "Section", Name = SectionName, func = Section})
-
     function Section:Visible(Bool)
-        if Bool == nil then SectionFrame.Visible = not SectionFrame.Visible return end
+        if Bool == nil then
+            SectionFrame.Visible = not SectionFrame.Visible
+            return
+        end
         SectionFrame.Visible = Bool
     end
-
     function Section:Destroy()
         SectionFrame:Destroy()
     end
-
     function Section:Set(New)
         if New then
             SectionLabel.Text = GetStr(New)
@@ -1447,16 +1462,17 @@ function Tab:AddSection(Configs)
     return Section
 end
 
-
 function Tab:AddParagraph(Configs)
     local PName = Configs[1] or Configs.Title or "Paragraph"
     local PDesc = Configs[2] or Configs.Text or ""
-
     local Frame, LabelFunc = ButtonFrame(Container, PName, PDesc, UDim2.new(1, -20))
-
     local Paragraph = {}
-    function Paragraph:Visible(...) Funcs:ToggleVisible(Frame, ...) end
-    function Paragraph:Destroy() Frame:Destroy() end
+    function Paragraph:Visible(...)
+        Funcs:ToggleVisible(Frame, ...)
+    end
+    function Paragraph:Destroy()
+        Frame:Destroy()
+    end
     function Paragraph:SetTitle(Val)
         LabelFunc:SetTitle(GetStr(Val))
     end
@@ -1475,13 +1491,13 @@ function Tab:AddParagraph(Configs)
 end
 
 function Tab:AddButton(Configs)
-    local BName = Configs[1] or Configs.Name or Configs.Title or "Button!"
-    local BDescription = Configs.Desc or Configs.Description or ""
-    local Callback = Funcs:GetCallback(Configs, 2)
+    local name = Configs[1] or Configs.Name or Configs.Title or "Button!"
+    local description = Configs.Desc or Configs.Description or ""
+    local callback = Funcs:GetCallback(Configs, 2)
 
-    local FButton, LabelFunc = ButtonFrame(Container, BName, BDescription, UDim2.new(1, -20))
+    local buttonFrame, labelFunc = ButtonFrame(Container, name, description, UDim2.new(1, -20))
 
-    local ButtonIcon = Create("ImageLabel", FButton, {
+    local buttonIcon = Create("ImageLabel", buttonFrame, {
         Size = UDim2.new(0, 14, 0, 14),
         Position = UDim2.new(1, -10, 0.5),
         AnchorPoint = Vector2.new(1, 0.5),
@@ -1489,24 +1505,45 @@ function Tab:AddButton(Configs)
         Image = "rbxassetid://10709791437"
     })
 
-    FButton.Activated:Connect(function()
-        Funcs:FireCallback(Callback)
+    local uiScale = Instance.new("UIScale")
+    uiScale.Scale = 1
+    uiScale.Parent = buttonFrame
+
+    local TweenService = game:GetService("TweenService")
+    local tweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+
+    local tweenDown = TweenService:Create(uiScale, tweenInfo, {Scale = 0.95})
+    local tweenUp = TweenService:Create(uiScale, tweenInfo, {Scale = 1})
+
+    buttonFrame.Activated:Connect(function()
+        tweenDown:Play()
+        tweenDown.Completed:Wait()
+        tweenUp:Play()
+        tweenUp.Completed:Wait()
+        Funcs:FireCallback(callback)
     end)
 
     local Button = {}
-    function Button:Visible(...) Funcs:ToggleVisible(FButton, ...) end
-    function Button:Destroy() FButton:Destroy() end
-    function Button:Callback(...) Funcs:InsertCallback(Callback, ...) end
+    function Button:Visible(isVisible)
+        Funcs:ToggleVisible(buttonFrame, isVisible)
+    end
+    function Button:Destroy()
+        buttonFrame:Destroy()
+    end
+    function Button:Callback(newCallback)
+        callback = newCallback
+    end
     function Button:Set(Val1, Val2)
         if type(Val1) == "string" and type(Val2) == "string" then
-            LabelFunc:SetTitle(Val1)
-            LabelFunc:SetDesc(Val2)
+            labelFunc:SetTitle(Val1)
+            labelFunc:SetDesc(Val2)
         elseif type(Val1) == "string" then
-            LabelFunc:SetTitle(Val1)
+            labelFunc:SetTitle(Val1)
         elseif type(Val1) == "function" then
-            Callback = Val1
+            callback = Val1
         end
     end
+
     return Button
 end
 
@@ -1544,7 +1581,6 @@ function Tab:AddToggle(Configs)
     local WaitClick
     local function SetToggle(Val)
         if WaitClick then return end
-
         WaitClick, Default = true, Val
         SetFlag(Flag, Default)
         Funcs:FireCallback(Callback, Default)
@@ -1558,17 +1594,24 @@ function Tab:AddToggle(Configs)
             CreateTween({Toggle, "AnchorPoint", Vector2.new(0, 0.5), 0.25, Wait or false})
         end
         WaitClick = false
-    end;task.spawn(SetToggle, Default)
+    end
+    task.spawn(SetToggle, Default)
 
     Button.Activated:Connect(function()
         SetToggle(not Default)
     end)
 
-    local Toggle = {}
-    function Toggle:Visible(...) Funcs:ToggleVisible(Button, ...) end
-    function Toggle:Destroy() Button:Destroy() end
-    function Toggle:Callback(...) Funcs:InsertCallback(Callback, ...)() end
-    function Toggle:Set(Val1, Val2)
+    local ToggleObject = {}
+    function ToggleObject:Visible(...)
+        Funcs:ToggleVisible(Button, ...)
+    end
+    function ToggleObject:Destroy()
+        Button:Destroy()
+    end
+    function ToggleObject:Callback(...)
+        Funcs:InsertCallback(Callback, ...)()
+    end
+    function ToggleObject:Set(Val1, Val2)
         if type(Val1) == "string" and type(Val2) == "string" then
             LabelFunc:SetTitle(Val1)
             LabelFunc:SetDesc(Val2)
@@ -1583,8 +1626,9 @@ function Tab:AddToggle(Configs)
             Callback = Val1
         end
     end
-    return Toggle
+    return ToggleObject
 end
+
 
 function Tab:AddDropdown(Configs)
     local DName = Configs[1] or Configs.Name or Configs.Title or "Dropdown"
@@ -1679,7 +1723,7 @@ function Tab:AddDropdown(Configs)
 
     local function CalculateSize()
         local Count = 0
-        for _,Frame in pairs(ScrollFrame:GetChildren()) do
+        for _, Frame in pairs(ScrollFrame:GetChildren()) do
             if Frame:IsA("Frame") or Frame.Name == "Option" then
                 Count = Count + 1
             end
@@ -1712,8 +1756,7 @@ function Tab:AddDropdown(Configs)
         local FramePos = SelectedFrame.AbsolutePosition
         local ScreenSize = ScreenGui.AbsoluteSize
         local ClampX = math.clamp((FramePos.X / UIScale), 0, ScreenSize.X / UIScale - DropFrame.Size.X.Offset)
-        local ClampY = math.clamp((FramePos.Y / UIScale) , 0, ScreenSize.Y / UIScale)
-
+        local ClampY = math.clamp((FramePos.Y / UIScale), 0, ScreenSize.Y / UIScale)
         local NewPos = UDim2.fromOffset(ClampX, ClampY)
         local AnchorPoint = FramePos.Y > ScreenSize.Y / 1.4 and 1 or ScrollSize > 80 and 0.5 or 0
         DropFrame.AnchorPoint = Vector2.new(0, AnchorPoint)
@@ -1725,16 +1768,6 @@ function Tab:AddDropdown(Configs)
         local MultiSelect = DMultiSelect
         local Options = {}
         Selected = MultiSelect and {} or CheckFlag(Flag) and GetFlag(Flag) or Default[1]
-
-        if MultiSelect then
-            for index, Value in pairs(CheckFlag(Flag) and GetFlag(Flag) or Default) do
-                if type(index) == "string" and (DOptions[index] or table.find(DOptions, index)) then
-                    Selected[index] = Value
-                elseif DOptions[Value] then
-                    Selected[Value] = true
-                end
-            end
-        end
 
         local function CallbackSelected()
             SetFlag(Flag, MultiSelect and Selected or tostring(Selected))
@@ -1757,14 +1790,14 @@ function Tab:AddDropdown(Configs)
 
         local function UpdateSelected()
             if MultiSelect then
-                for _,v in pairs(Options) do
+                for _, v in pairs(Options) do
                     local nodes, Stats = v.nodes, v.Stats
                     CreateTween({nodes[2], "BackgroundTransparency", Stats and 0 or 0.8, 0.35})
                     CreateTween({nodes[2], "Size", Stats and UDim2.fromOffset(4, 12) or UDim2.fromOffset(4, 4), 0.35})
                     CreateTween({nodes[3], "TextTransparency", Stats and 0 or 0.4, 0.35})
                 end
             else
-                for _,v in pairs(Options) do
+                for _, v in pairs(Options) do
                     local Slt = v.Value == Selected
                     local nodes = v.nodes
                     CreateTween({nodes[2], "BackgroundTransparency", Slt and 0 or 1, 0.35})
@@ -1779,12 +1812,10 @@ function Tab:AddDropdown(Configs)
             if MultiSelect then
                 Option.Stats = not Option.Stats
                 Option.LastCB = tick()
-
                 Selected[Option.Name] = Option.Stats
                 CallbackSelected()
             else
                 Option.LastCB = tick()
-
                 Selected = Option.Value
                 CallbackSelected()
             end
@@ -1793,7 +1824,6 @@ function Tab:AddDropdown(Configs)
 
         AddOption = function(index, Value)
             local Name = tostring(type(index) == "string" and index or Value)
-
             if Options[Name] then return end
             Options[Name] = {
                 index = index,
@@ -1802,20 +1832,17 @@ function Tab:AddDropdown(Configs)
                 Stats = false,
                 LastCB = 0
             }
-
             if MultiSelect then
                 local Stats = Selected[Name]
                 Selected[Name] = Stats or false
                 Options[Name].Stats = Stats
             end
-
             local Button = Make("Button", ScrollFrame, {
                 Name = "Option",
                 Size = UDim2.new(1, 0, 0, 21),
                 Position = UDim2.new(0, 0, 0.5),
                 AnchorPoint = Vector2.new(0, 0.5)
             })Make("Corner", Button, UDim.new(0, 4))
-
             local IsSelected = InsertTheme(Create("Frame", Button, {
                 Position = UDim2.new(0, 1, 0.5),
                 Size = UDim2.new(0, 4, 0, 4),
@@ -1823,7 +1850,6 @@ function Tab:AddDropdown(Configs)
                 BackgroundTransparency = 1,
                 AnchorPoint = Vector2.new(0, 0.5)
             }), "Theme")Make("Corner", IsSelected, UDim.new(0.5, 0))
-
             local OptioneName = InsertTheme(Create("TextLabel", Button, {
                 Size = UDim2.new(1, 0, 1),
                 Position = UDim2.new(0, 10),
@@ -1834,11 +1860,9 @@ function Tab:AddDropdown(Configs)
                 BackgroundTransparency = 1,
                 TextTransparency = 0.4
             }), "Text")
-
             Button.Activated:Connect(function()
                 Select(Options[Name])
             end)
-
             Options[Name].nodes = {Button, IsSelected, OptioneName}
         end
 
@@ -1875,7 +1899,6 @@ function Tab:AddDropdown(Configs)
     NoClickFrame.MouseButton1Click:Connect(Disable)
     MainFrame:GetPropertyChangedSignal("Visible"):Connect(Disable)
     SelectedFrame:GetPropertyChangedSignal("AbsolutePosition"):Connect(CalculatePos)
-
     Button.Activated:Connect(CalculateSize)
     ScrollFrame.ChildAdded:Connect(CalculateSize)
     ScrollFrame.ChildRemoved:Connect(CalculateSize)
@@ -1883,23 +1906,27 @@ function Tab:AddDropdown(Configs)
     CalculateSize()
 
     local Dropdown = {}
-    function Dropdown:Visible(...) Funcs:ToggleVisible(Button, ...) end
-    function Dropdown:Destroy() Button:Destroy() end
-    function Dropdown:Callback(...) Funcs:InsertCallback(Callback, ...)(Selected) end
-
+    function Dropdown:Visible(...)
+        Funcs:ToggleVisible(Button, ...)
+    end
+    function Dropdown:Destroy()
+        Button:Destroy()
+    end
+    function Dropdown:Callback(...)
+        Funcs:InsertCallback(Callback, ...)(Selected)
+    end
     function Dropdown:Add(...)
         local NewOptions = {...}
         if type(NewOptions[1]) == "table" then
-            table.foreach(Option, function(_,Name)
+            table.foreach(Option, function(_, Name)
                 AddOption(Name)
             end)
         else
-            table.foreach(NewOptions, function(_,Name)
+            table.foreach(NewOptions, function(_, Name)
                 AddOption(Name)
             end)
         end
     end
-
     function Dropdown:Remove(Option)
         for index, Value in pairs(GetOptions()) do
             if type(Option) == "number" and index == Option or Value.Name == "Option" then
@@ -1907,23 +1934,21 @@ function Tab:AddDropdown(Configs)
             end
         end
     end
-
     function Dropdown:Select(Option)
         if type(Option) == "string" then
-            for _,Val in pairs(Options) do
+            for _, Val in pairs(GetOptions()) do
                 if Val.Name == Option then
                     Val.Active()
                 end
             end
         elseif type(Option) == "number" then
-            for ind,Val in pairs(Options) do
+            for ind, Val in pairs(GetOptions()) do
                 if ind == Option then
                     Val.Active()
                 end
             end
         end
     end
-
     function Dropdown:Set(Val1, Clear)
         if type(Val1) == "table" then
             AddNewOptions(Val1, not Clear)
@@ -1934,9 +1959,7 @@ function Tab:AddDropdown(Configs)
     return Dropdown
 end
 
---
 function Tab:AddSlider(Configs)
-    --
     local SName = Configs[1] or Configs.Name or Configs.Title or "Slider!"
     local SDesc = Configs.Desc or Configs.Description or ""
     local Min = Configs[2] or Configs.MinValue or Configs.Min or 10
@@ -2000,7 +2023,6 @@ function Tab:AddSlider(Configs)
     local function UpdateLabel(NewValue)
         local Number = tonumber(NewValue * Increase)
         Number = math.floor(Number * 100) / 100
-
         Default, LabelVal.Text = Number, tostring(Number)
         Funcs:FireCallback(Callback, Default)
     end
@@ -2009,7 +2031,6 @@ function Tab:AddSlider(Configs)
         local MousePos = Player:GetMouse()
         local APos = MousePos.X - BaseMousePos.AbsolutePosition.X
         local ConfigureDpiPos = APos / SliderBar.AbsoluteSize.X
-
         SliderIcon.Position = UDim2.new(math.clamp(ConfigureDpiPos, 0, 1), 0, 0.5, 0)
     end
 
@@ -2023,7 +2044,8 @@ function Tab:AddSlider(Configs)
     SliderHolder.MouseButton1Down:Connect(function()
         CreateTween({SliderIcon, "Transparency", 0, 0.3})
         Container.ScrollingEnabled = false
-        while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do task.wait()
+        while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+            task.wait()
             ControlPos()
         end
         CreateTween({SliderIcon, "Transparency", 0.2, 0.3})
@@ -2041,19 +2063,17 @@ function Tab:AddSlider(Configs)
 
     function SetSlider(NewValue)
         if type(NewValue) ~= "number" then return end
-
         local Min, Max = Min * Increase, Max * Increase
-
         local SliderPos = (NewValue - Min) / (Max - Min)
-
         SetFlag(Flag, NewValue)
-        CreateTween({ SliderIcon, "Position", UDim2.fromScale(math.clamp(SliderPos, 0, 1), 0.5), 0.3, true })
-    end;SetSlider(Default)
+        CreateTween({SliderIcon, "Position", UDim2.fromScale(math.clamp(SliderPos, 0, 1), 0.5), 0.3, true})
+    end
+    SetSlider(Default)
 
-    SliderIcon:GetPropertyChangedSignal("Position"):Connect(UpdateValues)UpdateValues()
+    SliderIcon:GetPropertyChangedSignal("Position"):Connect(UpdateValues)
+    UpdateValues()
 
     local Slider = {}
-
     function Slider:Set(NewVal1, NewVal2)
         if NewVal1 and NewVal2 then
             LabelFunc:SetTitle(NewVal1)
@@ -2071,6 +2091,7 @@ function Tab:AddSlider(Configs)
     function Slider:Destroy() Button:Destroy() end
     return Slider
 end
+
 
 function Tab:AddTextBox(Configs)
     local TName = Configs[1] or Configs.Name or Configs.Title or "Text Box"
@@ -2124,7 +2145,8 @@ function Tab:AddTextBox(Configs)
         end
     end
 
-    TextBoxInput.FocusLost:Connect(Input)Input()
+    TextBoxInput.FocusLost:Connect(Input)
+    Input()
 
     TextBoxInput.FocusLost:Connect(function()
         CreateTween({Pencil, "ImageColor3", Color3.fromRGB(255, 255, 255), 0.2})
@@ -2139,9 +2161,7 @@ function Tab:AddTextBox(Configs)
     return TextBox
 end
 
---
 function Tab:AddDiscordInvite(Configs)
-    --
     local Title = Configs[1] or Configs.Name or Configs.Title or "Discord"
     local Desc = Configs.Desc or Configs.Description or ""
     local Logo = Configs[2] or Configs.Logo or ""
@@ -2207,26 +2227,33 @@ function Tab:AddDiscordInvite(Configs)
     JoinButton.Activated:Connect(function()
         setclipboard(Invite)
         if ClickDelay then return end
-
         ClickDelay = true
         SetProps(JoinButton, {
             Text = "Copied to Clipboard",
             BackgroundColor3 = Color3.fromRGB(100, 100, 100),
             TextColor3 = Color3.fromRGB(150, 150, 150)
-        })task.wait(5)
+        })
+        task.wait(5)
         SetProps(JoinButton, {
             Text = "Join",
             BackgroundColor3 = Color3.fromRGB(50, 150, 50),
             TextColor3 = Color3.fromRGB(220, 220, 220)
-        })ClickDelay = false
+        })
+        ClickDelay = false
     end)
 
     local DiscordInvite = {}
-    function DiscordInvite:Destroy() InviteHolder:Destroy() end
-    function DiscordInvite:Visible(...) Funcs:ToggleVisible(InviteHolder, ...) end
+    function DiscordInvite:Destroy()
+        InviteHolder:Destroy()
+    end
+    function DiscordInvite:Visible(...)
+        Funcs:ToggleVisible(InviteHolder, ...)
+    end
     return DiscordInvite
 end
+
 return Tab
+
 end
 
 CloseButton.Activated:Connect(Window.CloseBtn)
