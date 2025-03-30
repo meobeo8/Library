@@ -923,10 +923,7 @@ local function LoadFile()
     end
 end;LoadFile()
 
-local RunService = game:GetService("RunService")
-local Camera = workspace.CurrentCamera
-
-local BASE_WIDTH, BASE_HEIGHT = 500, 320
+local BASE_WIDTH, BASE_HEIGHT = getgenv().Size1 or 520, getgenv().Size2 or 350
 
 local MainFrame = InsertTheme(Create("ImageButton", ScreenGui, {
     Size = UDim2.fromOffset(BASE_WIDTH, BASE_HEIGHT),
@@ -936,19 +933,6 @@ local MainFrame = InsertTheme(Create("ImageButton", ScreenGui, {
 }), "Main")
 Make("Gradient", MainFrame, { Rotation = 45 })
 MakeDrag(MainFrame)
-
-local function elgatofunc1()
-    local viewportSize = Camera.ViewportSize
-    local desiredWidth = math.min(viewportSize.X * 0.6, BASE_WIDTH)
-    local desiredHeight = math.min(viewportSize.Y * 0.6, BASE_HEIGHT)
-
-    MainFrame.Size = UDim2.fromOffset(desiredWidth, desiredHeight)
-    MainFrame.Position = UDim2.new(0.5, -desiredWidth/2, 0.5, -desiredHeight/2)
-end
-
-Camera:GetPropertyChangedSignal("ViewportSize"):Connect(elgatofunc1)
-elgatofunc1()
-
 
 local MainCorner = Make("Corner", MainFrame)
 
