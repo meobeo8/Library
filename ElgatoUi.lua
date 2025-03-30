@@ -1141,7 +1141,7 @@ function Window:AddMinimizeButton(Configs)
         Size = UDim2.fromOffset(45, 45),
         Position = UDim2.fromScale(0.15, 0.15),
         BackgroundTransparency = 1,
-        BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+        BackgroundColor3 = Color3.fromRGB(0, 0, 0),
         AutoButtonColor = false
     }))
 
