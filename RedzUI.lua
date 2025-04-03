@@ -1684,30 +1684,38 @@ function redzlib:GetIcon(index)
 end
 
 function redzlib:SetTheme(NewTheme)
-	if not VerifyTheme(NewTheme) then return end
-	
-	redzlib.Save.Theme = NewTheme
-	SaveJson("redz library V5.json", redzlib.Save)
-	Theme = redzlib.Themes[NewTheme]
-	
-	Comnection:FireConnection("ThemeChanged", NewTheme)
-	table.foreach(redzlib.Instances, function(_,Val)
-		if Val.Type == "Gradient" then
-			Val.Instance.Color = Theme["Color Hub 1"]
-		elseif Val.Type == "Frame" then
-			Val.Instance.BackgroundColor3 = Theme["Color Hub 2"]
-		elseif Val.Type == "Stroke" then
-			Val.Instance[GetColor(Val.Instance)] = Theme["Color Stroke"]
-		elseif Val.Type == "Theme" then
-			Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
-		elseif Val.Type == "Text" then
-			Val.Instance[GetColor(Val.Instance)] = Theme["Color Text"]
-		elseif Val.Type == "DarkText" then
-			Val.Instance[GetColor(Val.Instance)] = Theme["Color Dark Text"]
-		elseif Val.Type == "ScrollBar" then
-			Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
-		end
-	end)
+    if not VerifyTheme(NewTheme) then return end
+
+    redzlib.Save.Theme = NewTheme
+    SaveJson("redz library V5.json", redzlib.Save)
+    Theme = redzlib.Themes[NewTheme]
+
+    if Connection and typeof(Connection) == "table" and Connection.Fire then
+        Connection:Fire("ThemeChanged", NewTheme)
+    end
+
+    table.foreach(redzlib.Instances, function(_, Val)
+        if not Val.Instance then return end
+
+        if Val.Type == "Gradient" then
+            Val.Instance.Color = Theme["Color Hub 1"]
+        elseif Val.Type == "Frame" then
+            Val.Instance.BackgroundColor3 = Theme["Color Hub 2"]
+        elseif Val.Type == "Stroke" then
+            Val.Instance[GetColor(Val.Instance)] = Theme["Color Stroke"]
+        elseif Val.Type == "Theme" then
+            Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
+        elseif Val.Type == "Text" and Val.Instance:IsA("TextLabel") then
+            Val.Instance.TextColor3 = Theme["Color Text"]
+        elseif Val.Type == "DarkText" and Val.Instance:IsA("TextLabel") then
+            Val.Instance.TextColor3 = Theme["Color Dark Text"]
+        elseif Val.Type == "ScrollBar" and Val.Instance:IsA("ScrollingFrame") then
+            Val.Instance.ScrollBarImageColor3 = Theme["Color Theme"]
+        elseif Val.Type == "TextBox" and Val.Instance:IsA("TextBox") then
+            Val.Instance.TextColor3 = Theme["Color Text"]
+            Val.Instance.BackgroundColor3 = Theme["Color Stroke"] or Color3.fromRGB(50, 50, 50)
+        end
+    end)
 end
 
 function redzlib:SetScale(NewScale)
