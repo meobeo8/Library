@@ -44,7 +44,7 @@ local Stats = game:GetService("Stats")
 local RunService = game:GetService("RunService")
 
 local fpss = {}
-local fpssaa = 31
+local fpssaa = 30
 local lastTick = tick()
 
 RunService.RenderStepped:Connect(function()
