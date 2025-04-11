@@ -11,6 +11,35 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
+local StarterGui = game:GetService("StarterGui")
+local bindable = Instance.new("BindableFunction")
+
+function bindable.OnInvoke(button)
+    if button == "Yes" and isfolder("ELGATO HUB") then
+        for _, item in ipairs(listfiles("ELGATO HUB")) do
+            if isfile(item) then
+                delfile(item)
+            elseif isfolder(item) then
+                for _, sub in ipairs(listfiles(item)) do
+                    if isfile(sub) then delfile(sub) end
+                end
+                delfolder(item)
+            end
+        end
+        delfolder("ELGATO HUB")
+    end
+end
+
+StarterGui:SetCore("SendNotification", {
+    Title = "elgato",
+    Text = "want delete the config?",
+    Icon = "rbxthumb://type=Asset&id=83514188134754&w=150&h=150",
+    Duration = 10,
+    Button1 = "Yes",
+    Button2 = "No",
+    Callback = bindable
+})
+
 local VirtualUser = game:GetService("VirtualUser")
 local plr = game:GetService("Players").LocalPlayer
 
