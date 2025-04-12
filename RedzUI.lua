@@ -1,13 +1,16 @@
--- ui made by redz - remake by elgato
+local MarketplaceService = game:GetService("MarketplaceService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
+local RunService = game:GetService("RunService")
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PlayerMouse = Player:GetMouse()
 
 for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     if v.Name == "elgato status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "elgato_blackscreen" or v.Name == "elgato_keysystem" then
         v:Destroy()
-    elseif v:IsA("ScreenGui") then
-        local frame = v:FindFirstChild("Frame")
-        if frame and frame:FindFirstChild("UIListLayout") then
-            v:Destroy()
-        end
     end
 end
 
@@ -39,7 +42,6 @@ StarterGui:SetCore("SendNotification", {
     Button2 = "No",
     Callback = bindable
 })
-
 
 local VirtualUser = game:GetService("VirtualUser")
 local plr = game:GetService("Players").LocalPlayer
@@ -98,7 +100,7 @@ end
 
 spawn(function()
     local startTime = tick()
-    while wait(0.1) do
+    while wait(0.01) do
         pcall(function()
             local elapsedTime = tick() - startTime
             local hours = math.floor(elapsedTime / 3600)
@@ -160,16 +162,6 @@ local function MakeDraggable(gui)
 end
 
 MakeDraggable(TextLabel)
-
-local MarketplaceService = game:GetService("MarketplaceService")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local HttpService = game:GetService("HttpService")
-local RunService = game:GetService("RunService")
-local CoreGui = game:GetService("CoreGui")
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PlayerMouse = Player:GetMouse()
 
 local redzlib = {
     Themes = {
@@ -390,13 +382,12 @@ local redzlib = {
             ["Color Dark Text"] = Color3.fromRGB(150, 130, 100)
         }
     },
-
     Info = {
-        Version = "1.1.1"
+        Version = "1.1.0"
     },
     Save = {
-        UISize = {getgenv().Size1 or 550, getgenv().Size2 or 380},
-        TabSize = getgenv().TabSize or 160,
+        UISize = {550, 380},
+        TabSize = 160,
         Theme = "Darker"
     },
     Settings = {},
@@ -1231,7 +1222,6 @@ local redzlib = {
     end)()
 }
 
-
 local ViewportSize = workspace.CurrentCamera.ViewportSize
 local UIScale = ViewportSize.Y / 450
 
@@ -1714,38 +1704,30 @@ function redzlib:GetIcon(index)
 end
 
 function redzlib:SetTheme(NewTheme)
-    if not VerifyTheme(NewTheme) then return end
-
-    redzlib.Save.Theme = NewTheme
-    SaveJson("redz library V5.json", redzlib.Save)
-    Theme = redzlib.Themes[NewTheme]
-
-    if Connection and typeof(Connection) == "table" and Connection.Fire then
-        Connection:Fire("ThemeChanged", NewTheme)
-    end
-
-    table.foreach(redzlib.Instances, function(_, Val)
-        if not Val.Instance then return end
-
-        if Val.Type == "Gradient" then
-            Val.Instance.Color = Theme["Color Hub 1"]
-        elseif Val.Type == "Frame" then
-            Val.Instance.BackgroundColor3 = Theme["Color Hub 2"]
-        elseif Val.Type == "Stroke" then
-            Val.Instance[GetColor(Val.Instance)] = Theme["Color Stroke"]
-        elseif Val.Type == "Theme" then
-            Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
-        elseif Val.Type == "Text" and Val.Instance:IsA("TextLabel") then
-            Val.Instance.TextColor3 = Theme["Color Text"]
-        elseif Val.Type == "DarkText" and Val.Instance:IsA("TextLabel") then
-            Val.Instance.TextColor3 = Theme["Color Dark Text"]
-        elseif Val.Type == "ScrollBar" and Val.Instance:IsA("ScrollingFrame") then
-            Val.Instance.ScrollBarImageColor3 = Theme["Color Theme"]
-        elseif Val.Type == "TextBox" and Val.Instance:IsA("TextBox") then
-            Val.Instance.TextColor3 = Theme["Color Text"]
-            Val.Instance.BackgroundColor3 = Theme["Color Stroke"] or Color3.fromRGB(50, 50, 50)
-        end
-    end)
+	if not VerifyTheme(NewTheme) then return end
+	
+	redzlib.Save.Theme = NewTheme
+	SaveJson("redz library V5.json", redzlib.Save)
+	Theme = redzlib.Themes[NewTheme]
+	
+	Comnection:FireConnection("ThemeChanged", NewTheme)
+	table.foreach(redzlib.Instances, function(_,Val)
+		if Val.Type == "Gradient" then
+			Val.Instance.Color = Theme["Color Hub 1"]
+		elseif Val.Type == "Frame" then
+			Val.Instance.BackgroundColor3 = Theme["Color Hub 2"]
+		elseif Val.Type == "Stroke" then
+			Val.Instance[GetColor(Val.Instance)] = Theme["Color Stroke"]
+		elseif Val.Type == "Theme" then
+			Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
+		elseif Val.Type == "Text" then
+			Val.Instance[GetColor(Val.Instance)] = Theme["Color Text"]
+		elseif Val.Type == "DarkText" then
+			Val.Instance[GetColor(Val.Instance)] = Theme["Color Dark Text"]
+		elseif Val.Type == "ScrollBar" then
+			Val.Instance[GetColor(Val.Instance)] = Theme["Color Theme"]
+		end
+	end)
 end
 
 function redzlib:SetScale(NewScale)
