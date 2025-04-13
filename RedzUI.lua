@@ -1286,7 +1286,7 @@ local SetProps, SetChildren, InsertTheme, Create do
 		end
 	end
 	
-	pcall(Save, "redz library V5.json")
+	pcall(Save, "ELGATO HUB/Library.json")
 end
 
 local Funcs = {} do
@@ -1707,7 +1707,7 @@ function redzlib:SetTheme(NewTheme)
     if not VerifyTheme(NewTheme) then return end
 
     redzlib.Save.Theme = NewTheme
-    SaveJson("redz library V5.json", redzlib.Save)
+    SaveJson("ELGATO HUB/Library.json", redzlib.Save)
     Theme = redzlib.Themes[NewTheme]
 
     if Connection and typeof(Connection) == "table" and Connection.Fire then
@@ -1885,13 +1885,13 @@ function redzlib:MakeWindow(Configs)
 	ConnectSave(ControlSize1, function()
 		if not Minimized then
 			redzlib.Save.UISize = {MainFrame.Size.X.Offset, MainFrame.Size.Y.Offset}
-			SaveJson("redz library V5.json", redzlib.Save)
+			SaveJson("ELGATO HUB/Library.json", redzlib.Save)
 		end
 	end)
 	
 	ConnectSave(ControlSize2, function()
 		redzlib.Save.TabSize = MainScroll.Size.X.Offset
-		SaveJson("redz library V5.json", redzlib.Save)
+		SaveJson("ELGATO HUB/Library.json", redzlib.Save)
 	end)
 	
 	local ButtonsFolder = Create("Folder", TopBar, {
