@@ -2909,7 +2909,7 @@ function redzlib:MakeWindow(Configs)
 				TextColor3 = Theme["Color Text"],
 				ClearTextOnFocus = TClearText,
 				PlaceholderText = TPlaceholderText,
-				Text = ""
+				Text = TDefault or ""
 			}), "Text")
 			
 			local Pencil = Create("ImageLabel", SelectedFrame, {
