@@ -14,6 +14,8 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
+print("Library Version: 0.1.1")
+
 local StarterGui = game:GetService("StarterGui")
 local bindable = Instance.new("BindableFunction")
 
