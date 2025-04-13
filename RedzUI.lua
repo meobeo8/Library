@@ -34,8 +34,8 @@ function bindable.OnInvoke(button)
 end
 
 StarterGui:SetCore("SendNotification", {
-    Title = "elgato húp vi en",
-    Text = "want to delete the config?",
+    Title = "elgato hub",
+    Text = "want reset config?",
     Icon = "rbxthumb://type=Asset&id=83514188134754&w=150&h=150",
     Duration = 10,
     Button1 = "Yes",
