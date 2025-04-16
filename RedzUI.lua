@@ -77,20 +77,6 @@ t1.TextWrapped = true
 c1.Parent = t1
 c1.CornerRadius = UDim.new(0, 6)
 
-local f1, m1, t0 = {}, 60, tick()
-r1.RenderStepped:Connect(function()
-	local n = tick()
-	table.insert(f1, math.floor(1 / (n - t0)))
-	t0 = n
-	if #f1 > m1 then table.remove(f1, 1) end
-end)
-
-local function a1()
-	local s = 0
-	for _, v in ipairs(f1) do s += v end
-	return #f1 > 0 and math.floor(s / #f1) or 0
-end
-
 task.spawn(function()
 	local st = tick()
 	while true do
@@ -102,17 +88,11 @@ task.spawn(function()
 			local s = math.floor(et % 60)
 			local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
 			local e1 = identifyexecutor and identifyexecutor() or "N/A"
-			local mf = getmaxfps and getmaxfps() or "N/A"
-			local pc = #p1:GetPlayers()
-			local af = a1()
 			t1.Text =
 				"— ELGATO STATUS —\n" ..
 				"⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
 				"📶 PING : " .. p2 .. " ms\n" ..
-				"🖥️ EXEC : " .. e1 .. "\n" ..
-				"🎮 FPS  : " .. af .. "\n" ..
-				"🔓 MAX FPS : " .. tostring(mf) .. "\n" ..
-				"👥 PLAYERS : " .. pc
+				"🖥️ EXEC : " .. e1
 		end)
 	end
 end)
