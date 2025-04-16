@@ -14,7 +14,7 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
-print("Library Version: 0.1.1")
+print("Library Version: 0.1.2")
 
 local StarterGui = game:GetService("StarterGui")
 local bindable = Instance.new("BindableFunction")
@@ -45,82 +45,78 @@ StarterGui:SetCore("SendNotification", {
     Callback = bindable
 })
 
-local VirtualUser = game:GetService("VirtualUser")
-local plr = game:GetService("Players").LocalPlayer
+local v1 = game:GetService("VirtualUser")
+local p1 = game:GetService("Players")
+local r1 = game:GetService("RunService")
+local s1 = game:GetService("Stats")
+local u1 = game:GetService("UserInputService")
 
-local UserInputService = game:GetService("UserInputService")
-local ScreenGui = Instance.new("ScreenGui")
-local TextLabel = Instance.new("TextLabel")
-local UICorner = Instance.new("UICorner")
+local l1 = p1.LocalPlayer
 
-ScreenGui.Name = "elgato status"
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local g1 = Instance.new("ScreenGui")
+local t1 = Instance.new("TextLabel")
+local c1 = Instance.new("UICorner")
 
-TextLabel.Parent = ScreenGui
-TextLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-TextLabel.BackgroundTransparency = 0.2
-TextLabel.BorderSizePixel = 0
-TextLabel.Size = UDim2.new(0, 105, 0, 65)
-TextLabel.Position = UDim2.new(0.5, 0, 0.10, 0)
-TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-TextLabel.Font = Enum.Font.GothamBold
-TextLabel.Text = "ELGATO STATUS"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 10
-TextLabel.TextStrokeTransparency = 0.6
-TextLabel.TextWrapped = true
+g1.Name = "elgato_status"
+g1.Parent = game.CoreGui
+g1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-UICorner.Parent = TextLabel
-UICorner.CornerRadius = UDim.new(0, 6)
+t1.Parent = g1
+t1.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+t1.BackgroundTransparency = 0.2
+t1.BorderSizePixel = 0
+t1.Size = UDim2.new(0, 125, 0, 75)
+t1.Position = UDim2.new(0.5, 0, 0.10, 0)
+t1.AnchorPoint = Vector2.new(0.5, 0.5)
+t1.Font = Enum.Font.GothamBold
+t1.TextColor3 = Color3.fromRGB(255, 255, 255)
+t1.TextSize = 10
+t1.TextStrokeTransparency = 0.6
+t1.TextWrapped = true
 
-local Stats = game:GetService("Stats")
-local RunService = game:GetService("RunService")
+c1.Parent = t1
+c1.CornerRadius = UDim.new(0, 6)
 
-local fpss = {}
-local fpssaa = 30
-local lastTick = tick()
-
-RunService.RenderStepped:Connect(function()
-    local now = tick()
-    local fpssaas = math.floor(1 / (now - lastTick))
-    lastTick = now
-
-    table.insert(fpss, fpssaas)
-    if #fpss > fpssaa then
-        table.remove(fpss, 1)
-    end
+local f1, m1, t0 = {}, 60, tick()
+r1.RenderStepped:Connect(function()
+	local n = tick()
+	table.insert(f1, math.floor(1 / (n - t0)))
+	t0 = n
+	if #f1 > m1 then table.remove(f1, 1) end
 end)
 
-local function fpsss()
-    local sum = 0
-    for _, value in ipairs(fpss) do
-        sum = sum + value
-    end
-    return #fpss > 0 and math.floor(sum / #fpss) or 0
+local function a1()
+	local s = 0
+	for _, v in ipairs(f1) do s += v end
+	return #f1 > 0 and math.floor(s / #f1) or 0
 end
 
-spawn(function()
-    local startTime = tick()
-    while wait(0.01) do
-        pcall(function()
-            local elapsedTime = tick() - startTime
-            local hours = math.floor(elapsedTime / 3600)
-            local minutes = math.floor((elapsedTime % 3600) / 60)
-            local seconds = math.floor(elapsedTime % 60)
-            local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+"))
-            local exec = identifyexecutor() or "IDK"
-
-            TextLabel.Text =
-                "— ELGATO STATUS —\n" ..
-                "⏳ TIME : " .. string.format("%02d:%02d:%02d", hours, minutes, seconds) .. "\n" ..
-                "📶 PING : " .. ping .. " ms\n" ..
-                "🖥️ EXEC : " .. exec .. "\n" ..
-                "👥 PLAYERS : " .. #game.Players:GetPlayers() .. "\n" ..
-                "🎮 FPS  : " .. fpsss()
-        end)
-    end
+task.spawn(function()
+	local st = tick()
+	while true do
+		task.wait(0.1)
+		pcall(function()
+			local et = tick() - st
+			local h = math.floor(et / 3600)
+			local m = math.floor((et % 3600) / 60)
+			local s = math.floor(et % 60)
+			local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
+			local e1 = identifyexecutor and identifyexecutor() or "N/A"
+			local mf = getmaxfps and getmaxfps() or "N/A"
+			local pc = #p1:GetPlayers()
+			local af = a1()
+			t1.Text =
+				"— ELGATO STATUS —\n" ..
+				"⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
+				"📶 PING : " .. p2 .. " ms\n" ..
+				"🖥️ EXEC : " .. e1 .. "\n" ..
+				"🎮 FPS  : " .. af .. "\n" ..
+				"🔓 MAX FPS : " .. tostring(mf) .. "\n" ..
+				"👥 PLAYERS : " .. pc
+		end)
+	end
 end)
+
 
 local function MakeDraggable(gui)
     local dragging
@@ -163,7 +159,7 @@ local function MakeDraggable(gui)
     end)
 end
 
-MakeDraggable(TextLabel)
+MakeDraggable(t1)
 
 local redzlib = {
     Themes = {
