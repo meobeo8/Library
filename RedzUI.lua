@@ -16,6 +16,16 @@ end
 
 print("Library Version: 0.1.2")
 
+spawn(function()
+    while wait(300) do
+        pcall(function()
+            local VirtualUser = game:GetService('VirtualUser')
+            VirtualUser:CaptureController()
+            VirtualUser:ClickButton2(Vector2.new())
+        end)
+    end
+end)
+
 local StarterGui = game:GetService("StarterGui")
 local bindable = Instance.new("BindableFunction")
 
