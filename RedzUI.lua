@@ -79,9 +79,10 @@ c1.CornerRadius = UDim.new(0, 6)
 
 task.spawn(function()
 	local st = tick()
-	while true do
+	while wait() do
 		task.wait(0.1)
 		pcall(function()
+                        setfpscap(9999)
 			local et = tick() - st
 			local h = math.floor(et / 3600)
 			local m = math.floor((et % 3600) / 60)
