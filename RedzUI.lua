@@ -89,7 +89,7 @@ task.spawn(function()
 			local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
 			local e1 = identifyexecutor and identifyexecutor() or "N/A"
 			t1.Text =
-				"— ELGATO STATUS —\n" ..
+				"ELGATO STATUS\n" ..
 				"⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
 				"📶 PING : " .. p2 .. " ms\n" ..
 				"🖥️ EXEC : " .. e1
