@@ -92,7 +92,7 @@ task.spawn(function()
 	while wait() do
 		task.wait(0.1)
 		pcall(function()
-                        setfpscap(9999)
+                      --  setfpscap(9999)
 			local et = tick() - st
 			local h = math.floor(et / 3600)
 			local m = math.floor((et % 3600) / 60)
