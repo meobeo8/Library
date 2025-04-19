@@ -6,7 +6,7 @@ dsc.gg/hydrahub  |   31.01 - added Show_Assets toggle. Soon ill make normal bypa
 ]]--    
 
 --- FLUENT PLUS SETTINGS ---
-local Show_Button = false -- Shows the button for toggle fluent ui manually. If "false", works only on mobile, if "true", works everytime.
+local Show_Button = true -- Shows the button for toggle fluent ui manually. If "false", works only on mobile, if "true", works everytime.
 local Button_Icon = "" -- Icon of the button for toggle fluent ui
 ----------------------------
 
@@ -27,10 +27,6 @@ if RunService:IsStudio() then
 	Mobile = false
 else
 	Mobile = table.find({Enum.Platform.IOS, Enum.Platform.Android}, UserInputService:GetPlatform()) ~= nil
-end
-
-if Show_Button then
-	Mobile = true
 end
 
 local fischbypass
@@ -92,41 +88,6 @@ StarterGui:SetCore("SendNotification", {
 local CoreGui = game:GetService("CoreGui")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local Stats = game:GetService("Stats")
-
-local gui = Instance.new("ScreenGui")
-gui.Name = "elgato_toggle_ui"
-gui.IgnoreGuiInset = true
-gui.ResetOnSpawn = false
-gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-gui.Parent = CoreGui
-
-local l1 = Instance.new("Frame")
-l1.Name = "ToggleContainer"
-l1.Size = UDim2.fromOffset(50, 50)
-l1.Position = UDim2.new(0.5, 0, 0.18, 0)
-l1.AnchorPoint = Vector2.new(0.5, 0.5)
-l1.BackgroundTransparency = 1
-l1.Parent = gui
-
-local b1 = Instance.new("ImageButton")
-b1.Name = "ToggleUIButton"
-b1.Size = UDim2.new(1, 0, 1, 0)
-b1.Position = UDim2.new(0, 0, 0, 0)
-b1.BackgroundTransparency = 0
-b1.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-b1.Image = "rbxassetid://83514188134754"
-b1.AutoButtonColor = true
-b1.Parent = l1
-
-local c2 = Instance.new("UICorner")
-c2.CornerRadius = UDim.new(0, 7)
-c2.Parent = b1
-
-b1.MouseButton1Click:Connect(function()
-	VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
-	task.wait(0.05)
-	VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.LeftControl, false, game)
-end)
 
 local g1 = Instance.new("ScreenGui")
 g1.Name = "elgato_status"
@@ -6473,75 +6434,29 @@ else
 	Fluent = Library
 end
 
-local MinimizeButton = New("TextButton", {
-	BackgroundTransparency = 1,
-	Size = UDim2.new(1, 0, 1, 0),
-	BorderSizePixel = 0
+local MinimizeButton = New("ImageButton", {
+	Name = "MinimizeButton",
+	Size = UDim2.fromOffset(42, 42),
+	Position = UDim2.new(0, 0, 0, 0),
+	BackgroundTransparency = 0,
+	BackgroundColor3 = Color3.fromRGB(25, 25, 25),
+	Image = "rbxassetid://83514188134754",
+	AutoButtonColor = true,
 }, {
-	New("UIPadding", {
-		PaddingBottom = UDim.new(0, 2),
-		PaddingLeft = UDim.new(0, 2),
-		PaddingRight = UDim.new(0, 2),
-		PaddingTop = UDim.new(0, 2),
-	}),
-	New("ImageLabel", {
-		Image = Mobile and Button_Icon or "rbxassetid://10734897102" or "",
-		Size = UDim2.new(1, 0, 1, 0),
-		BackgroundTransparency = 1,
-	}, {
-		New("UIAspectRatioConstraint", {
-			AspectRatio = 1,
-			AspectType = Enum.AspectType.FitWithinMaxSize,
-		})
+	New("UICorner", {
+		CornerRadius = UDim.new(0, 7),
 	})
 })
 
-local Minimizer
-
-if Mobile then
-	Minimizer = New("Frame", {
-		Parent = GUI,
-		Size = UDim2.new(0.08, 1, 0.1642, 1),
-		Position = UDim2.new(0.45, 0, 0.025, 0),
-		BackgroundTransparency = 1,
-		ZIndex = 999999999,
-	},
-	{
-		New("Frame", {
-			BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-			Size = UDim2.new(1, 0, 1, 0),
-			BackgroundTransparency = 0.5,
-			BorderSizePixel = 0
-		}, {
-			New("UICorner", {
-				CornerRadius = UDim.new(0.25, 0),
-			}),
-			MinimizeButton
-		})
-	})
-else
-	Minimizer = New("Frame", {
-		Parent = GUI,
-		Size = UDim2.new(0, 0, 0, 0),
-		Position = UDim2.new(0.45, 0, 0.025, 0),
-		BackgroundTransparency = 1,
-		ZIndex = 999999999,
-		Visible = false
-	},
-	{
-		New("Frame", {
-			BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-			Size = UDim2.new(0, 0, 0, 0),
-			BackgroundTransparency = 0,
-			BorderSizePixel = 0
-		}, {
-			New("UICorner", {
-				CornerRadius = UDim.new(0.25, 0),
-			}),
-			MinimizeButton
-		})
-	})
-end
+local Minimizer = New("Frame", {
+	Parent = GUI,
+	Size = UDim2.fromOffset(42, 42),
+	Position = UDim2.fromScale(0.015, 0.23),
+	BackgroundTransparency = 1,
+	ZIndex = 999999999,
+}, {
+	MinimizeButton
+})
 
 Creator.AddSignal(Minimizer.InputBegan, function(Input)
 	if
