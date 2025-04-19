@@ -38,17 +38,6 @@ end
 for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     if v.Name == "elgato_status" or v.Name == "elgato_blackscreen" or v.Name == "elgato_toggle_ui" then
         v:Destroy()
-    elseif v:IsA("ScreenGui") then
-        local frame = v:FindFirstChild("Frame")
-        if frame and frame:FindFirstChild("UIListLayout") then
-            v:Destroy()
-        end
-    end
-end
-
-for _, v in ipairs(game:GetService("Lighting"):GetChildren()) do
-    if v.Name == "DepthOfField" then
-        v:Destroy()
     end
 end
 
