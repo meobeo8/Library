@@ -2541,17 +2541,8 @@ function redzlib:MakeWindow(Configs)
 				
 				local function CallbackSelected()
 					SetFlag(Flag, MultiSelect and Selected or tostring(Selected))
-				
-					if MultiSelect then
-						local selectedArray = {}
-						for k, v in pairs(Selected) do
-							if v then table.insert(selectedArray, k) end
-						end
-						Funcs:FireCallback(Callback, selectedArray)
-					else
-						Funcs:FireCallback(Callback, Selected)
-					end
-				end				
+					Funcs:FireCallback(Callback, Selected)
+				end
 				
 				local function UpdateLabel()
 					if MultiSelect then
