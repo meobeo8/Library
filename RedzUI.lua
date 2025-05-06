@@ -14,8 +14,6 @@ for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
-print("Library Version: 0.1.2")
-
 local vu = game:GetService("VirtualUser")
 game:GetService("Players").LocalPlayer.Idled:Connect(function()
     vu:CaptureController()
@@ -147,6 +145,19 @@ local function MakeDraggable(gui)
 end
 
 MakeDraggable(t1)
+
+print([[                                                              
+88                           88            ad88888ba                
+88                           88           d8"     "8b               
+88                           88           Y8a     a8P               
+88,dPPYba,   8b       d8     88,dPPYba,    "Y8aaa8P"    ,adPPYba,   
+88P'    "8a  `8b     d8'     88P'    "8a   ,d8"""8b,   a8"     "8a  
+88       d8   `8b   d8'      88       d8  d8"     "8b  8b       d8  
+88b,   ,a8"    `8b,d8'       88b,   ,a8"  Y8a     a8P  "8a,   ,a8"  
+8Y"Ybbd8"'       Y88'        8Y"Ybbd8"'    "Y88888P"    `"YbbdP"'   
+                 d8'                                                
+                d8'                                                 
+]])
 
 local redzlib = {
     Themes = {
