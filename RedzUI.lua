@@ -16,14 +16,10 @@ end
 
 print("Library Version: 0.1.2")
 
-spawn(function()
-    while wait(300) do
-        pcall(function()
-            local VirtualUser = game:GetService('VirtualUser')
-            VirtualUser:CaptureController()
-            VirtualUser:ClickButton2(Vector2.new())
-        end)
-    end
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+    vu:CaptureController()
+    vu:ClickButton2(Vector2.new())
 end)
 
 local StarterGui = game:GetService("StarterGui")
