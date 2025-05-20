@@ -24,25 +24,31 @@ local StarterGui = game:GetService("StarterGui")
 local bindable = Instance.new("BindableFunction")
 
 function bindable.OnInvoke(button)
-    if button == "Yes" and isfolder("ELGATO HUB") then
-        for _, item in ipairs(listfiles("ELGATO HUB")) do
-            if isfile(item) then
-                delfile(item)
-            elseif isfolder(item) then
-                for _, sub in ipairs(listfiles(item)) do
-                    if isfile(sub) then delfile(sub) end
+    if button == "Yes" then
+        for _, folderName in ipairs({ "ELGATO HUB", "TYPE HUB" }) do
+            if isfolder(folderName) then
+                for _, item in ipairs(listfiles(folderName)) do
+                    if isfile(item) then
+                        delfile(item)
+                    elseif isfolder(item) then
+                        for _, sub in ipairs(listfiles(item)) do
+                            if isfile(sub) then
+                                delfile(sub)
+                            end
+                        end
+                        delfolder(item)
+                    end
                 end
-                delfolder(item)
+                delfolder(folderName)
             end
         end
-        delfolder("ELGATO HUB")
     end
 end
 
 StarterGui:SetCore("SendNotification", {
-    Title = "elgato hub",
+    Title = ".",
     Text = "want reset config?",
-    Icon = "rbxthumb://type=Asset&id=83514188134754&w=150&h=150",
+    Icon = "rbxthumb://type=Asset&id=102391696721436&w=150&h=150",
     Duration = 10,
     Button1 = "Yes",
     Button2 = "No",
@@ -82,24 +88,23 @@ c1.Parent = t1
 c1.CornerRadius = UDim.new(0, 6)
 
 task.spawn(function()
-	local st = tick()
-	while wait() do
-		task.wait(0.1)
-		pcall(function()
-                      --  setfpscap(9999)
-			local et = tick() - st
-			local h = math.floor(et / 3600)
-			local m = math.floor((et % 3600) / 60)
-			local s = math.floor(et % 60)
-			local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
-			local e1 = identifyexecutor and identifyexecutor() or "N/A"
-			t1.Text =
-				"ELGATO STATUS\n" ..
-				"⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
-				"📶 PING : " .. p2 .. " ms\n" ..
-				"🖥️ EXEC : " .. e1
-		end)
-	end
+    local st = tick()
+    while wait() do
+        wait(0.1)
+        pcall(function()
+            local et = tick() - st
+            local h = math.floor(et / 3600)
+            local m = math.floor((et % 3600) / 60)
+            local s = math.floor(et % 60)
+            local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
+            local e1 = identifyexecutor and identifyexecutor() or "N/A"
+            t1.Text =
+                "GAME STATUS\n" ..
+                "⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
+                "📶 PING : " .. p2 .. " ms\n" ..
+                "🖥️ EXEC : " .. e1
+        end)
+    end
 end)
 
 
