@@ -25,29 +25,31 @@ local bindable = Instance.new("BindableFunction")
 
 function bindable.OnInvoke(button)
     if button == "Yes" then
-        for _, folderName in ipairs({ "ELGATO HUB", "TYPE HUB" }) do
-            if isfolder(folderName) then
-                for _, item in ipairs(listfiles(folderName)) do
-                    if isfile(item) then
-                        delfile(item)
-                    elseif isfolder(item) then
-                        for _, sub in ipairs(listfiles(item)) do
-                            if isfile(sub) then
-                                delfile(sub)
-                            end
+        for _, item in ipairs(listfiles("")) do
+            if isfile(item) then
+                delfile(item)
+            elseif isfolder(item) then
+                local function _gatodelete1(folder)
+                    for _, sub in ipairs(listfiles(folder)) do
+                        if isfile(sub) then
+                            delfile(sub)
+                        elseif isfolder(sub) then
+                            _gatodelete1(sub)
+                            delfolder(sub)
                         end
-                        delfolder(item)
                     end
                 end
-                delfolder(folderName)
+
+                _gatodelete1(item)
+                delfolder(item)
             end
         end
     end
 end
 
 StarterGui:SetCore("SendNotification", {
-    Title = ".",
-    Text = "want reset config?",
+    Title = "delete workspace file?",
+    Text = "yes or no",
     Icon = "rbxthumb://type=Asset&id=102391696721436&w=150&h=150",
     Duration = 10,
     Button1 = "Yes",
@@ -89,24 +91,20 @@ c1.CornerRadius = UDim.new(0, 6)
 
 task.spawn(function()
     local st = tick()
-    while wait() do
-        wait(0.1)
-        pcall(function()
-            local et = tick() - st
-            local h = math.floor(et / 3600)
-            local m = math.floor((et % 3600) / 60)
-            local s = math.floor(et % 60)
-            local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
-            local e1 = identifyexecutor and identifyexecutor() or "N/A"
-            t1.Text =
-                "GAME STATUS\n" ..
-                "⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
-                "📶 PING : " .. p2 .. " ms\n" ..
-                "🖥️ EXEC : " .. e1
-        end)
+    while task.wait(0.1) do
+        local et = tick() - st
+        local h = math.floor(et / 3600)
+        local m = math.floor((et % 3600) / 60)
+        local s = math.floor(et % 60)
+        local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
+        local e1 = identifyexecutor and identifyexecutor() or "N/A"
+        t1.Text =
+            "GAME STATUS\n" ..
+            "⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
+            "📶 PING : " .. p2 .. " ms\n" ..
+            "🖥️ EXEC : " .. e1
     end
 end)
-
 
 local function MakeDraggable(gui)
     local dragging
@@ -150,19 +148,6 @@ local function MakeDraggable(gui)
 end
 
 MakeDraggable(t1)
-
-print([[                                                              
-88                           88            ad88888ba                
-88                           88           d8"     "8b               
-88                           88           Y8a     a8P               
-88,dPPYba,   8b       d8     88,dPPYba,    "Y8aaa8P"    ,adPPYba,   
-88P'    "8a  `8b     d8'     88P'    "8a   ,d8"""8b,   a8"     "8a  
-88       d8   `8b   d8'      88       d8  d8"     "8b  8b       d8  
-88b,   ,a8"    `8b,d8'       88b,   ,a8"  Y8a     a8P  "8a,   ,a8"  
-8Y"Ybbd8"'       Y88'        8Y"Ybbd8"'    "Y88888P"    `"YbbdP"'   
-                 d8'                                                
-                d8'                                                 
-]])
 
 local redzlib = {
     Themes = {
