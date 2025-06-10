@@ -48,8 +48,8 @@ function bindable.OnInvoke(button)
 end
 
 StarterGui:SetCore("SendNotification", {
-    Title = "delete workspace file?",
-    Text = "yes or no",
+    Title = "hi chat",
+    Text = "delete workspace file?",
     Icon = "rbxthumb://type=Asset&id=102391696721436&w=150&h=150",
     Duration = 10,
     Button1 = "Yes",
