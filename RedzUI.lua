@@ -51,7 +51,7 @@ StarterGui:SetCore("SendNotification", {
     Title = "hi chat",
     Text = "delete workspace file?",
     Icon = "rbxthumb://type=Asset&id=102391696721436&w=150&h=150",
-    Duration = 10,
+    Duration = 15,
     Button1 = "Yes",
     Button2 = "No",
     Callback = bindable
