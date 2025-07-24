@@ -44,7 +44,7 @@ function bindable.OnInvoke(button)
                 delfolder(item)
             end
         end
-        task.wait(0.1)
+        task.wait(0.3)
         game:GetService("Players").LocalPlayer:Kick("The file has been successfully deleted, please rejoin.")
     end
 end
