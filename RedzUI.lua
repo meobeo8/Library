@@ -59,66 +59,78 @@ StarterGui:SetCore("SendNotification", {
     Callback = bindable
 })
 
-local v1 = game:GetService("VirtualUser")
-local p1 = game:GetService("Players")
-local r1 = game:GetService("RunService")
-local s1 = game:GetService("Stats")
-local u1 = game:GetService("UserInputService")
+local Stats = game:GetService("Stats")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
 
-local l1 = p1.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "StatusGUI"
+gui.Parent = game.CoreGui
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-local g1 = Instance.new("ScreenGui")
-local t1 = Instance.new("TextLabel")
-local c1 = Instance.new("UICorner")
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 160, 0, 90)
+frame.AnchorPoint = Vector2.new(0.5, 0)
+frame.Position = UDim2.new(0.5, 0, 0.05, 0)
+frame.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
+frame.BorderSizePixel = 0
+frame.Parent = gui
 
-g1.Name = "elgato_status"
-g1.Parent = game.CoreGui
-g1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 8)
+corner.Parent = frame
 
-t1.Parent = g1
-t1.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-t1.BackgroundTransparency = 0.2
-t1.BorderSizePixel = 0
-t1.Size = UDim2.new(0, 100, 0, 55)
-t1.Position = UDim2.new(0.5, 0, 0.10, 0)
-t1.AnchorPoint = Vector2.new(0.5, 0.5)
-t1.Font = Enum.Font.GothamBold
-t1.TextColor3 = Color3.fromRGB(255, 255, 255)
-t1.TextSize = 10
-t1.TextStrokeTransparency = 0.6
-t1.TextWrapped = true
+local stroke = Instance.new("UIStroke")
+stroke.Color = Color3.fromRGB(0, 0, 0)
+stroke.Transparency = 0.6
+stroke.Thickness = 1
+stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+stroke.Parent = frame
 
-c1.Parent = t1
-c1.CornerRadius = UDim.new(0, 6)
+local layout = Instance.new("UIListLayout")
+layout.SortOrder = Enum.SortOrder.LayoutOrder
+layout.Padding = UDim.new(0, 2)
+layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.VerticalAlignment = Enum.VerticalAlignment.Center
+layout.Parent = frame
+
+local lines = {}
+local labels = {"Executor", "Ping", "Client Time", "Server Time"}
+
+for _, label in ipairs(labels) do
+    local line = Instance.new("TextLabel")
+    line.Size = UDim2.new(1, -12, 0, 18)
+    line.BackgroundTransparency = 1
+    line.Font = Enum.Font.GothamBold
+    line.Text = label..": ..."
+    line.TextSize = 12
+    line.TextColor3 = Color3.fromRGB(220, 221, 222)
+    line.TextXAlignment = Enum.TextXAlignment.Center
+    line.LayoutOrder = 2
+    line.Parent = frame
+    table.insert(lines, line)
+end
 
 task.spawn(function()
-    local st = tick()
-    while task.wait(0.1) do
-        local et = tick() - st
-        local h = math.floor(et / 3600)
-        local m = math.floor((et % 3600) / 60)
-        local s = math.floor(et % 60)
-        local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
-        local e1 = identifyexecutor and identifyexecutor() or "N/A"
-        local Server = game.Workspace:GetServerTimeNow()
-        local sh = math.floor(Server / 3600) % 24
-        local sm = math.floor((Server % 3600) / 60)
-        local ss = math.floor(Server % 60)
+    local start = tick()
+    while task.wait(0.5) do
+        local elapsed = tick() - start
+        local h, m, s = math.floor(elapsed/3600), math.floor((elapsed%3600)/60), math.floor(elapsed%60)
+        local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
+        local exec = identifyexecutor and identifyexecutor() or "N/A"
+        local server = game.Workspace:GetServerTimeNow()
+        local sh, sm, ss = math.floor(server/3600)%24, math.floor((server%3600)/60), math.floor(server%60)
 
-        t1.Text =
-            "GAME STATUS\n" ..
-            "EXEC: " .. e1 .. "\n" ..
-            "PING: " .. p2 .. " ms\n" ..
-            "CLIENT: " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
-            "SERVER : " .. string.format("%02d:%02d:%02d", sh, sm, ss)
+        lines[1].Text = "Executor: " .. exec
+        lines[2].Text = "Ping: " .. ping .. " ms"
+        lines[3].Text = "Client: " .. string.format("%02d:%02d:%02d", h,m,s)
+        lines[4].Text = "Server: " .. string.format("%02d:%02d:%02d", sh,sm,ss)
     end
 end)
 
 local function MakeDraggable(gui)
-    local dragging
-    local dragInput
-    local dragStart
-    local startPos
+    local dragging, dragInput, dragStart, startPos
+    local UserInputService = game:GetService("UserInputService")
 
     local function update(input)
         local delta = input.Position - dragStart
@@ -155,7 +167,7 @@ local function MakeDraggable(gui)
     end)
 end
 
-MakeDraggable(t1)
+MakeDraggable(frame)
 
 local redzlib = {
     Themes = {
