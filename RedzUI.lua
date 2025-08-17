@@ -100,11 +100,17 @@ task.spawn(function()
         local s = math.floor(et % 60)
         local p2 = tonumber(s1.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
         local e1 = identifyexecutor and identifyexecutor() or "N/A"
+        local Server = game.Workspace:GetServerTimeNow()
+        local sh = math.floor(Server / 3600) % 24
+        local sm = math.floor((Server % 3600) / 60)
+        local ss = math.floor(Server % 60)
+
         t1.Text =
             "GAME STATUS\n" ..
-            "⏳ TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
-            "📶 PING : " .. p2 .. " ms\n" ..
-            "🖥️ EXEC : " .. e1
+            "EXEC : " .. e1 .. "\n" ..
+            "PING : " .. p2 .. " ms\n" ..
+            "TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
+            "SERVER TIME : " .. string.format("%02d:%02d:%02d", sh, sm, ss)
     end
 end)
 
