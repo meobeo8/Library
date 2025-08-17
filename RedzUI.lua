@@ -9,7 +9,7 @@ local Player = Players.LocalPlayer
 local PlayerMouse = Player:GetMouse()
 
 for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "elgato_status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "elgato_blackscreen" or v.Name == "elgato_keysystem" or "StatusGUI" then
+    if v.Name == "elgato_status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "elgato_blackscreen" or v.Name == "elgato_keysystem" then
         v:Destroy()
     end
 end
@@ -64,7 +64,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
 local gui = Instance.new("ScreenGui")
-gui.Name = "StatusGUI"
+gui.Name = "elgato_status"
 gui.Parent = game.CoreGui
 gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
