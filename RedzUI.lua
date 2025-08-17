@@ -107,10 +107,10 @@ task.spawn(function()
 
         t1.Text =
             "GAME STATUS\n" ..
-            "EXEC : " .. e1 .. "\n" ..
-            "PING : " .. p2 .. " ms\n" ..
-            "TIME : " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
-            "SERVER TIME : " .. string.format("%02d:%02d:%02d", sh, sm, ss)
+            "EXEC: " .. e1 .. "\n" ..
+            "PING: " .. p2 .. " ms\n" ..
+            "CLIENT: " .. string.format("%02d:%02d:%02d", h, m, s) .. "\n" ..
+            "SERVER : " .. string.format("%02d:%02d:%02d", sh, sm, ss)
     end
 end)
 
