@@ -104,7 +104,7 @@ for _, label in ipairs(labels) do
     line.Font = Enum.Font.GothamBold
     line.Text = label..": ..."
     line.TextSize = 12
-    line.TextColor3 = Color3.fromRGB(220, 221, 222)
+    line.TextColor3 = Color3.fromRGB(255, 255, 255)
     line.TextXAlignment = Enum.TextXAlignment.Center
     line.LayoutOrder = 2
     line.Parent = frame
