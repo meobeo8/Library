@@ -1,27 +1,32 @@
-local MarketplaceService = game:GetService("MarketplaceService")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local HttpService = game:GetService("HttpService")
-local RunService = game:GetService("RunService")
-local CoreGui = game:GetService("CoreGui")
-local Players = game:GetService("Players")
+local MarketplaceService = cloneref(game:GetService("MarketplaceService"))
+local UserInputService = cloneref(game:GetService("UserInputService"))
+local TweenService = cloneref(game:GetService("TweenService"))
+local HttpService = cloneref(game:GetService("HttpService"))
+local RunService = cloneref(game:GetService("RunService"))
+local CoreGui = cloneref(game:GetService("CoreGui"))
+local Players = cloneref(game:GetService("Players"))
+local StarterGui = cloneref(game:GetService("StarterGui"))
+local bindable = Instance.new("BindableFunction")
+local VirtualUser = game:GetService("VirtualUser")
+local Stats = game:GetService("Stats")
 local Player = Players.LocalPlayer
 local PlayerMouse = Player:GetMouse()
 
-for _, v in ipairs(game:GetService("CoreGui"):GetChildren()) do
-    if v.Name == "elgato_status" or v.Name == "redz Library V5" or v.Name == "ELGATO HUB ON/OFF" or v.Name == "ELGATO TIME" or v.Name == "elgato_blackscreen" or v.Name == "elgato_keysystem" then
+for _, v in ipairs(CoreGui:GetChildren()) do
+    if v.Name == "redz Library V5" then
         v:Destroy()
     end
 end
 
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:Connect(function()
-    vu:CaptureController()
-    vu:ClickButton2(Vector2.new())
-end)
+for _, file in pairs({"Second Piece", "Abyss Miner", "My Singing Brainrot", "Another Piece", "Rock Fruit", "Cross Piece", "Hunty Zombies"}) do
+    if isfolder("TYPE HUB/" .. file) then
+        delfolder("TYPE HUB/" .. file)
+    end
+end
 
-local StarterGui = game:GetService("StarterGui")
-local bindable = Instance.new("BindableFunction")
+if isfolder("ELGATO HUB") then
+    delfolder("ELGATO HUB")
+end
 
 function bindable.OnInvoke(button)
     if button == "Yes" then
@@ -45,7 +50,7 @@ function bindable.OnInvoke(button)
             end
         end
         task.wait(0.3)
-        game:GetService("Players").LocalPlayer:Kick("The file has been successfully deleted, please rejoin.")
+        Player:Kick("The file has been successfully deleted, please rejoin.")
     end
 end
 
@@ -59,102 +64,96 @@ StarterGui:SetCore("SendNotification", {
     Callback = bindable
 })
 
-local VirtualUser = game:GetService("VirtualUser")
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local Stats = game:GetService("Stats")
-local UserInputService = game:GetService("UserInputService")
+if not CoreGui:FindFirstChild("elgato_status") then
+    local StatusGui = Instance.new("ScreenGui")
+    local StatusLabel = Instance.new("TextLabel")
+    local LabelCorner = Instance.new("UICorner")
 
-local LocalPlayer = Players.LocalPlayer
+    StatusGui.Name = "elgato_status"
+    StatusGui.Parent = game.CoreGui
+    StatusGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-local StatusGui = Instance.new("ScreenGui")
-local StatusLabel = Instance.new("TextLabel")
-local LabelCorner = Instance.new("UICorner")
+    StatusLabel.Parent = StatusGui
+    StatusLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+    StatusLabel.BackgroundTransparency = 0.2
+    StatusLabel.BorderSizePixel = 0
+    StatusLabel.Size = UDim2.new(0, 120, 0, 70)
+    StatusLabel.Position = UDim2.new(0.5, 0, 0.1, 0)
+    StatusLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+    StatusLabel.Font = Enum.Font.GothamBold
+    StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    StatusLabel.TextSize = 12
+    StatusLabel.TextStrokeTransparency = 0.6
+    StatusLabel.TextWrapped = true
 
-StatusGui.Name = "elgato_status"
-StatusGui.Parent = game.CoreGui
-StatusGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    LabelCorner.Parent = StatusLabel
+    LabelCorner.CornerRadius = UDim.new(0, 6)
 
-StatusLabel.Parent = StatusGui
-StatusLabel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-StatusLabel.BackgroundTransparency = 0.2
-StatusLabel.BorderSizePixel = 0
-StatusLabel.Size = UDim2.new(0, 120, 0, 70)
-StatusLabel.Position = UDim2.new(0.5, 0, 0.1, 0)
-StatusLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-StatusLabel.Font = Enum.Font.GothamBold
-StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-StatusLabel.TextSize = 12
-StatusLabel.TextStrokeTransparency = 0.6
-StatusLabel.TextWrapped = true
+    task.spawn(function()
+        local startTick = tick()
+        while task.wait(0.15) do
+            local elapsed = tick() - startTick
+            local clientH = math.floor(elapsed / 3600)
+            local clientM = math.floor((elapsed % 3600) / 60)
+            local clientS = math.floor(elapsed % 60)
 
-LabelCorner.Parent = StatusLabel
-LabelCorner.CornerRadius = UDim.new(0, 6)
+            local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
+            local executorName = identifyexecutor and identifyexecutor() or "N/A"
 
-task.spawn(function()
-    local startTick = tick()
-    while task.wait(0.15) do
-        local elapsed = tick() - startTick
-        local clientH = math.floor(elapsed / 3600)
-        local clientM = math.floor((elapsed % 3600) / 60)
-        local clientS = math.floor(elapsed % 60)
+            local serverTime = workspace:GetServerTimeNow()
+            local serverH, serverM, serverS = math.floor(serverTime / 3600) % 24, math.floor((serverTime % 3600) / 60), math.floor(serverTime % 60)
 
-        local ping = tonumber(Stats.Network.ServerStatsItem["Data Ping"]:GetValueString():match("%d+")) or 0
-        local executorName = identifyexecutor and identifyexecutor() or "N/A"
+            local fps = math.floor(workspace:GetRealPhysicsFPS())
 
-        local serverTime = workspace:GetServerTimeNow()
-        local serverH, serverM, serverS = math.floor(serverTime / 3600) % 24, math.floor((serverTime % 3600) / 60), math.floor(serverTime % 60)
+            StatusLabel.Text =
+                "Executor: " .. executorName .. "\n" ..
+                "Client: " .. string.format("%02d:%02d:%02d", clientH, clientM, clientS) .. "\n" ..
+                "Server: " .. string.format("%02d:%02d:%02d", serverH, serverM, serverS) .. "\n" ..
+                "Ping: " .. ping .. " ms\n" ..
+                "Fps: " .. fps
+        end
+    end)
 
-        local fps = math.floor(workspace:GetRealPhysicsFPS())
+    local function MakeDraggable(gui)
+        local dragging, dragInput, dragStart, startPos
 
-        StatusLabel.Text =
-            "Executor: " .. executorName .. "\n" ..
-            "Client: " .. string.format("%02d:%02d:%02d", clientH, clientM, clientS) .. "\n" ..
-            "Server: " .. string.format("%02d:%02d:%02d", serverH, serverM, serverS) .. "\n" ..
-            "Ping: " .. ping .. " ms\n" ..
-            "Fps: " .. fps
+        local function update(input)
+            local delta = input.Position - dragStart
+            gui.Position = UDim2.new(
+                startPos.X.Scale, startPos.X.Offset + delta.X,
+                startPos.Y.Scale, startPos.Y.Offset + delta.Y
+            )
+        end
+
+        gui.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = true
+                dragStart = input.Position
+                startPos = gui.Position
+
+                input.Changed:Connect(function()
+                    if input.UserInputState == Enum.UserInputState.End then
+                        dragging = false
+                    end
+                end)
+            end
+        end)
+
+        gui.InputChanged:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+                dragInput = input
+            end
+        end)
+
+        UserInputService.InputChanged:Connect(function(input)
+            if input == dragInput and dragging then
+                update(input)
+            end
+        end)
     end
-end)
 
-local function MakeDraggable(gui)
-    local dragging, dragInput, dragStart, startPos
-
-    local function update(input)
-        local delta = input.Position - dragStart
-        gui.Position = UDim2.new(
-            startPos.X.Scale, startPos.X.Offset + delta.X,
-            startPos.Y.Scale, startPos.Y.Offset + delta.Y
-        )
-    end
-
-    gui.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            dragging = true
-            dragStart = input.Position
-            startPos = gui.Position
-
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    dragging = false
-                end
-            end)
-        end
-    end)
-
-    gui.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
-        end
-    end)
-
-    UserInputService.InputChanged:Connect(function(input)
-        if input == dragInput and dragging then
-            update(input)
-        end
-    end)
+    MakeDraggable(StatusLabel)
 end
-
-MakeDraggable(StatusLabel)
 
 local redzlib = {
     Themes = {
@@ -1279,7 +1278,7 @@ local SetProps, SetChildren, InsertTheme, Create do
 		end
 	end
 	
-	pcall(Save, "ELGATO HUB/Library.json")
+	pcall(Save, "TYPE HUB/Library.json")
 end
 
 local Funcs = {} do
@@ -1405,8 +1404,6 @@ local GetFlag, SetFlag, CheckFlag do
 			db=true;task.wait(0.1);db=false
 			
 			local Success, Encoded = pcall(function()
-				-- local _Flags = {}
-				-- for _,Flag in pairs(Flags) do _Flags[_] = Flag.Value end
 				return HttpService:JSONEncode(Flags)
 			end)
 			
@@ -1479,7 +1476,6 @@ local function MakeDrag(Instance)
 		local function Update(Input)
 			local delta = Input.Position - DragStart
 			local Position = UDim2.new(StartPos.X.Scale, StartPos.X.Offset + delta.X / UIScale, StartPos.Y.Scale, StartPos.Y.Offset + delta.Y / UIScale)
-			-- Instance.Position = Position
 			CreateTween({Instance, "Position", Position, 0.35})
 		end
 		
@@ -1700,7 +1696,7 @@ function redzlib:SetTheme(NewTheme)
     if not VerifyTheme(NewTheme) then return end
 
     redzlib.Save.Theme = NewTheme
-    SaveJson("ELGATO HUB/Library.json", redzlib.Save)
+    SaveJson("TYPE HUB/Library.json", redzlib.Save)
     Theme = redzlib.Themes[NewTheme]
 
     if Connection and typeof(Connection) == "table" and Connection.Fire then
@@ -1878,13 +1874,13 @@ function redzlib:MakeWindow(Configs)
 	ConnectSave(ControlSize1, function()
 		if not Minimized then
 			redzlib.Save.UISize = {MainFrame.Size.X.Offset, MainFrame.Size.Y.Offset}
-			SaveJson("ELGATO HUB/Library.json", redzlib.Save)
+			SaveJson("TYPE HUB/Library.json", redzlib.Save)
 		end
 	end)
 	
 	ConnectSave(ControlSize2, function()
 		redzlib.Save.TabSize = MainScroll.Size.X.Offset
-		SaveJson("ELGATO HUB/Library.json", redzlib.Save)
+		SaveJson("TYPE HUB/Library.json", redzlib.Save)
 	end)
 	
 	local ButtonsFolder = Create("Folder", TopBar, {
