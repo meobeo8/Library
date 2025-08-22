@@ -109,8 +109,7 @@ if not CoreGui:FindFirstChild("elgato_status") then
                 "Executor: " .. executorName .. "\n" ..
                 "Client: " .. string.format("%02d:%02d:%02d", clientH, clientM, clientS) .. "\n" ..
                 "Server: " .. string.format("%02d:%02d:%02d", serverH, serverM, serverS) .. "\n" ..
-                "Ping: " .. ping .. " ms\n" ..
-                "Fps: " .. fps
+                "Ping: " .. ping .. " ms"
         end
     end)
 
