@@ -50,7 +50,7 @@ function bindable.OnInvoke(button)
             end
         end
         task.wait(0.3)
-        Player:Kick("The file has been successfully deleted, please rejoin.")
+        Player:Kick("The file has been successfully deleted, please rejoin")
     end
 end
 
