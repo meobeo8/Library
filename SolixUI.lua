@@ -1071,7 +1071,6 @@ local Library do
 				local SetFunction = Library.SetFlags[Index]
 
 				if not SetFunction then
-					print("Nigger")
 					continue
 				end
 
@@ -4367,144 +4366,80 @@ local Library do
 		local Items = { } do
 			Items["Notification"] = Instances:Create("Frame", {
 				Parent = Library.NotifHolder.Instance,
-				Name = "\0",
-				BackgroundTransparency = 0.3,
-				BorderColor3 = FromRGB(0, 0, 0),
+				Name = "Notification",
+				BackgroundTransparency = 0.06,
+				AutomaticSize = Enum.AutomaticSize.Y,
+				BackgroundColor3 = FromRGB(16, 16, 16),
 				BorderSizePixel = 0,
-				AutomaticSize = Enum.AutomaticSize.XY,
-				BackgroundColor3 = FromRGB(15, 12, 16)
-			})  Items["Notification"]:AddToTheme({BackgroundColor3 = "Background"})
+				Size = UDim2New(0, 320, 0, 70)
+			}) Items["Notification"]:AddToTheme({BackgroundColor3 = "Background"})
 
 			Instances:Create("UICorner", {
 				Parent = Items["Notification"].Instance,
-				Name = "\0",
-				CornerRadius = UDimNew(0, 5)
+				CornerRadius = UDimNew(0, 8)
 			})
 
-			Instances:Create("UIPadding", {
+			Items["Stroke"] = Instances:Create("UIStroke", {
 				Parent = Items["Notification"].Instance,
-				Name = "\0",
-				PaddingTop = UDimNew(0, 8),
-				PaddingBottom = UDimNew(0, 8),
-				PaddingRight = UDimNew(0, 8),
-				PaddingLeft = UDimNew(0, 8)
+				Color = FromRGB(158, 114, 158),
+				Transparency = 0.8
 			})
 
 			Items["Title"] = Instances:Create("TextLabel", {
 				Parent = Items["Notification"].Instance,
-				Name = "\0",
 				FontFace = Library.Font,
-				TextColor3 = FromRGB(255, 255, 255),
-				BorderColor3 = FromRGB(0, 0, 0),
 				Text = Text,
-				Size = UDim2New(0, 0, 0, 15),
-				BackgroundTransparency = 1,
+				TextColor3 = FromRGB(199, 199, 203),
+				TextSize = 16,
 				TextXAlignment = Enum.TextXAlignment.Left,
-				BorderSizePixel = 0,
-				AutomaticSize = Enum.AutomaticSize.XY,
-				TextSize = 14,
-				BackgroundColor3 = FromRGB(255, 255, 255)
-			})  Items["Title"]:AddToTheme({TextColor3 = "Text"})
+				BackgroundTransparency = 1,
+				Size = UDim2New(1, -20, 0, 20),
+				Position = UDim2New(0, 10, 0, 6)
+			}) Items["Title"]:AddToTheme({TextColor3 = "Text"})
 
 			Items["Description"] = Instances:Create("TextLabel", {
 				Parent = Items["Notification"].Instance,
-				Name = "\0",
 				FontFace = Library.Font,
-				TextWrapped = true,
-				TextColor3 = FromRGB(255, 255, 255),
-				TextTransparency = 0.4000000059604645,
 				Text = Description,
-				Size = UDim2New(0, 115, 0, 15),
-				Position = UDim2New(0, 0, 0, 20),
-				BorderSizePixel = 0,
-				BorderColor3 = FromRGB(0, 0, 0),
-				BackgroundTransparency = 1,
-				TextXAlignment = Enum.TextXAlignment.Left,
-				AutomaticSize = Enum.AutomaticSize.Y,
+				TextColor3 = FromRGB(180, 180, 185),
 				TextSize = 14,
-				BackgroundColor3 = FromRGB(255, 255, 255)
-			})  Items["Description"]:AddToTheme({TextColor3 = "Text"})
+				TextXAlignment = Enum.TextXAlignment.Left,
+				TextYAlignment = Enum.TextYAlignment.Top,
+				BackgroundTransparency = 1,
+				AutomaticSize = Enum.AutomaticSize.Y,
+				TextWrapped = true,
+				Size = UDim2New(1, -20, 0, 0),
+				Position = UDim2New(0, 10, 0, 28)
+			}) Items["Description"]:AddToTheme({TextColor3 = "Text"})
 
 			Items["Duration"] = Instances:Create("Frame", {
 				Parent = Items["Notification"].Instance,
-				Name = "\0",
-				Position = UDim2New(0, 0, 0, 55),
-				BorderColor3 = FromRGB(0, 0, 0),
-				Size = UDim2New(1, 0, 0, 5),
+				BackgroundColor3 = FromRGB(44, 38, 44),
 				BorderSizePixel = 0,
-				BackgroundColor3 = FromRGB(22, 20, 24)
-			})  Items["Duration"]:AddToTheme({BackgroundColor3 = "Inline"})
-
-			Instances:Create("UICorner", {
-				Parent = Items["Duration"].Instance,
-				Name = "\0",
-				CornerRadius = UDimNew(0, 5)
-			})
+				Size = UDim2New(1, -20, 0, 6),
+				Position = UDim2New(0, 10, 1, -12)
+			}) Items["Duration"]:AddToTheme({BackgroundColor3 = "Inline"})
 
 			Items["Accent"] = Instances:Create("Frame", {
 				Parent = Items["Duration"].Instance,
-				Name = "\0",
-				BorderColor3 = FromRGB(0, 0, 0),
-				Size = UDim2New(0, 100, 1, 0),
+				BackgroundColor3 = FromRGB(255, 188, 254),
 				BorderSizePixel = 0,
-				BackgroundColor3 = FromRGB(232, 186, 248)
-			})  Items["Accent"]:AddToTheme({BackgroundColor3 = "Accent"})
+				Size = UDim2New(1, 0, 1, 0)
+			}) Items["Accent"]:AddToTheme({BackgroundColor3 = "Accent"})
 
 			Instances:Create("UICorner", {
-				Parent = Items["Accent"].Instance,
-				Name = "\0",
-				CornerRadius = UDimNew(0, 5)
+				Parent = Items["Accent"].Instance
 			})
 		end
 
-		local OldSize = Items["Notification"].Instance.AbsoluteSize
-		Items["Notification"].Instance.BackgroundTransparency = 1
-		Items["Notification"].Instance.Size = UDim2New(0, 0, 0, 0)
+		Items["Accent"]:Tween(
+			TweenInfo.new(Duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),
+			{Size = UDim2New(0, 0, 1, 0)})
 
-		for Index, Value in Items["Notification"].Instance:GetDescendants() do
-			if Value:IsA("UIStroke") then 
-				Value.Transparency = 1
-			elseif Value:IsA("TextLabel") then 
-				Value.TextTransparency = 1
-			elseif Value:IsA("Frame") then 
-				Value.BackgroundTransparency = 1
-			end
-		end
-
-		Items["Notification"].Instance.AutomaticSize = Enum.AutomaticSize.None
-
-		Library:Thread(function()
-			Items["Notification"]:Tween(nil, {BackgroundTransparency = 0, Size = UDim2New(0,  OldSize.X, 0, OldSize.Y)})
-			task.wait(0.08)
-
-			for Index, Value in Items["Notification"].Instance:GetDescendants() do
-				if Value:IsA("UIStroke") then
-					Tween:Create(Value, nil, {Transparency = 0}, true)
-				elseif Value:IsA("TextLabel") then
-					Tween:Create(Value, nil, {TextTransparency = 0}, true)
-				elseif Value:IsA("Frame") then
-					Tween:Create(Value, nil, {BackgroundTransparency = 0}, true)
-				end
-			end
-
-			Items["Accent"]:Tween(TweenInfo.new(Duration, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = UDim2New(0, 0, 1, 0)})
-
-			task.delay(Duration + 0.1, function()
-				for Index, Value in Items["Notification"].Instance:GetDescendants() do
-					if Value:IsA("UIStroke") then
-						Tween:Create(Value, nil, {Transparency = 1}, true)
-					elseif Value:IsA("TextLabel") then
-						Tween:Create(Value, nil, {TextTransparency = 1}, true)
-					elseif Value:IsA("Frame") then
-						Tween:Create(Value, nil, {BackgroundTransparency = 1}, true)
-					end
-				end
-
-				task.wait(0.08)
-				Items["Notification"]:Tween(nil, {BackgroundTransparency = 1, Size = UDim2New(0, 0, 0, 0)})
-				task.wait(0.8)
-				Items["Notification"]:Clean()
-			end)
+		task.delay(Duration, function()
+			Tween:Create(Items["Notification"].Instance, TweenInfo.new(0.3), {BackgroundTransparency = 1}, true)
+			task.wait(0.3)
+			Items["Notification"]:Clean()
 		end)
 	end
 
