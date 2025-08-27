@@ -4935,12 +4935,12 @@ local Library do
 					CornerRadius = UDimNew(1, 0)
 				}) 
 
-				local Library:Notificationmized2 = false
+				local IsClose = false
 
 				Items["FloatingButton"]:Connect("MouseButton1Down", function(Input)
-					Library:Notificationmized2 = not Library:Notificationmized2
-					Window:Minimize(Library:Notificationmized2)
-					Items["OpenTitle"].Instance.Text = Library:Notificationmized2 and "Open" or "Close"
+					IsClose = not IsClose
+					Window:Minimize(IsClose)
+					Items["OpenTitle"].Instance.Text = IsClose and "Open" or "Close"
 				end)
 			end
 
@@ -4993,13 +4993,13 @@ local Library do
 			end
 		end)
 
-		local Library:Notificationmized1 = false
+		local IsMinisize = false
 		local OldSize = Items["MainFrame"].Instance.AbsoluteSize
 
 		function Window:Minimize(Bool)
-			Library:Notificationmized1 = Bool
+			IsMinisize = Bool
 
-			if Library:Notificationmized1 then 
+			if IsMinisize then 
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, OldSize.X, 0, 35)})
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, 275, 0, 35)})
 			else
@@ -5022,7 +5022,7 @@ local Library do
 		end)
 
 		Items["MinimizeButton"]:Connect("MouseButton1Down", function()
-			Window:Minimize(not Library:Notificationmized)
+			Window:Minimize(not IsMinisize)
 		end)
 
 		Items["CloseButton"]:Connect("MouseButton1Down", function()
