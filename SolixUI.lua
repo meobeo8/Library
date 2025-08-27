@@ -6627,19 +6627,12 @@ local Library do
 
 						local AutoloadButton = ConfigsSection:Button()
 
-						AutoloadButton:Add("Set autoload", function()
+						AutoloadButton:Add("IsMinisize", function()
 							if ConfigSelected then 
 								local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
 								CurrentConfigName ..= "" .. game.GameId .. ".json"
-								local Success, Error = Library:SafeCall(function()
-									writefile(Library.Folders.Directory .. "/autoload.json", readfile(Library.Folders.Configs .. "/" .. CurrentConfigName))
-								end)
-
-								if not Success then 
-									Library:Notification("Error!", "Failed to set autoload. Report this to the developers:\n"..Error, 5)
-								else
-									Library:Notification("Success!", "Succesfully set autoload.", 5)
-								end
+								writefile(Library.Folders.Directory .. "/autoload.json", readfile(Library.Folders.Configs .. "/" .. CurrentConfigName))
+								Library:Notification("Success!", "Succesfully set autoload.", 5)
 							end
 						end)
 
