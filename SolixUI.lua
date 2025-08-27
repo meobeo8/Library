@@ -4935,9 +4935,12 @@ local Library do
 					CornerRadius = UDimNew(1, 0)
 				}) 
 
+				local Library:Notificationmized2 = false
+
 				Items["FloatingButton"]:Connect("MouseButton1Down", function(Input)
-					Window:SetOpen(not Window.IsOpen)
-					Items["OpenTitle"].Instance.Text = Window.IsOpen and "Close" or "Open"
+					Library:Notificationmized2 = not Library:Notificationmized2
+					Window:Minimize(Library:Notificationmized2)
+					Items["OpenTitle"].Instance.Text = Library:Notificationmized2 and "Open" or "Close"
 				end)
 			end
 
@@ -4990,13 +4993,13 @@ local Library do
 			end
 		end)
 
-		local IsMinimized = false
+		local Library:Notificationmized1 = false
 		local OldSize = Items["MainFrame"].Instance.AbsoluteSize
 
 		function Window:Minimize(Bool)
-			IsMinimized = Bool
+			Library:Notificationmized1 = Bool
 
-			if IsMinimized then 
+			if Library:Notificationmized1 then 
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, OldSize.X, 0, 35)})
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, 275, 0, 35)})
 			else
@@ -5019,7 +5022,7 @@ local Library do
 		end)
 
 		Items["MinimizeButton"]:Connect("MouseButton1Down", function()
-			Window:Minimize(not IsMinimized)
+			Window:Minimize(not Library:Notificationmized)
 		end)
 
 		Items["CloseButton"]:Connect("MouseButton1Down", function()
@@ -6870,6 +6873,6 @@ local Library do
 	end
 end
 
+Library:CheckForAutoLoad()
 getgenv().Library = Library
-
 return Library
