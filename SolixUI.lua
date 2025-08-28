@@ -985,25 +985,35 @@ local Library do
 	end
 
 	Library.RefreshConfigsList = function(self, Element)
-		local CurrentList = { }
-		local List = { }
+		local CurrentList = {}
+		local List = {}
 
-		local ConfigFolderName = StringGSub(Library.Folders.Configs, Library.Folders.Directory .. "/", "")
 
-		for Index, Value in listfiles(Library.Folders.Configs) do
-			local FileName = StringGSub(Value, Library.Folders.Directory .. "\\" .. ConfigFolderName .. "\\", "")
+		local ConfigFolderName = string.gsub(self.Folders.Configs, self.Folders.Directory .. "/", "")
 
-			if not StringFind(FileName, tostring(game.GameId)) then
+		for Index, Value in listfiles(self.Folders.Configs) do
+
+			local v = tostring(Value):gsub("\\", "/")
+
+
+			local root = (self.Folders.Directory .. "/" .. ConfigFolderName .. "/")
+			root = root:gsub("([%^%$%(%)%.%[%]%*%+%-%?])", "%%%1")
+
+
+			local FileName = v:gsub("^" .. root, "")
+
+
+			if not string.find(FileName, tostring(game.GameId), 1, true) then
 				continue
 			end
 
-			local RealName = StringGSub(FileName, tostring(game.GameId), "")
+
+			local RealName = string.gsub(FileName, tostring(game.GameId), "")
 
 			List[Index] = { Name = RealName, RealName = FileName }
 		end
 
-		local IsNew = #List ~= CurrentList
-
+		local IsNew = #List ~= #CurrentList
 		if not IsNew then
 			for Index = 1, #List do
 				if List[Index] ~= CurrentList[Index] then
@@ -1011,14 +1021,17 @@ local Library do
 					break
 				end
 			end
-		else
+		end
+
+		if IsNew then
 			CurrentList = List
 			Element:Clear()
-			for Index, Value in CurrentList do
+			for _, Value in CurrentList do
 				Element:Add(Value.Name)
 			end
 		end
 	end
+
 
 	Library.ChangeItemTheme = function(self, Item, Properties)
 		Item = Item.Instance or Item
@@ -1096,18 +1109,27 @@ local Library do
 	end
 
 	Library.RefreshThemesList = function(self, Element)
-		local CurrentList = { }
-		local List = { }
+		local CurrentList = {}
+		local List = {}
 
-		local ConfigFolderName = StringGSub(Library.Folders.Themes, Library.Folders.Directory .. "/", "")
 
-		for Index, Value in listfiles(Library.Folders.Themes) do
-			local FileName = StringGSub(Value, Library.Folders.Directory .. "\\" .. ConfigFolderName .. "\\", "")
+		local ConfigFolderName = string.gsub(self.Folders.Themes, self.Folders.Directory .. "/", "")
+
+		for Index, Value in listfiles(self.Folders.Themes) do
+
+			local v = tostring(Value):gsub("\\", "/")
+
+
+			local root = (self.Folders.Directory .. "/" .. ConfigFolderName .. "/")
+			root = root:gsub("([%^%$%(%)%.%[%]%*%+%-%?])", "%%%1")
+
+
+			local FileName = v:gsub("^" .. root, "")
+
 			List[Index] = FileName
 		end
 
-		local IsNew = #List ~= CurrentList
-
+		local IsNew = #List ~= #CurrentList
 		if not IsNew then
 			for Index = 1, #List do
 				if List[Index] ~= CurrentList[Index] then
@@ -1115,11 +1137,14 @@ local Library do
 					break
 				end
 			end
-		else
+		end
+
+		if IsNew then
 			CurrentList = List
 			Element:Refresh(CurrentList)
 		end
 	end
+
 
 	Library.IsMouseOverFrame = function(self, Frame, XOffset, YOffset)
 		Frame = Frame.Instance
@@ -4935,12 +4960,11 @@ local Library do
 					CornerRadius = UDimNew(1, 0)
 				}) 
 
-				local IsClose = false
-
 				Items["FloatingButton"]:Connect("MouseButton1Down", function(Input)
-					IsClose = not IsClose
-					Window:Minimize(IsClose)
-					Items["OpenTitle"].Instance.Text = IsClose and "Open" or "Close"
+					IsOpen = not IsOpen
+					task.wait()
+					Window:SetOpen(IsOpen)
+					Items["OpenTitle"].Instance.Text = IsOpen and "Open" or "Close"
 				end)
 			end
 
@@ -4994,6 +5018,7 @@ local Library do
 		end)
 
 		local IsMinisize = false
+		local IsOpen = false
 		local OldSize = Items["MainFrame"].Instance.AbsoluteSize
 
 		function Window:Minimize(Bool)
@@ -5004,6 +5029,16 @@ local Library do
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, 275, 0, 35)})
 			else
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, OldSize.X, 0, OldSize.Y)})
+			end
+		end
+
+		function Window:SetOpen(Bool)
+			IsOpen = Bool
+
+			if IsOpen then
+				Items["MainFrame"].Instance.Visible = true
+			else
+				Items["MainFrame"].Instance.Visible = false
 			end
 		end
 
@@ -5033,6 +5068,8 @@ local Library do
 
 		return setmetatable(Window, self)
 	end
+
+
 
 	Library.Page = function(self, Properties)
 		Properties = Properties or { }
@@ -5203,57 +5240,6 @@ local Library do
 		local Debounce = false 
 
 		function Page:Turn(Bool)
-            --[[
-            if Debounce then 
-                return 
-            end
-
-            self.Active = Bool
-            Items["Page"].Instance.Parent = self.Active and Page.Window.Items["Content"].Instance or Library.UnusedHolder.Instance
-
-            Debounce = true
-
-            if self.Active then
-                Items["Page"].Instance.Visible = true
-
-                Items["Liner"]:Tween(nil, {BackgroundTransparency = 0, Size = UDim2New(0, 6, 1, -20)})
-                Items["Inactive"]:Tween(nil, {BackgroundTransparency = 0})
-                Items["Text"]:Tween(nil, {TextTransparency = 0, Position = UDim2New(0, 12, 0.5, 0)})
-
-                Library.CurrentPage = Page
-            else
-                Items["Liner"]:Tween(nil, {BackgroundTransparency = 1, Size = UDim2New(0, 3, 1, -20)})
-                Items["Inactive"]:Tween(nil, {BackgroundTransparency = 1})
-                Items["Text"]:Tween(nil, {TextTransparency = 0.4, Position = UDim2New(0, 4, 0.5, 0)})
-            end
-
-            local Descendants = Items["Page"].Instance:GetDescendants()
-            TableInsert(Descendants, Items["Page"].Instance)
-
-            local NewTween
-            
-            for _, Object in Descendants do 
-                local TransparencyProperty = Tween:GetProperty(Object)
-
-                if not TransparencyProperty then 
-                    continue
-                end
-
-                if type(TransparencyProperty) == "table" then 
-                    for _, Property in TransparencyProperty do 
-                        NewTween = Tween:FadeItem(Object, Property, self.Active, Page.Window.FadeSpeed)
-                    end
-                else
-                    NewTween = Tween:FadeItem(Object, TransparencyProperty, self.Active, Page.Window.FadeSpeed)
-                end
-            end
-
-            Library:Connect(NewTween.Tween.Completed, function()
-                Debounce = false
-                Items["Page"].Instance.Visible = self.Active
-            end)
-            --]]
-
 			self.Active = Bool
 			Items["Page"].Instance.Parent = self.Active and Page.Window.Items["Content"].Instance or Library.UnusedHolder.Instance
 
@@ -6627,7 +6613,7 @@ local Library do
 
 						local AutoloadButton = ConfigsSection:Button()
 
-						AutoloadButton:Add("IsMinisize", function()
+						AutoloadButton:Add("Set autoload", function()
 							if ConfigSelected then 
 								local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
 								CurrentConfigName ..= "" .. game.GameId .. ".json"
@@ -6866,6 +6852,5 @@ local Library do
 	end
 end
 
-Library:CheckForAutoLoad()
 getgenv().Library = Library
 return Library
