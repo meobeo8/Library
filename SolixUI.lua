@@ -2,6 +2,22 @@ if getgenv().Library then
 	getgenv().Library:Unload()
 end
 
+if not isfolder("solixhub") then
+    makefolder("solixhub")
+end
+
+if not isfolder("solixhub/Assets") then
+    makefolder("solixhub/Assets")
+end
+
+if not isfolder("solixhub/Configs") then
+    makefolder("solixhub/Configs")
+end
+
+if not isfolder("solixhub/Themes") then
+    makefolder("solixhub/Themes")
+end
+
 local Library do
 	local Workspace = game:GetService("Workspace")
 	local UserInputService = game:GetService("UserInputService")
@@ -6853,4 +6869,5 @@ local Library do
 end
 
 getgenv().Library = Library
+
 return Library
