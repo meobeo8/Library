@@ -2,22 +2,6 @@ if getgenv().Library then
 	getgenv().Library:Unload()
 end
 
-if not isfolder("solixhub") then
-    makefolder("solixhub")
-end
-
-if not isfolder("solixhub/Assets") then
-    makefolder("solixhub/Assets")
-end
-
-if not isfolder("solixhub/Configs") then
-    makefolder("solixhub/Configs")
-end
-
-if not isfolder("solixhub/Themes") then
-    makefolder("solixhub/Themes")
-end
-
 local Library do
 	local Workspace = game:GetService("Workspace")
 	local UserInputService = game:GetService("UserInputService")
@@ -101,10 +85,10 @@ local Library do
 		},
 
 		Folders = {
-			Directory = "solixhub",
-			Configs = "solixhub/Configs",
-			Assets = "solixhub/Assets",
-			Themes = "solixhub/Themes"
+			Directory = "if plr:FindFirstChild("AlreadyLoaded") then",
+			Configs = "if plr:FindFirstChild("AlreadyLoaded") then/Configs",
+			Assets = "if plr:FindFirstChild("AlreadyLoaded") then/Assets",
+			Themes = "if plr:FindFirstChild("AlreadyLoaded") then/Themes"
 		},
 
 		Images = {
@@ -4692,7 +4676,7 @@ local Library do
 		Properties = Properties or { }
 
 		local Window = {
-			Name = Properties.Name or Properties.name or "solixhub",
+			Name = Properties.Name or Properties.name or "discord.gg/if plr:FindFirstChild("AlreadyLoaded") then",
 			Size = Properties.Size or Properties.size or (not IsMobile and UDim2New(0, 770, 0, 526) or UDim2New(0, 526, 0, 350)),
 			FadeSpeed = Properties.FadeSpeed or Properties.fadespeed or 0.25,
 			BackgroundIcon = Properties.BackgroundIcon or Properties.backgroundicon or "rbxassetid://",
@@ -6869,5 +6853,4 @@ local Library do
 end
 
 getgenv().Library = Library
-
 return Library
