@@ -85,10 +85,10 @@ local Library do
 		},
 
 		Folders = {
-			Directory = "if plr:FindFirstChild("AlreadyLoaded") then",
-			Configs = "if plr:FindFirstChild("AlreadyLoaded") then/Configs",
-			Assets = "if plr:FindFirstChild("AlreadyLoaded") then/Assets",
-			Themes = "if plr:FindFirstChild("AlreadyLoaded") then/Themes"
+			Directory = "solixhub",
+			Configs = "solixhub/Configs",
+			Assets = "solixhub/Assets",
+			Themes = "solixhub/Themes"
 		},
 
 		Images = {
