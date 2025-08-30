@@ -4676,7 +4676,7 @@ local Library do
 		Properties = Properties or { }
 
 		local Window = {
-			Name = Properties.Name or Properties.name or "discord.gg/solixhub",
+			Name = Properties.Name or Properties.name or "solixhub",
 			Size = Properties.Size or Properties.size or (not IsMobile and UDim2New(0, 770, 0, 526) or UDim2New(0, 526, 0, 350)),
 			FadeSpeed = Properties.FadeSpeed or Properties.fadespeed or 0.25,
 			BackgroundIcon = Properties.BackgroundIcon or Properties.backgroundicon or "rbxassetid://",
