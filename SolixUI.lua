@@ -3,19 +3,19 @@ if getgenv().Library then
 end
 
 if not isfolder("solixhub") then
-    makefolder("solixhub")
+	makefolder("solixhub")
 end
 
 if not isfolder("solixhub/Assets") then
-    makefolder("solixhub/Assets")
+	makefolder("solixhub/Assets")
 end
 
 if not isfolder("solixhub/Configs") then
-    makefolder("solixhub/Configs")
+	makefolder("solixhub/Configs")
 end
 
 if not isfolder("solixhub/Themes") then
-    makefolder("solixhub/Themes")
+	makefolder("solixhub/Themes")
 end
 
 local Library do
@@ -4404,6 +4404,8 @@ local Library do
 	end
 
 	Library.Notification = function(self, Text, Description, Duration)
+		Duration = math.max(Duration or 1, 0.1)
+
 		local Items = { } do
 			Items["Notification"] = Instances:Create("Frame", {
 				Parent = Library.NotifHolder.Instance,
@@ -4475,7 +4477,8 @@ local Library do
 
 		Items["Accent"]:Tween(
 			TweenInfo.new(Duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),
-			{Size = UDim2New(0, 0, 1, 0)})
+			{Size = UDim2New(0, 0, 1, 0)}
+		)
 
 		task.delay(Duration, function()
 			Tween:Create(Items["Notification"].Instance, TweenInfo.new(0.3), {BackgroundTransparency = 1}, true)
