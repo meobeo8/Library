@@ -7246,6 +7246,5 @@ do
 	end
 end
 
-Library:CheckForAutoLoad()
 getgenv().Library = Library
 return Library
