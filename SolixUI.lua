@@ -2,22 +2,6 @@ if getgenv().Library then
 	getgenv().Library:Unload()
 end
 
-if not isfolder("solixhub") then
-	makefolder("solixhub")
-end
-
-if not isfolder("solixhub/Assets") then
-	makefolder("solixhub/Assets")
-end
-
-if not isfolder("solixhub/Configs") then
-	makefolder("solixhub/Configs")
-end
-
-if not isfolder("solixhub/Themes") then
-	makefolder("solixhub/Themes")
-end
-
 local Library do
 	local Workspace = game:GetService("Workspace")
 	local UserInputService = game:GetService("UserInputService")
@@ -4404,8 +4388,6 @@ local Library do
 	end
 
 	Library.Notification = function(self, Text, Description, Duration)
-		Duration = math.max(Duration or 1, 0.1)
-
 		local Items = { } do
 			Items["Notification"] = Instances:Create("Frame", {
 				Parent = Library.NotifHolder.Instance,
@@ -4477,8 +4459,7 @@ local Library do
 
 		Items["Accent"]:Tween(
 			TweenInfo.new(Duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),
-			{Size = UDim2New(0, 0, 1, 0)}
-		)
+			{Size = UDim2New(0, 0, 1, 0)})
 
 		task.delay(Duration, function()
 			Tween:Create(Items["Notification"].Instance, TweenInfo.new(0.3), {BackgroundTransparency = 1}, true)
@@ -4708,7 +4689,7 @@ local Library do
 
 		local Items = { } do
 			Items["MainFrame"] = Instances:Create("Frame", {
-				Parent = (Library.Holder and Library.Holder.Instance) or nil,
+				Parent = Library.Holder.Instance,
 				Name = "\0",
 				BorderColor3 = FromRGB(0, 0, 0),
 				AnchorPoint = Vector2New(0, 0),
@@ -4979,11 +4960,12 @@ local Library do
 					CornerRadius = UDimNew(1, 0)
 				}) 
 
+				local IsClose = false
+
 				Items["FloatingButton"]:Connect("MouseButton1Down", function(Input)
-					IsOpen = not IsOpen
-					task.wait()
-					Window:SetOpen(IsOpen)
-					Items["OpenTitle"].Instance.Text = IsOpen and "Open" or "Close"
+					IsClose = not IsClose
+					Window:Minimize(IsClose)
+					Items["OpenTitle"].Instance.Text = IsClose and "Open" or "Close"
 				end)
 			end
 
@@ -5037,7 +5019,6 @@ local Library do
 		end)
 
 		local IsMinisize = false
-		local IsOpen = false
 		local OldSize = Items["MainFrame"].Instance.AbsoluteSize
 
 		function Window:Minimize(Bool)
@@ -5048,16 +5029,6 @@ local Library do
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, 275, 0, 35)})
 			else
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, OldSize.X, 0, OldSize.Y)})
-			end
-		end
-
-		function Window:SetOpen(Bool)
-			IsOpen = Bool
-
-			if IsOpen then
-				Items["MainFrame"].Instance.Visible = true
-			else
-				Items["MainFrame"].Instance.Visible = false
 			end
 		end
 
@@ -5259,6 +5230,57 @@ local Library do
 		local Debounce = false 
 
 		function Page:Turn(Bool)
+            --[[
+            if Debounce then 
+                return 
+            end
+
+            self.Active = Bool
+            Items["Page"].Instance.Parent = self.Active and Page.Window.Items["Content"].Instance or Library.UnusedHolder.Instance
+
+            Debounce = true
+
+            if self.Active then
+                Items["Page"].Instance.Visible = true
+
+                Items["Liner"]:Tween(nil, {BackgroundTransparency = 0, Size = UDim2New(0, 6, 1, -20)})
+                Items["Inactive"]:Tween(nil, {BackgroundTransparency = 0})
+                Items["Text"]:Tween(nil, {TextTransparency = 0, Position = UDim2New(0, 12, 0.5, 0)})
+
+                Library.CurrentPage = Page
+            else
+                Items["Liner"]:Tween(nil, {BackgroundTransparency = 1, Size = UDim2New(0, 3, 1, -20)})
+                Items["Inactive"]:Tween(nil, {BackgroundTransparency = 1})
+                Items["Text"]:Tween(nil, {TextTransparency = 0.4, Position = UDim2New(0, 4, 0.5, 0)})
+            end
+
+            local Descendants = Items["Page"].Instance:GetDescendants()
+            TableInsert(Descendants, Items["Page"].Instance)
+
+            local NewTween
+            
+            for _, Object in Descendants do 
+                local TransparencyProperty = Tween:GetProperty(Object)
+
+                if not TransparencyProperty then 
+                    continue
+                end
+
+                if type(TransparencyProperty) == "table" then 
+                    for _, Property in TransparencyProperty do 
+                        NewTween = Tween:FadeItem(Object, Property, self.Active, Page.Window.FadeSpeed)
+                    end
+                else
+                    NewTween = Tween:FadeItem(Object, TransparencyProperty, self.Active, Page.Window.FadeSpeed)
+                end
+            end
+
+            Library:Connect(NewTween.Tween.Completed, function()
+                Debounce = false
+                Items["Page"].Instance.Visible = self.Active
+            end)
+            --]]
+
 			self.Active = Bool
 			Items["Page"].Instance.Parent = self.Active and Page.Window.Items["Content"].Instance or Library.UnusedHolder.Instance
 
@@ -6871,5 +6893,6 @@ local Library do
 	end
 end
 
+Library:CheckForAutoLoad()
 getgenv().Library = Library
 return Library
