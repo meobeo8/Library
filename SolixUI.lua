@@ -6337,524 +6337,523 @@ local Library do
 				})
 			end
 		end
-	end
 
-	function Label:Colorpicker(Properties)
-		Properties = Properties or { }
+		function Label:Colorpicker(Properties)
+			Properties = Properties or { }
 
-		local Colorpicker = {
-			Window = self.Window,
-			Page = self.Page,
-			Section = self.Section,
+			local Colorpicker = {
+				Window = self.Window,
+				Page = self.Page,
+				Section = self.Section,
 
-			Name = Properties.Name or Properties.name or "Colorpicker",
-			Flag = Properties.Flag or Properties.flag or Library:NextFlag(),
-			Alpha = Properties.Alpha or Properties.alpha or 0,
-			Default = Properties.Default or Properties.default or Color3.fromRGB(255, 255, 255),
-			Callback = Properties.Callback or Properties.callback or function() end,
-			OnChanged = Properties.OnChanged or Properties.onchanged or function() end,
-			Disabled = Properties.Disabled or Properties.disabled or false
+				Name = Properties.Name or Properties.name or "Colorpicker",
+				Flag = Properties.Flag or Properties.flag or Library:NextFlag(),
+				Alpha = Properties.Alpha or Properties.alpha or 0,
+				Default = Properties.Default or Properties.default or Color3.fromRGB(255, 255, 255),
+				Callback = Properties.Callback or Properties.callback or function() end,
+				OnChanged = Properties.OnChanged or Properties.onchanged or function() end,
+				Disabled = Properties.Disabled or Properties.disabled or false
+			}
+
+			Label.Count += 1
+
+			local NewColorpicker, ColorpickerItems = Components.Colorpicker({
+				Name = Colorpicker.Name,
+				Count = Label.Count,
+				Parent = Items["Label"],
+				Flag = Colorpicker.Flag,
+				Default = Colorpicker.Default,
+				Alpha = Colorpicker.Alpha,
+				Page = Colorpicker.Page,
+				Section = Colorpicker.Section,
+				OnChanged = Colorpicker.OnChanged,
+				Window = Colorpicker.Window,
+				Callback = Colorpicker.Callback,
+				Disabled = Colorpicker.Disabled
+			})
+
+			return NewColorpicker
+		end
+
+		function Label:Keybind(Properties)
+			Properties = Properties or { }
+
+			local Keybind = {
+				Window = self.Window,
+				Page = self.Page,
+				Section = self.Section,
+
+				Name = Properties.Name or Properties.name or "Keybind",
+				Flag = Properties.Flag or Properties.flag or Library:NextFlag(),
+				Default = Properties.Default or Properties.default or nil,
+				Mode = Properties.Mode or Properties.mode or "Toggle",
+				Callback = Properties.Callback or Properties.callback or function() end,
+				OnChanged = Properties.OnChanged or Properties.onchanged or function() end,
+			}
+
+			Label.Count += 1
+
+			local NewKeybind, KeybindItems = Components.Keybind({
+				Name = Keybind.Name,
+				Count = Label.Count,
+				Parent = Items["Label"],
+				Flag = Keybind.Flag,
+				Default = Keybind.Default,
+				Mode = Keybind.Mode,
+				Page = Keybind.Page,
+				Section = Keybind.Section,
+				OnChanged = Keybind.OnChanged,
+				Window = Keybind.Window,
+				Callback = Keybind.Callback
+			})
+
+			return NewKeybind
+		end
+
+		function Label:SetText(Text)
+			Text = tostring(Text)
+			Items["Text"].Instance.Text = Text
+		end
+
+		function Label:SetTextColor(Color)
+			Library:RemoveFromTheme(Items["Text"])
+			task.wait(0.1)
+			Items["Text"].Instance.TextColor3 = Color
+		end
+
+		local SearchData = {
+			Name = Label.Name,
+			Item = Items["Label"]
 		}
 
-		Label.Count += 1
+		local PageSearchData = Library.SearchItems[Label.Page]
 
-		local NewColorpicker, ColorpickerItems = Components.Colorpicker({
-			Name = Colorpicker.Name,
-			Count = Label.Count,
-			Parent = Items["Label"],
-			Flag = Colorpicker.Flag,
-			Default = Colorpicker.Default,
-			Alpha = Colorpicker.Alpha,
-			Page = Colorpicker.Page,
-			Section = Colorpicker.Section,
-			OnChanged = Colorpicker.OnChanged,
-			Window = Colorpicker.Window,
-			Callback = Colorpicker.Callback,
-			Disabled = Colorpicker.Disabled
-		})
+		if not PageSearchData then 
+			return 
+		end
 
-		return NewColorpicker
+		TableInsert(PageSearchData, SearchData)
+
+		return Label 
 	end
 
-	function Label:Keybind(Properties)
+	Library.Sections.Textbox = function(self, Properties)
 		Properties = Properties or { }
 
-		local Keybind = {
+		local Textbox = {
 			Window = self.Window,
 			Page = self.Page,
-			Section = self.Section,
+			Section = self,
 
-			Name = Properties.Name or Properties.name or "Keybind",
+			Name = Properties.Name or Properties.name or "Textbox",
 			Flag = Properties.Flag or Properties.flag or Library:NextFlag(),
-			Default = Properties.Default or Properties.default or nil,
-			Mode = Properties.Mode or Properties.mode or "Toggle",
+			Default = Properties.Default or Properties.default or "",
+			Placeholder = Properties.Placeholder or Properties.placeholder or "",
 			Callback = Properties.Callback or Properties.callback or function() end,
 			OnChanged = Properties.OnChanged or Properties.onchanged or function() end,
+			Disabled = Properties.Disabled or Properties.disabled or false,
+			Tooltip = Properties.Tooltip or Properties.tooltip or nil
 		}
 
-		Label.Count += 1
-
-		local NewKeybind, KeybindItems = Components.Keybind({
-			Name = Keybind.Name,
-			Count = Label.Count,
-			Parent = Items["Label"],
-			Flag = Keybind.Flag,
-			Default = Keybind.Default,
-			Mode = Keybind.Mode,
-			Page = Keybind.Page,
-			Section = Keybind.Section,
-			OnChanged = Keybind.OnChanged,
-			Window = Keybind.Window,
-			Callback = Keybind.Callback
+		local NewTextbox, TextboxItems = Components.Textbox({
+			Name = Textbox.Name,
+			Flag = Textbox.Flag,
+			Default = Textbox.Default,
+			Parent = Textbox.Section.Items["Content"],
+			Placeholder = Textbox.Placeholder,
+			Page = Textbox.Page,
+			Section = Textbox.Section,
+			OnChanged = Textbox.OnChanged,
+			Window = Textbox.Window,
+			Callback = Textbox.Callback,
+			Disabled = Textbox.Disabled
 		})
 
-		return NewKeybind
+		TextboxItems["Textbox"]:Tooltip(Textbox.Tooltip)
+
+		function Textbox:Set(Value)
+			NewTextbox:Set(Value)
+		end
+
+		function Textbox:SetText(Text)
+			NewTextbox:SetText(Text)
+		end
+
+		function Textbox:SetDisabled(Bool)
+			NewTextbox:SetDisabled(Bool)
+		end
+
+		function Textbox:SetVisible(Bool)
+			NewTextbox:SetVisible(Bool)
+		end
+
+		return Textbox
 	end
 
-	function Label:SetText(Text)
-		Text = tostring(Text)
-		Items["Text"].Instance.Text = Text
+	Library.CheckForAutoLoad = function(self)
+		local Config = readfile(self.Folders.Directory .. "/autoload.json")
+
+		if not Config or Config == "" then 
+			return 
+		end
+
+		local Success, Error = Library:LoadConfig(Config)
+
+		if Success then 
+			Library:Notification("Success!", "Succesfully autoloaded config.", 5)
+
+			task.wait(0.3)
+
+			Library:Thread(function() -- i do this because sometimes the themes dont update
+				for Index, Value in Library.Theme do 
+					Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
+					Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
+				end    
+			end)
+		else
+			Library:Notification("Error!", "Failed to load config.", 5)
+		end
 	end
 
-	function Label:SetTextColor(Color)
-		Library:RemoveFromTheme(Items["Text"])
-		task.wait(0.1)
-		Items["Text"].Instance.TextColor3 = Color
-	end
-
-	local SearchData = {
-		Name = Label.Name,
-		Item = Items["Label"]
-	}
-
-	local PageSearchData = Library.SearchItems[Label.Page]
-
-	if not PageSearchData then 
-		return 
-	end
-
-	TableInsert(PageSearchData, SearchData)
-
-	return Label 
-end
-
-Library.Sections.Textbox = function(self, Properties)
-	Properties = Properties or { }
-
-	local Textbox = {
-		Window = self.Window,
-		Page = self.Page,
-		Section = self,
-
-		Name = Properties.Name or Properties.name or "Textbox",
-		Flag = Properties.Flag or Properties.flag or Library:NextFlag(),
-		Default = Properties.Default or Properties.default or "",
-		Placeholder = Properties.Placeholder or Properties.placeholder or "",
-		Callback = Properties.Callback or Properties.callback or function() end,
-		OnChanged = Properties.OnChanged or Properties.onchanged or function() end,
-		Disabled = Properties.Disabled or Properties.disabled or false,
-		Tooltip = Properties.Tooltip or Properties.tooltip or nil
-	}
-
-	local NewTextbox, TextboxItems = Components.Textbox({
-		Name = Textbox.Name,
-		Flag = Textbox.Flag,
-		Default = Textbox.Default,
-		Parent = Textbox.Section.Items["Content"],
-		Placeholder = Textbox.Placeholder,
-		Page = Textbox.Page,
-		Section = Textbox.Section,
-		OnChanged = Textbox.OnChanged,
-		Window = Textbox.Window,
-		Callback = Textbox.Callback,
-		Disabled = Textbox.Disabled
-	})
-
-	TextboxItems["Textbox"]:Tooltip(Textbox.Tooltip)
-
-	function Textbox:Set(Value)
-		NewTextbox:Set(Value)
-	end
-
-	function Textbox:SetText(Text)
-		NewTextbox:SetText(Text)
-	end
-
-	function Textbox:SetDisabled(Bool)
-		NewTextbox:SetDisabled(Bool)
-	end
-
-	function Textbox:SetVisible(Bool)
-		NewTextbox:SetVisible(Bool)
-	end
-
-	return Textbox
-end
-
-Library.CheckForAutoLoad = function(self)
-	local Config = readfile(self.Folders.Directory .. "/autoload.json")
-
-	if not Config or Config == "" then 
-		return 
-	end
-
-	local Success, Error = Library:LoadConfig(Config)
-
-	if Success then 
-		Library:Notification("Success!", "Succesfully autoloaded config.", 5)
-
-		task.wait(0.3)
-
-		Library:Thread(function() -- i do this because sometimes the themes dont update
-			for Index, Value in Library.Theme do 
-				Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
-				Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
-			end    
-		end)
-	else
-		Library:Notification("Error!", "Failed to load config.", 5)
-	end
-end
-
-Library.CreateSettingsPage = function(self, Window, Watermark, KeybindList)
-	local SettingsPage = Window:Page({
-		Name = "Settings",
-		Columns = 2
-	})
-	do -- pasted from my other ui
-		do
-			do -- Configs
-				local ConfigsSection = SettingsPage:Section({Name = "Configs", Side = 2})
-
-				local ConfigSelected 
-				local ConfigName
-
-				do
-					local ConfigsDropdown = ConfigsSection:Dropdown({
-						Name = "Configs", 
-						Flag = "ConfigsList", 
-						Items = { }, 
-						Multi = false,
-						Callback = function(Value)
-							ConfigSelected = Value
-						end
-					})
-
-					ConfigsSection:Textbox({
-						Name = "Name", 
-						Default = "", 
-						Flag = "ConfigName", 
-						Placeholder = "...", 
-						Callback = function(Value)
-							ConfigName = Value
-						end
-					})
-
-					local CreateDeleteButton = ConfigsSection:Button()
-
-					CreateDeleteButton:Add("Create", function()
-						if ConfigName and ConfigName ~= "" then
-							writefile(Library.Folders.Configs .. "/" .. ConfigName .. tostring(game.GameId) .. ".json", Library:GetConfig())
-							Library:RefreshConfigsList(ConfigsDropdown)
-						end
-					end, false)
-
-					CreateDeleteButton:Add("Delete", function()
-						if ConfigSelected then
-							local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
-							CurrentConfigName ..= "" .. game.GameId .. ".json"
-							Library:DeleteConfig(CurrentConfigName)
-							Library:RefreshConfigsList(ConfigsDropdown)
-						end
-					end, false)
-
-					local LoadSaveButton = ConfigsSection:Button()
-
-					LoadSaveButton:Add("Load", function()
-						if ConfigSelected then
-							local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
-							CurrentConfigName ..= "" .. game.GameId .. ".json"
-							local Success, Result = Library:LoadConfig(readfile(Library.Folders.Configs .. "/" .. CurrentConfigName))
-
-							if Success then 
-								Library:Notification("Success!", "Succesfully loaded config.", 5)
-
-								task.wait(0.3)
-
-								Library:Thread(function() -- i do this because sometimes the themes dont update
-									for Index, Value in Library.Theme do 
-										Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
-										Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
-									end    
-								end)
-							else
-								Library:Notification("Error!", "Failed to load config. Report this to the developers:\n"..Result, 5)
-							end
-						end
-					end, false)
-
-					LoadSaveButton:Add("Save", function()
-						if ConfigSelected then
-							local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
-							CurrentConfigName ..= "" .. game.GameId .. ".json"  
-
-							local Success, Error = Library:SafeCall(function()
-								writefile(Library.Folders.Configs .. "/" .. CurrentConfigName, Library:GetConfig())
-							end)
-
-							if not Success then 
-								Library:Notification("Error!", "Failed to save config. Report this to the developers:\n"..Error, 5)
-							else
-								Library:Notification("Success!", "Succesfully saved config.", 5)
-							end
-						end
-					end, false)
-
-					local RefreshlistButton = ConfigsSection:Button()
-
-					RefreshlistButton:Add("Refresh", function()
-						Library:RefreshConfigsList(ConfigsDropdown)
-					end, false)
-
-					local AutoloadButton = ConfigsSection:Button()
-
-					AutoloadButton:Add("Set autoload", function()
-						if ConfigSelected then 
-							local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
-							CurrentConfigName ..= "" .. game.GameId .. ".json"
-							writefile(Library.Folders.Directory .. "/autoload.json", readfile(Library.Folders.Configs .. "/" .. CurrentConfigName))
-							Library:Notification("Success!", "Succesfully set autoload.", 5)
-						end
-					end)
-
-					AutoloadButton:Add("Clear autoload", function()
-						writefile(Library.Folders.Directory .. "/autoload.json", "")
-					end)
-
-					ConfigsSection:Toggle({
-						Name = "Watermark",
-						Flag = "WatermarkEnabled",
-						Default = false,
-						Callback = function(Value)
-							Watermark:SetVisible(Value)
-						end
-					})
-
-					ConfigsSection:Toggle({
-						Name = "Keybind list",
-						Flag = "Keybind list",
-						Default = false,
-						Callback = function(Value)
-							KeybindList:SetVisible(Value)
-						end
-					})
-
-					Library:RefreshConfigsList(ConfigsDropdown)
-				end
-			end
-
-			do -- Themes
-				local ThemeSection = SettingsPage:Section({Name = "Themes", Side = 1})
-
-				local ThemeSelected 
-				local ThemeName
-
-				do
-					local ThemesDropdown = ThemeSection:Dropdown({
-						Name = "Themes", 
-						Flag = "ThemesList", 
-						Items = { }, 
-						Multi = false,
-						Callback = function(Value)
-							ThemeSelected = Value
-						end
-					})
-
-					ThemeSection:Textbox({
-						Name = "Name", 
-						Default = "", 
-						Flag = "ThemeName", 
-						Placeholder = "...", 
-						Callback = function(Value)
-							ThemeName = Value
-						end
-					})
-
-					local CreateDeleteButton = ThemeSection:Button()
-
-					CreateDeleteButton:Add("Create", function()
-						if ThemeName and ThemeName ~= "" then
-							writefile(Library.Folders.Themes .. "/" .. ThemeName .. ".json", Library:GetConfig())
-							Library:RefreshConfigsList(ThemesDropdown)
-						end
-					end, false)
-
-					CreateDeleteButton:Add("Delete", function()
-						if ThemeSelected then
-							Library:DeleteConfig(ThemeSelected)
-							Library:RefreshConfigsList(ThemesDropdown)
-						end
-					end, false)
-
-					local LoadSaveButton = ThemeSection:Button()
-
-					LoadSaveButton:Add("Load", function()
-						if ThemeSelected then
-							local Success, Result = Library:LoadTheme(readfile(Library.Folders.Themes .. "/" .. ThemeSelected))
-
-							if Success then 
-								Library:Notification("Success!", "Succesfully loaded theme.", 5)
-
-								task.wait(0.3)
-
-								Library:Thread(function() -- i do this because sometimes the themes dont update
-									for Index, Value in Library.Theme do 
-										Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
-										Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
-									end    
-								end)
-							else
-								Library:Notification("Error!", "Failed to load theme. Report this to the developers:\n"..Result, 5)
-							end
-						end
-					end, false)
-
-					LoadSaveButton:Add("Save", function()
-						if ThemeSelected then  
-							local Success, Error = Library:SafeCall(function()
-								writefile(Library.Folders.Themes .. "/" .. ThemeSelected, Library:GetTheme())
-							end)
-
-							if not Success then 
-								Library:Notification("Error!", "Failed to save theme. Report this to the developers:\n"..Error, 5)
-							else
-								Library:Notification("Success!", "Succesfully saved theme.", 5)
-							end
-						end
-					end, false)
-
-					local RefreshlistButton = ThemeSection:Button()
-
-					RefreshlistButton:Add("Refresh", function()
-						Library:RefreshThemesList(ThemesDropdown)
-					end, false)
-
-					local ThemesPresetDropdown = ThemeSection:Dropdown({
-						Name = "Themes Preset", 
-						Flag = "ThemesPresetList", 
-						Items = { }, 
-						Multi = false,
-						Callback = function(Value)
-							local ThemeData = Library.Themes[Value]
-
-							if not ThemeData then 
-								return
-							end
-
-							for Index, Value in Library.Theme do 
-								Library.Theme[Index] = ThemeData[Index]
-								Library:ChangeTheme(Index, ThemeData[Index])
-
-								Library.ThemeColorpickers[Index]:Set(ThemeData[Index])
-							end
-
-							task.wait(0.3)
-
-							Library:Thread(function()
-								for Index, Value in Library.Theme do 
-									Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
-									Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
-								end    
-							end)
-						end
-					})
-
-					for Index, Value in Library.Themes do 
-						ThemesPresetDropdown:Add(Index)
-					end
-
-					Library:RefreshThemesList(ThemesDropdown)
-				end
-			end
-
-			do -- Settings
-				local SettingsSection = SettingsPage:Section({Name = "Settings", Side = 2})
-
-				do
-					SettingsSection:Label("Menu keybind", "Left"):Keybind({
-						Name = "Menu keybind",
-						Flag = "Menu Keybind",
-						Default = Enum.KeyCode.RightControl,
-						Mode = "Toggle",
-						Callback = function(Value)
-							Library.MenuKeybind = Library.Flags["Menu Keybind"].Key
-						end
-					})
-
-					SettingsSection:Slider({
-						Name = "Background opacity",
-						Min = 0,
-						Max = 1,
-						Default = 0.3,
-						Decimals = 0.01,
-						Flag = "Background opacity",
-						Callback = function(Value)
-							Window:SetBackgroundTransparency(Value)
-						end
-					})
-
-					SettingsSection:Slider({
-						Name = "Tween time",
-						Min = 0,
-						Max = 5,
-						Default = 0.25,
-						Decimals = 0.01,
-						Flag = "Tween Time",
-						Callback = function(Value)
-							Library.Tween.Time = Value
-						end
-					})
-
-					SettingsSection:Dropdown({
-						Name = "Style",
-						Flag = "TweenStyle",
-						Default = "Cubic",
-						Items = {"Linear", "Sine", "Quad", "Cubic", "Quart", "Quint", "Exponential", "Circular", "Back", "Elastic", "Bounce"},
-						Callback = function(Value)
-							Library.Tween.Style = Enum.EasingStyle[Value]
-						end
-					})
-
-					SettingsSection:Dropdown({
-						Name = "Direction",
-						Flag = "TweenDirection",
-						Default = "Out",
-						Items = {"In", "Out", "InOut"},
-						Callback = function(Value)
-							Library.Tween.Direction = Enum.EasingDirection[Value]
-						end
-					})
-				end
-			end
-
+	Library.CreateSettingsPage = function(self, Window, Watermark, KeybindList)
+		local SettingsPage = Window:Page({
+			Name = "Settings",
+			Columns = 2
+		})
+		do -- pasted from my other ui
 			do
-				local ThemeSection = SettingsPage:Section({
-					Name = "Theme",
-					Side = 1
-				})
+				do -- Configs
+					local ConfigsSection = SettingsPage:Section({Name = "Configs", Side = 2})
+
+					local ConfigSelected 
+					local ConfigName
+
+					do
+						local ConfigsDropdown = ConfigsSection:Dropdown({
+							Name = "Configs", 
+							Flag = "ConfigsList", 
+							Items = { }, 
+							Multi = false,
+							Callback = function(Value)
+								ConfigSelected = Value
+							end
+						})
+
+						ConfigsSection:Textbox({
+							Name = "Name", 
+							Default = "", 
+							Flag = "ConfigName", 
+							Placeholder = "...", 
+							Callback = function(Value)
+								ConfigName = Value
+							end
+						})
+
+						local CreateDeleteButton = ConfigsSection:Button()
+
+						CreateDeleteButton:Add("Create", function()
+							if ConfigName and ConfigName ~= "" then
+								writefile(Library.Folders.Configs .. "/" .. ConfigName .. tostring(game.GameId) .. ".json", Library:GetConfig())
+								Library:RefreshConfigsList(ConfigsDropdown)
+							end
+						end, false)
+
+						CreateDeleteButton:Add("Delete", function()
+							if ConfigSelected then
+								local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
+								CurrentConfigName ..= "" .. game.GameId .. ".json"
+								Library:DeleteConfig(CurrentConfigName)
+								Library:RefreshConfigsList(ConfigsDropdown)
+							end
+						end, false)
+
+						local LoadSaveButton = ConfigsSection:Button()
+
+						LoadSaveButton:Add("Load", function()
+							if ConfigSelected then
+								local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
+								CurrentConfigName ..= "" .. game.GameId .. ".json"
+								local Success, Result = Library:LoadConfig(readfile(Library.Folders.Configs .. "/" .. CurrentConfigName))
+
+								if Success then 
+									Library:Notification("Success!", "Succesfully loaded config.", 5)
+
+									task.wait(0.3)
+
+									Library:Thread(function() -- i do this because sometimes the themes dont update
+										for Index, Value in Library.Theme do 
+											Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
+											Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
+										end    
+									end)
+								else
+									Library:Notification("Error!", "Failed to load config. Report this to the developers:\n"..Result, 5)
+								end
+							end
+						end, false)
+
+						LoadSaveButton:Add("Save", function()
+							if ConfigSelected then
+								local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
+								CurrentConfigName ..= "" .. game.GameId .. ".json"  
+
+								local Success, Error = Library:SafeCall(function()
+									writefile(Library.Folders.Configs .. "/" .. CurrentConfigName, Library:GetConfig())
+								end)
+
+								if not Success then 
+									Library:Notification("Error!", "Failed to save config. Report this to the developers:\n"..Error, 5)
+								else
+									Library:Notification("Success!", "Succesfully saved config.", 5)
+								end
+							end
+						end, false)
+
+						local RefreshlistButton = ConfigsSection:Button()
+
+						RefreshlistButton:Add("Refresh", function()
+							Library:RefreshConfigsList(ConfigsDropdown)
+						end, false)
+
+						local AutoloadButton = ConfigsSection:Button()
+
+						AutoloadButton:Add("Set autoload", function()
+							if ConfigSelected then 
+								local CurrentConfigName = string.gsub(ConfigSelected, ".json", "")
+								CurrentConfigName ..= "" .. game.GameId .. ".json"
+								writefile(Library.Folders.Directory .. "/autoload.json", readfile(Library.Folders.Configs .. "/" .. CurrentConfigName))
+								Library:Notification("Success!", "Succesfully set autoload.", 5)
+							end
+						end)
+
+						AutoloadButton:Add("Clear autoload", function()
+							writefile(Library.Folders.Directory .. "/autoload.json", "")
+						end)
+
+						ConfigsSection:Toggle({
+							Name = "Watermark",
+							Flag = "WatermarkEnabled",
+							Default = false,
+							Callback = function(Value)
+								Watermark:SetVisible(Value)
+							end
+						})
+
+						ConfigsSection:Toggle({
+							Name = "Keybind list",
+							Flag = "Keybind list",
+							Default = false,
+							Callback = function(Value)
+								KeybindList:SetVisible(Value)
+							end
+						})
+
+						Library:RefreshConfigsList(ConfigsDropdown)
+					end
+				end
+
+				do -- Themes
+					local ThemeSection = SettingsPage:Section({Name = "Themes", Side = 1})
+
+					local ThemeSelected 
+					local ThemeName
+
+					do
+						local ThemesDropdown = ThemeSection:Dropdown({
+							Name = "Themes", 
+							Flag = "ThemesList", 
+							Items = { }, 
+							Multi = false,
+							Callback = function(Value)
+								ThemeSelected = Value
+							end
+						})
+
+						ThemeSection:Textbox({
+							Name = "Name", 
+							Default = "", 
+							Flag = "ThemeName", 
+							Placeholder = "...", 
+							Callback = function(Value)
+								ThemeName = Value
+							end
+						})
+
+						local CreateDeleteButton = ThemeSection:Button()
+
+						CreateDeleteButton:Add("Create", function()
+							if ThemeName and ThemeName ~= "" then
+								writefile(Library.Folders.Themes .. "/" .. ThemeName .. ".json", Library:GetConfig())
+								Library:RefreshConfigsList(ThemesDropdown)
+							end
+						end, false)
+
+						CreateDeleteButton:Add("Delete", function()
+							if ThemeSelected then
+								Library:DeleteConfig(ThemeSelected)
+								Library:RefreshConfigsList(ThemesDropdown)
+							end
+						end, false)
+
+						local LoadSaveButton = ThemeSection:Button()
+
+						LoadSaveButton:Add("Load", function()
+							if ThemeSelected then
+								local Success, Result = Library:LoadTheme(readfile(Library.Folders.Themes .. "/" .. ThemeSelected))
+
+								if Success then 
+									Library:Notification("Success!", "Succesfully loaded theme.", 5)
+
+									task.wait(0.3)
+
+									Library:Thread(function() -- i do this because sometimes the themes dont update
+										for Index, Value in Library.Theme do 
+											Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
+											Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
+										end    
+									end)
+								else
+									Library:Notification("Error!", "Failed to load theme. Report this to the developers:\n"..Result, 5)
+								end
+							end
+						end, false)
+
+						LoadSaveButton:Add("Save", function()
+							if ThemeSelected then  
+								local Success, Error = Library:SafeCall(function()
+									writefile(Library.Folders.Themes .. "/" .. ThemeSelected, Library:GetTheme())
+								end)
+
+								if not Success then 
+									Library:Notification("Error!", "Failed to save theme. Report this to the developers:\n"..Error, 5)
+								else
+									Library:Notification("Success!", "Succesfully saved theme.", 5)
+								end
+							end
+						end, false)
+
+						local RefreshlistButton = ThemeSection:Button()
+
+						RefreshlistButton:Add("Refresh", function()
+							Library:RefreshThemesList(ThemesDropdown)
+						end, false)
+
+						local ThemesPresetDropdown = ThemeSection:Dropdown({
+							Name = "Themes Preset", 
+							Flag = "ThemesPresetList", 
+							Items = { }, 
+							Multi = false,
+							Callback = function(Value)
+								local ThemeData = Library.Themes[Value]
+
+								if not ThemeData then 
+									return
+								end
+
+								for Index, Value in Library.Theme do 
+									Library.Theme[Index] = ThemeData[Index]
+									Library:ChangeTheme(Index, ThemeData[Index])
+
+									Library.ThemeColorpickers[Index]:Set(ThemeData[Index])
+								end
+
+								task.wait(0.3)
+
+								Library:Thread(function()
+									for Index, Value in Library.Theme do 
+										Library.Theme[Index] = Library.Flags["Theme" .. Index].Color
+										Library:ChangeTheme(Index, Library.Flags["Theme" .. Index].Color)
+									end    
+								end)
+							end
+						})
+
+						for Index, Value in Library.Themes do 
+							ThemesPresetDropdown:Add(Index)
+						end
+
+						Library:RefreshThemesList(ThemesDropdown)
+					end
+				end
+
+				do -- Settings
+					local SettingsSection = SettingsPage:Section({Name = "Settings", Side = 2})
+
+					do
+						SettingsSection:Label("Menu keybind", "Left"):Keybind({
+							Name = "Menu keybind",
+							Flag = "Menu Keybind",
+							Default = Enum.KeyCode.RightControl,
+							Mode = "Toggle",
+							Callback = function(Value)
+								Library.MenuKeybind = Library.Flags["Menu Keybind"].Key
+							end
+						})
+
+						SettingsSection:Slider({
+							Name = "Background opacity",
+							Min = 0,
+							Max = 1,
+							Default = 0.3,
+							Decimals = 0.01,
+							Flag = "Background opacity",
+							Callback = function(Value)
+								Window:SetBackgroundTransparency(Value)
+							end
+						})
+
+						SettingsSection:Slider({
+							Name = "Tween time",
+							Min = 0,
+							Max = 5,
+							Default = 0.25,
+							Decimals = 0.01,
+							Flag = "Tween Time",
+							Callback = function(Value)
+								Library.Tween.Time = Value
+							end
+						})
+
+						SettingsSection:Dropdown({
+							Name = "Style",
+							Flag = "TweenStyle",
+							Default = "Cubic",
+							Items = {"Linear", "Sine", "Quad", "Cubic", "Quart", "Quint", "Exponential", "Circular", "Back", "Elastic", "Bounce"},
+							Callback = function(Value)
+								Library.Tween.Style = Enum.EasingStyle[Value]
+							end
+						})
+
+						SettingsSection:Dropdown({
+							Name = "Direction",
+							Flag = "TweenDirection",
+							Default = "Out",
+							Items = {"In", "Out", "InOut"},
+							Callback = function(Value)
+								Library.Tween.Direction = Enum.EasingDirection[Value]
+							end
+						})
+					end
+				end
 
 				do
-					for Index, Value in Library.Theme do 
-						Library.ThemeColorpickers[Index] = ThemeSection:Label(Index, "Left"):Colorpicker({Name = Index, Default = Value, Flag = "Theme"..Index, Callback = function(Value) 
-							Library.Theme[Index] = Value
-							Library:ChangeTheme(Index, Value)
-						end})
+					local ThemeSection = SettingsPage:Section({
+						Name = "Theme",
+						Side = 1
+					})
+
+					do
+						for Index, Value in Library.Theme do 
+							Library.ThemeColorpickers[Index] = ThemeSection:Label(Index, "Left"):Colorpicker({Name = Index, Default = Value, Flag = "Theme"..Index, Callback = function(Value) 
+								Library.Theme[Index] = Value
+								Library:ChangeTheme(Index, Value)
+							end})
+						end
 					end
 				end
 			end
 		end
 	end
-end
 end
 
 getgenv().Library = Library
