@@ -6859,6 +6859,4 @@ local Library do
 	end
 end
 
-getgenv().Library = Library
-Library:CheckForAutoLoad()
 return Library
