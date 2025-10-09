@@ -6860,4 +6860,5 @@ local Library do
 end
 
 getgenv().Library = Library
+Library:CheckForAutoLoad()
 return Library
