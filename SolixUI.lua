@@ -5046,8 +5046,15 @@ local Library do
 			if IsMinisize then 
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, OldSize.X, 0, 35)})
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, 275, 0, 35)})
+			
+			
+				UserInputService.MouseIconEnabled = true
+				Items["Image"].Instance.Visible = false
 			else
 				Items["MainFrame"]:Tween(nil, {Size = UDim2New(0, OldSize.X, 0, OldSize.Y)})
+			
+				UserInputService.MouseIconEnabled = false
+				Items["Image"].Instance.Visible = true
 			end
 		end
 
